@@ -12,6 +12,7 @@ export default {
     extend: {
       colors: {
         background: "hsl(var(--background))",
+        tblack: "hsl(var(--tblack))",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -40,6 +41,20 @@ export default {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
+        sidebarprimary: {
+          DEFAULT: "hsl(var(--sidebarprimary))",
+          foreground: "hsl(var(--sidebarprimary-foreground))",
+        },
+        sidebaraccent: {
+          DEFAULT: "hsl(var(--sidebaraccent))",
+          foreground: "hsl(var(--sidebaraccent-foreground))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
