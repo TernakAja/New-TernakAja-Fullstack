@@ -34,18 +34,26 @@ export const HomePage = () => {
                     select-none pointer-events-none
                   "
                 >
-                  <span className="block text-nowrap">Smart Livestock</span>
-                  <span className="block text-nowrap">Monitoring</span>
+                  <span className="block text-nowrap font-sans">
+                    Smart Livestock
+                  </span>
+                  <span className="block text-nowrap font-sans">
+                    Monitoring
+                  </span>
                 </span>
 
                 {/* Real text */}
-                <span className="relative text-yellow-300">
-                  <span className="block text-nowrap">Smart Livestock</span>
-                  <span className="block text-nowrap">Monitoring</span>
+                <span className="relative text-primary-foreground">
+                  <span className="block text-nowrap font-sans">
+                    Smart Livestock
+                  </span>
+                  <span className="block text-nowrap font-sans">
+                    Monitoring
+                  </span>
                 </span>
               </h1>
 
-              <p className="text-white text-lg leading-relaxed mt-8 max-w-[25vw]">
+              <p className="text-twhite text-lg leading-relaxed mt-8 max-w-[25vw]">
                 Revolutionize your livestock management with real-time
                 monitoring, predictive analytics, and sustainable farming
                 practices powered by AI and IoT technology.
@@ -72,12 +80,12 @@ export const HomePage = () => {
               {/* Top Right Features Badges */}
               <div className="flex flex-col gap-4 items-end">
                 {/* Glassmorphism style badge */}
-                <div className="bg-primary/40 backdrop-blur-md border border-white/20 text-white px-10 py-6 rounded-xl flex items-center gap-3 shadow-sm">
+                <div className="bg-primary/40 backdrop-blur-md border border-white/20 text-twhite px-10 py-6 rounded-xl flex items-center gap-3 shadow-sm">
                   <BarChart3 className="text-secondary h-6 w-6" />
                   <span className="font-semibold text-xl">Real-time Data</span>
                 </div>
 
-                <div className="bg-primary/40 backdrop-blur-md border border-white/20 text-white px-10 py-6 rounded-xl flex items-center gap-3 shadow-sm">
+                <div className="bg-primary/40 backdrop-blur-md border border-white/20 text-twhite px-10 py-6 rounded-xl flex items-center gap-3 shadow-sm">
                   <Bolt className="text-secondary h-6 w-6" />
                   <span className="font-semibold text-xl">Fast Insights</span>
                 </div>
@@ -94,14 +102,18 @@ export const HomePage = () => {
                     pointer-events-none
                   "
                 >
-                  <span className="block text-nowrap">With</span>
-                  <span className="block text-nowrap">AI and IoT</span>
+                  <span className="block text-nowrap font-sans">With</span>
+                  <span className="block text-nowrap font-sans">
+                    AI and IoT
+                  </span>
                 </span>
 
                 {/* Real fill text */}
-                <span className="relative text-yellow-300">
-                  <span className="block text-nowrap">With</span>
-                  <span className="block text-nowrap">AI and IoT</span>
+                <span className="relative text-primary-foreground">
+                  <span className="block text-nowrap font-sans">With</span>
+                  <span className="block text-nowrap font-sans">
+                    AI and IoT
+                  </span>
                 </span>
               </h2>
             </div>
@@ -117,7 +129,7 @@ export const HomePage = () => {
             {/* ----- Left Column: Image & Badge ----- */}
             <div className="w-full lg:w-1/2 relative flex flex-col justify-center lg:justify-start">
               {/* "Our Product" Badge */}
-              <div className="lg:-left-4 w-40 text-center bg-white text-tblack font-bold px-6 py-2.5 rounded-lg shadow-sm z-10 text-sm lg:text-base">
+              <div className="lg:-left-4 w-40 text-center bg-background text-tblack font-bold px-6 py-2.5 rounded-lg shadow-sm z-10 text-sm lg:text-base">
                 Our Product
               </div>
 
@@ -142,7 +154,7 @@ export const HomePage = () => {
                   PETSA
                 </h2>
                 {/* Main Text */}
-                <h2 className="relative text-7xl lg:text-9xl font-black uppercase text-[#1a1a1a] z-10 leading-none">
+                <h2 className="relative text-7xl lg:text-9xl font-black uppercase text-tblack z-10 leading-none">
                   PETSA
                 </h2>
               </div>
@@ -164,7 +176,7 @@ export const HomePage = () => {
               </p>
 
               {/* Button */}
-              <button className="bg-[#3A7D56] text-white hover:bg-[#2e6344] font-bold text-lg px-10 py-3 rounded shadow-md transition-colors">
+              <button className="bg-primary text-white hover:bg- font-bold text-lg px-10 py-3 rounded shadow-md transition-colors">
                 Order Now
               </button>
             </div>

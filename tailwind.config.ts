@@ -10,9 +10,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-open-sans)", "system-ui"],
+      },
       colors: {
         background: "hsl(var(--background))",
         tblack: "hsl(var(--tblack))",
+        twhite: "hsl(var(--twhite))",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",

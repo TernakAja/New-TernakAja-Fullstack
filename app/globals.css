@@ -7,6 +7,7 @@
     /* Main Colors */
     --background: 0 0% 96%; /* #f6f6f6 */
     --tblack: 0 0% 0%; /* #000000 */
+    --twhite: 0 0% 100%; /* #000000 */
     --foreground: 141 46% 19%; /* #1a472a */
     --card: 0 0% 96%; /* #f6f6f6 */
     --card-foreground: 0 0% 13%; /* #222222 */
@@ -53,6 +54,7 @@
   .dark {
     --background: 0 0% 96%;
     --tblack: 0, 0%, 100%;
+    --twhite: 0, 0%, 0%;
     --foreground: 141 46% 19%;
     --card: 0 0% 96%;
     --card-foreground: 0 0% 13%;

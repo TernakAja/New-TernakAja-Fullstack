@@ -7,7 +7,7 @@ export default function Footer() {
         {/* ----- Left Column: Brand & Socials ----- */}
         <div className="flex flex-col gap-6">
           {/* Brand Name */}
-          <h2 className="text-4xl font-bold text-secondary tracking-wide">
+          <h2 className="text-5xl font-bold text-secondary tracking-wide">
             TernakAja
           </h2>
 
