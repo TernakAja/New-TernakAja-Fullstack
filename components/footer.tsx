@@ -1,4 +1,6 @@
-import { MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { LuFacebook } from "react-icons/lu";
+import { LuInstagram } from "react-icons/lu";
 
 export default function Footer() {
   return (
@@ -14,7 +16,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-3">
             <a href="#" className="hover:text-secondary transition-colors">
-              <Facebook className="w-6 h-6" />
+              <LuFacebook className="w-6 h-6" />
             </a>
             {/* Using Twitter icon for X as placeholder, or use custom SVG */}
             <a href="#" className="hover:text-secondary transition-colors">
@@ -24,7 +26,7 @@ export default function Footer() {
               </svg>
             </a>
             <a href="#" className="hover:text-secondary transition-colors">
-              <Instagram className="w-6 h-6" />
+              <LuInstagram className="w-6 h-6" />
             </a>
           </div>
         </div>
