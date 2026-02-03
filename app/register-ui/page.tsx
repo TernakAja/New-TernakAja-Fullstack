@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SignUpForm() {
+export default function RegisterPage() {
   return (
     // Outer Container: Dark Green Background with Texture
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-primary p-4">
