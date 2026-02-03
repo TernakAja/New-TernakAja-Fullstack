@@ -10,13 +10,12 @@ interface ProductImageGalleryProps {
 export default function ProductImageGallery({
   images,
 }: ProductImageGalleryProps) {
-  // State to track which image is currently selected
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
   return (
     <div className="flex flex-col gap-4">
       {/* Main Large Image */}
-      <div className="w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden relative border border-gray-100">
+      <div className="w-full aspect-square bg-background rounded-2xl overflow-hidden relative border border-border">
         {selectedImage ? (
           <Image
             src={selectedImage}
@@ -26,7 +25,7 @@ export default function ProductImageGallery({
             priority
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
+          <div className="w-full h-full flex items-center justify-center text-border/90">
             No Image
           </div>
         )}
@@ -38,10 +37,10 @@ export default function ProductImageGallery({
           <button
             key={index}
             onClick={() => setSelectedImage(img)}
-            className={`w-full aspect-square bg-gray-200 rounded-xl overflow-hidden relative border-2 transition-all ${
+            className={`w-full aspect-square bg-border/20 rounded-xl overflow-hidden relative border-2 transition-all ${
               selectedImage === img
-                ? "border-[#3A7D56]"
-                : "border-transparent hover:border-gray-300"
+                ? "border-secondary-foreground"
+                : "border-transparent hover:border-border/30"
             }`}
           >
             {img && (

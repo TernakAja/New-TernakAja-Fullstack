@@ -39,7 +39,7 @@ export default async function ProductDetails({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params; // ✅ safe
+  const { id } = await params;
   const product = await getProductById(id);
 
   if (!product) return notFound();
@@ -54,7 +54,7 @@ export default async function ProductDetails({
         <div className="flex flex-col pt-2">
           <Link
             href="/products"
-            className="flex items-center gap-2 text-gray-500 hover:text-black mb-6 font-medium"
+            className="flex items-center gap-2 text-border/90 hover:text-tblack mb-6 font-medium"
           >
             <ArrowLeft className="w-5 h-5" />
             Our Products
@@ -64,13 +64,13 @@ export default async function ProductDetails({
             {product.name}
           </h1>
 
-          <p className="text-2xl text-gray-700 mb-8">{product.price}</p>
+          <p className="text-2xl text-muted-foreground mb-8">{product.price}</p>
 
-          <p className="text-gray-500 text-lg leading-relaxed mb-10">
+          <p className="text-tblack text-lg leading-relaxed mb-10">
             {product.description}
           </p>
 
-          <button className="w-fit bg-[#3A7D56] text-white font-bold text-lg px-10 py-3 rounded-lg">
+          <button className="w-fit bg-primary text-white font-bold text-lg px-10 py-3 rounded-lg">
             Order product
           </button>
         </div>

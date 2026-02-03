@@ -8,7 +8,7 @@ export default function ProductDetailPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <main className="min-h-screen w-full bg-[#fcfcfc] font-sans pb-20">
+    <main className="min-h-screen w-full bg-background font-sans pb-20">
       <Navbar />
 
       <Suspense fallback={<div className="p-10">Loading product…</div>}>

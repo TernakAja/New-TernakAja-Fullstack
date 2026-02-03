@@ -1,9 +1,8 @@
 "use client";
-// "use cache";
 
 import React, { useState } from "react";
 import ProductCard from "@/components/product-card";
-import { Search } from "lucide-react"; // Assuming you have lucide-react installed
+import { Search } from "lucide-react";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/navigation";
 
@@ -58,13 +57,13 @@ export default function ProductsPage() {
   );
 
   return (
-    <main className="min-h-screen w-full bg-[#fcfcfc] font-sans">
+    <main className="min-h-screen w-full bg-background font-sans">
       {/* Navbar Container */}
       <Navbar />
 
       <div className="container mx-auto px-6 lg:px-20 pb-20">
         {/* Page Title */}
-        <h1 className="text-4xl font-extrabold text-black mb-8 font-sans">
+        <h1 className="text-4xl font-extrabold text-tblack mb-8 font-sans">
           Our Products
         </h1>
 
@@ -72,13 +71,13 @@ export default function ProductsPage() {
         <div className="relative w-full mb-12">
           <input
             type="text"
-            placeholder="Search products..." // Empty placeholder in design, but text is helpful UX
+            placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-14 pl-6 pr-12 rounded-xl border border-gray-300 bg-[#fcfcfc] focus:outline-none focus:ring-2 focus:ring-[#3A7D56]/20 focus:border-[#3A7D56] transition-all text-gray-700 placeholder:text-gray-400"
+            className="w-full h-14 pl-6 pr-12 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-[#3A7D56]/20 focus:border-[#3A7D56] transition-all text-gray-700 placeholder:text-gray-400"
           />
           {/* Search Icon (Optional visual indicator) */}
-          <div className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400">
+          <div className="absolute right-5 top-1/2 -translate-y-1/2 text-border/90">
             <Search className="w-6 h-6" />
           </div>
         </div>
@@ -99,7 +98,7 @@ export default function ProductsPage() {
           </div>
         ) : (
           // Empty State
-          <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+          <div className="flex flex-col items-center justify-center py-20 text-border/90">
             <p className="text-lg">
               No products found matching &quot;{searchQuery}&quot;
             </p>
