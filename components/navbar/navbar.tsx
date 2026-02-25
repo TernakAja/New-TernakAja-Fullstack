@@ -21,7 +21,7 @@ export default async function Navbar() {
                     </div>
 
                     {/* Desktop Links */}
-                    <div className="hidden lg:flex items-center gap-6 text-[15px] font-semibold text-gray-900">
+                    <div className="hidden lg:flex items-center gap-6 text-xl 2xl:text-2xl font-semibold text-gray-900">
                         <Link href="/" className="hover:text-primary">
                             Home
                         </Link>
@@ -39,7 +39,7 @@ export default async function Navbar() {
                     <div className="hidden lg:flex items-center gap-4">
                         {user ? (
                             <>
-                                <span className="font-semibold">
+                                <span className="font-semibold text-xl">
                                     {user.user_metadata?.name ?? user.email}
                                 </span>
                                 <LogoutButton />
