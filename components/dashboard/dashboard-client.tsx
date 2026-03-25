@@ -5,6 +5,7 @@ import { HealthMetricsChart } from "./health-metrics-chart";
 import LastHourMetrics from "./metrics";
 import { SpeciesDistribution } from "./species-distribution";
 import { StatsGrid } from "./stat-grid";
+import { RecentAvgSensorData } from "@/model/dataSchemas";
 
 export type Stat = {
   title: string;

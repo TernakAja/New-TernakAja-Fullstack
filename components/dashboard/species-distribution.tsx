@@ -2,6 +2,7 @@
 
 import { PieChart } from "lucide-react";
 import { DonutChart } from "./charts";
+import { SpeciesCount } from "@/model/dataSchemas";
 
 interface Props {
   data?: SpeciesCount[];

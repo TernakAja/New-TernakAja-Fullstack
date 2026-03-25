@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Chart, registerables } from "chart.js";
+import { DailySensorStats, SpeciesCount } from "@/model/dataSchemas";
 
 Chart.register(...registerables);
 

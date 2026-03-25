@@ -2,6 +2,7 @@
 
 import { Activity } from "lucide-react";
 import { LineChart } from "./charts";
+import { DailySensorStats } from "@/model/dataSchemas";
 
 interface Props {
   data?: DailySensorStats[];
