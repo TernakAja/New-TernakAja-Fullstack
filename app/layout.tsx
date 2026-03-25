@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import { openSans } from "./fonts";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer";
+import { openSans } from "./fonts";
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -37,11 +37,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Suspense fallback={<div className="h-20" />}>
-                        <Navbar />
-                    </Suspense>
                     {children}
-                    <Footer />
                 </ThemeProvider>
             </body>
         </html>
