@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { CreateLivestockInput } from "@/model/schemas/createLivestockInput";
+import type { CreateLivestockInput } from "@/model/schemas/livestock";
 import { toTitleCase } from "@/lib/helpers/toTitleCase";
 
 interface CreateLivestockResult {
@@ -81,3 +81,75 @@ export async function createLivestock(
 
   return { livestock, device };
 }
+
+export async function getLivestockById(
+  supabase: SupabaseClient,
+  userId: string,
+  livestockId: string
+) {
+  const { data, error } = await supabase
+    .from("livestock")
+    .select("*")
+    .eq("id", livestockId)
+    .eq("user_id", userId)
+    .single();
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+export async function getAllLivestock(
+  supabase: SupabaseClient,
+  userId: string
+) {
+  const { data, error } = await supabase
+    .from("livestock")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("[getAllLivestock]", error);
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+export async function getLiveStockWithSensorData(
+  supabase: SupabaseClient,
+  userId: string
+) {
+  const { data, error } = await supabase
+    .from("livestock_with_latest_sensor")
+    .select("*")
+    .eq("user_id", userId); 
+
+  if (error) {
+    console.error("[getLiveStockWithSensorData]", error);
+    throw new Error(error.message);
+  }  
+  return data;
+}
+
+export async function getLiveStockWithSensorDataById(
+  supabase: SupabaseClient,
+  livestockId: string,
+  userId: string
+) {
+  const { data, error } = await supabase
+    .from("livestock_with_latest_sensor")
+    .select("*")
+    .eq("id", livestockId)
+    .eq("user_id", userId); 
+
+  if (error) {
+    console.error("[getLiveStockWithSensorData]", error);
+    throw new Error(error.message);
+  }  
+  return data;
+}
+

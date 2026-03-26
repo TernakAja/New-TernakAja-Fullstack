@@ -14,6 +14,8 @@ export default function DashboardSidebarClient({ user }: { user: any }) {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState("en");
 
+  console.log("User in DashboardSidebarClient:", user);
+
   const toggleLanguage = () => {
     const newLang = language === "en" ? "id" : "en";
     setLanguage(newLang);
@@ -74,14 +76,14 @@ export default function DashboardSidebarClient({ user }: { user: any }) {
         
         {/* User */}
         <div className="flex items-center gap-3 px-2">
-          <Avatar className="h-10 w-10 bg-gray-200">
+          <Avatar className="h-10 w-10 bg-gray-200 border border-border">
             <AvatarFallback className="text-gray-500">
               {user?.email?.charAt(0).toUpperCase()}
             </AvatarFallback>
           </Avatar>
 
           <span className="text-sm text-gray-600">
-            Farm Manager
+            {user?.name ?? user.name ?? user?.email}
           </span>
            <LogoutButton />
         </div>

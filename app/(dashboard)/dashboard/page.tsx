@@ -5,7 +5,6 @@ import { createClient } from "@/lib/supabase/server";
 export default async function DashboardPage() {
   const supabase = await createClient();
 
-  // Example queries
   const { data: livestock } = await supabase
     .from("livestock")
     .select("*");

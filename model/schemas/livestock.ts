@@ -62,3 +62,70 @@ export const createLivestockInputSchema = z.object({
 });
 
 export type CreateLivestockInput = z.infer<typeof createLivestockInputSchema>;
+
+export const livestockResponseSchema = z.object({
+  id: z.number(),
+
+  name: z.string().nullable(),
+  species: z.string().nullable(),
+  breed: z.string().nullable(),
+  gender: z.string().nullable(),
+
+  birth_date: z.string().nullable(),
+
+  photo_url: z.string().url().nullable(),
+
+  status: z.string().nullable(),
+
+  height: z.number().nullable(),
+  weight: z.number().nullable(),
+
+  body_condition_score: z.number().int().nullable(),
+
+  notes: z.string().nullable(),
+
+  recorded_at: z.string().nullable(),
+
+  created_at: z.string(),
+  updated_at: z.string(),
+
+  user_id: z.uuid().nullable(), 
+});
+
+export type LivestockResponse = z.infer<typeof livestockResponseSchema>;
+
+export const livestockListResponseSchema = z.array(livestockResponseSchema);
+
+export type LivestockListResponse = z.infer<typeof livestockListResponseSchema>;
+
+export const livestockWithSensorDataSchema = z.object({
+  id: z.number(),
+  user_id: z.uuid(),
+  name: z.string().max(255),
+  species: z.string().max(255),
+  breed: z.string().max(255),
+  gender: z.enum(["male", "female"]),
+  birth_date: z.string().date(),
+  photo_url: z.url().nullable(),
+  status: z.string().max(100),
+  height: z.number().positive().nullable(),
+  weight: z.number().positive().nullable(),
+  body_condition_score: z.number().min(0).max(10).nullable(),
+  notes: z.string().max(500).nullable(),
+  recorded_at: z.string().nullable(),
+  created_at: z.string(),
+  updated_at: z.string(),
+  sensor_id: z.number().nullable(),
+  temperature: z.number().positive().nullable(),
+  heart_rate: z.number().positive().nullable(),
+  sp02: z.number().positive().nullable(),
+  timestamp: z.string().nullable(),
+});
+
+export type LivestockWithSensorData = z.infer<typeof livestockWithSensorDataSchema>;
+
+export const livestockWithSensorDataListSchema = z.array(livestockWithSensorDataSchema);
+
+export type LivestockWithSensorDataList = z.infer<typeof livestockWithSensorDataListSchema>;
+
+

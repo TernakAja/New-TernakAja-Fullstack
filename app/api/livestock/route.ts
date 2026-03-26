@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { createLivestockInputSchema } from "@/model/schemas/createLivestockInput";
-import { createLivestock } from "@/lib/services/livestock";
+import { createLivestockInputSchema } from "@/model/schemas/livestock";
+import { createLivestock, getAllLivestock } from "@/lib/services/livestock";
 import {
   unauthorizedResponse,
   validationErrorResponse,
@@ -60,6 +60,34 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("[POST /api/livestock] Unhandled error:", error);
+    return serverErrorResponse();
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+
+    // --- 1. Auth ---
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return unauthorizedResponse();
+    }
+
+    // --- 2. Service ---
+    const livestock = await getAllLivestock(supabase, user.id);
+
+    // --- 3. Response ---
+    return NextResponse.json({
+      message: "Livestock retrieved successfully",
+      data: livestock,
+    });
+  } catch (error) {
+    console.error("[GET /api/livestock]", error);
     return serverErrorResponse();
   }
 }

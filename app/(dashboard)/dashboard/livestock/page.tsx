@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowUpDown,
@@ -43,6 +43,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useRouter } from "next/navigation";
 import { SensorDataWithLivestock } from "@/model/dataSchemas";
+import { LivestockWithSensorData } from "@/model/livestock_sensor";
 
 function roundToTwoDecimals(value: number): number {
   return Math.round(value * 100) / 100;
@@ -52,20 +53,40 @@ export default function LivestockList() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [livestock, setLivestock] = useState<SensorDataWithLivestock[]>([]);
+  const [livestock, setLivestock] = useState<LivestockWithSensorData[]>([]);
 
   const filteredLivestock = livestock.filter((animal) => {
     const matchesSearch =
-      animal.livestock.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      animal.livestock.species
+      animal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      animal.species
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
     const matchesStatus =
-      statusFilter === "all" || animal.livestock.status === statusFilter;
+      statusFilter === "all" || animal.status === statusFilter;
 
     return matchesSearch && matchesStatus;
   });
+
+  useEffect(() => {
+    async function fetchLivestock() {
+      try {
+        const response = await fetch("/api/livestock/sensor");
+        const result = await response.json();
+
+        if (response.ok) {
+          console.log("Fetched livestock data:", result.data);
+          setLivestock(result.data);
+        } else {
+          console.error("Failed to fetch livestock:", result.error);
+        }
+      } catch (error) {
+        console.error("Error fetching livestock:", error);
+      }
+    }
+
+    fetchLivestock();
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -101,7 +122,7 @@ export default function LivestockList() {
                   Healthy
                 </div>
                 <div className="text-2xl font-bold text-foreground">
-                  {livestock.filter((a) => a.livestock.status === "Healthy").length}
+                  {livestock.filter((a) => a.status === "Healthy").length}
                 </div>
               </div>
             </CardContent>
@@ -119,7 +140,7 @@ export default function LivestockList() {
                   Unhealthy
                 </div>
                 <div className="text-2xl font-bold text-foreground">
-                  {livestock.filter((a) => a.livestock.status === "Unhealthy").length}
+                  {livestock.filter((a) => a.status === "Unhealthy").length}
                 </div>
               </div>
             </CardContent>
@@ -190,9 +211,9 @@ export default function LivestockList() {
                     <TableHead>ID</TableHead>
                     <TableHead>Animal</TableHead>
                     <TableHead>Species / Breed</TableHead>
-                    <TableHead>Gender / Age</TableHead>
+                    <TableHead>Gender / Birth Date</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead>Location</TableHead>
+                    {/* <TableHead>Location</TableHead> */}
                     <TableHead>Vital Signs</TableHead>
                     <TableHead>Last Updated</TableHead>
                     <TableHead />
@@ -202,65 +223,65 @@ export default function LivestockList() {
                 <TableBody>
                   {filteredLivestock.map((animal) => (
                     <TableRow
-                      key={animal.livestock.id}
-                      onClick={() => router.push(`/dashboard/livestock/${animal.livestock.id}`)}
+                      key={animal.id}
+                      onClick={() => router.push(`/dashboard/livestock/${animal.id}`)}
                     >
-                      <TableCell>{animal.livestock.id}</TableCell>
+                      <TableCell>{animal.id}</TableCell>
 
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar>
-                            <AvatarImage src={animal.livestock.photoUrl || "/placeholder.svg"} />
+                            <AvatarImage src={animal.photo_url || "/placeholder.svg"} />
                             <AvatarFallback>
-                              {animal.livestock.name.charAt(0)}
+                              {animal.name.charAt(0)}
                             </AvatarFallback>
                           </Avatar>
                           <span className="font-medium text-foreground">
-                            {animal.livestock.name}
+                            {animal.name}
                           </span>
                         </div>
                       </TableCell>
 
                       <TableCell>
-                        <div>{animal.livestock.species}</div>
+                        <div>{animal.species}</div>
                         <div className="text-sm text-muted-foreground">
-                          {animal.livestock.breed}
+                          {animal.breed}
                         </div>
                       </TableCell>
 
                       <TableCell>
-                        <div>{animal.livestock.gender}</div>
+                        <div>{animal.gender}</div>
                         <div className="text-sm text-muted-foreground">
-                          {animal.livestock.birthDate}
+                          {animal.birth_date}
                         </div>
                       </TableCell>
 
                       <TableCell>
                         <Badge
                           className={
-                            animal.livestock.status === "Healthy"
+                            animal.status === "Healthy"
                               ? "bg-primary text-primary-foreground"
                               : "bg-destructive text-destructive-foreground"
                           }
                         >
-                          {animal.livestock.status}
+                          {animal.status}
                         </Badge>
                       </TableCell>
 
-                      <TableCell>
-                        {`Farm ${animal.livestock.farmId}`}
-                      </TableCell>
+                      {/* <TableCell>
+                        {`Farm ${animal.farmId}`}
+                      </TableCell> */}
 
                       <TableCell>
-                        {animal.sensor_data ? (
+                        {animal.sensor_id ? (
                           <>
                             <div className="flex items-center gap-1">
                               <Heart className="h-4 w-4 text-destructive" />
-                              {roundToTwoDecimals(animal.sensor_data.heartRate) ?? "N/A"}
+                              {roundToTwoDecimals(animal.heart_rate??0) ?? "N/A"}
                             </div>
                             <div className="flex items-center gap-1 mt-1">
                               <Thermometer className="h-4 w-4 text-accent" />
-                              {roundToTwoDecimals(animal.sensor_data.temperature) ?? "N/A"}
+                              {roundToTwoDecimals(animal.temperature ?? 0) ?? "N/A"}
                             </div>
                           </>
                         ) : (
@@ -271,8 +292,8 @@ export default function LivestockList() {
                       </TableCell>
 
                       <TableCell className="text-muted-foreground">
-                        {animal.sensor_data?.timestamp
-                          ? new Date(animal.sensor_data.timestamp).toLocaleDateString()
+                        {animal?.timestamp
+                          ? new Date(animal.timestamp).toLocaleDateString()
                           : "N/A"}
                       </TableCell>
 
