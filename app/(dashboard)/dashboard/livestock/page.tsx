@@ -41,7 +41,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { SensorDataWithLivestock } from "@/model/dataSchemas";
 
@@ -50,7 +49,6 @@ function roundToTwoDecimals(value: number): number {
 }
 
 export default function LivestockList() {
-  const { t } = useTranslation();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -75,10 +73,10 @@ export default function LivestockList() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            {t("dashboard.livestock.list.livestockList.header.title")}
+            Livestock List
           </h1>
           <p className="text-muted-foreground">
-            {t("dashboard.livestock.list.livestockList.header.subtitle")}
+            Monitor, manage, and track your livestock health data.
           </p>
         </div>
 
@@ -87,7 +85,7 @@ export default function LivestockList() {
           onClick={() => router.push("/dashboard/livestock/add")}
         >
           <Plus className="mr-2 h-4 w-4" />
-          {t("dashboard.livestock.list.livestockList.addLivestockButton")}
+          Add Livestock
         </Button>
       </div>
 
@@ -100,7 +98,7 @@ export default function LivestockList() {
               </div>
               <div>
                 <div className="text-sm text-muted-foreground">
-                  {t("dashboard.livestock.list.livestockList.statusCards.healthy.label")}
+                  Healthy
                 </div>
                 <div className="text-2xl font-bold text-foreground">
                   {livestock.filter((a) => a.livestock.status === "Healthy").length}
@@ -118,7 +116,7 @@ export default function LivestockList() {
               </div>
               <div>
                 <div className="text-sm text-muted-foreground">
-                  {t("dashboard.livestock.list.livestockList.statusCards.unhealthy.label")}
+                  Unhealthy
                 </div>
                 <div className="text-2xl font-bold text-foreground">
                   {livestock.filter((a) => a.livestock.status === "Unhealthy").length}
@@ -132,11 +130,9 @@ export default function LivestockList() {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <Card>
           <CardHeader>
-            <CardTitle>
-              {t("dashboard.livestock.list.livestockList.inventory.title")}
-            </CardTitle>
+            <CardTitle>Livestock Inventory</CardTitle>
             <CardDescription className="text-muted-foreground">
-              {t("dashboard.livestock.list.livestockList.inventory.description")}
+              View and manage all livestock records in your farm.
             </CardDescription>
           </CardHeader>
 
@@ -146,7 +142,7 @@ export default function LivestockList() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder={t("dashboard.livestock.list.livestockList.inventory.searchPlaceholder")}
+                  placeholder="Search livestock by name or species..."
                   className="pl-10"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -158,31 +154,31 @@ export default function LivestockList() {
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" className="gap-1">
                       <Filter className="h-4 w-4" />
-                      {t("dashboard.livestock.list.livestockList.inventory.filterButton")}
+                      Filter
                       <ChevronDown className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
 
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>
-                      {t("dashboard.livestock.list.livestockList.inventory.filterByStatusLabel")}
+                      Filter by Status
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => setStatusFilter("all")}>
-                      {t("dashboard.livestock.list.livestockList.inventory.statusOptions.all")}
+                      All
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setStatusFilter("Healthy")}>
-                      {t("dashboard.livestock.list.livestockList.inventory.statusOptions.healthy")}
+                      Healthy
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setStatusFilter("Unhealthy")}>
-                      {t("dashboard.livestock.list.livestockList.inventory.statusOptions.unhealthy")}
+                      Unhealthy
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
 
                 <Button variant="outline" className="gap-1">
                   <Download className="h-4 w-4" />
-                  {t("dashboard.livestock.list.livestockList.inventory.exportButton")}
+                  Export
                 </Button>
               </div>
             </div>
@@ -192,13 +188,13 @@ export default function LivestockList() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>ID</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.animal")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.speciesBreed")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.genderAge")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.status")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.location")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.vitalSigns")}</TableHead>
-                    <TableHead>{t("dashboard.livestock.list.livestockList.tableHeaders.lastUpdated")}</TableHead>
+                    <TableHead>Animal</TableHead>
+                    <TableHead>Species / Breed</TableHead>
+                    <TableHead>Gender / Age</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Vital Signs</TableHead>
+                    <TableHead>Last Updated</TableHead>
                     <TableHead />
                   </TableRow>
                 </TableHeader>
@@ -252,9 +248,7 @@ export default function LivestockList() {
                       </TableCell>
 
                       <TableCell>
-                        {t("dashboard.livestock.list.livestockList.locationText", {
-                          farmId: animal.livestock.farmId,
-                        })}
+                        {`Farm ${animal.livestock.farmId}`}
                       </TableCell>
 
                       <TableCell>
@@ -271,7 +265,7 @@ export default function LivestockList() {
                           </>
                         ) : (
                           <span className="text-muted-foreground">
-                            {t("dashboard.livestock.list.livestockList.noSensorData")}
+                            No sensor data
                           </span>
                         )}
                       </TableCell>
@@ -292,17 +286,17 @@ export default function LivestockList() {
 
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem>
-                              {t("dashboard.livestock.list.livestockList.tableActions.viewDetails")}
+                              View details
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                              {t("dashboard.livestock.list.livestockList.tableActions.editRecord")}
+                              Edit record
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                              {t("dashboard.livestock.list.livestockList.tableActions.healthHistory")}
+                              Health history
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="text-destructive">
-                              {t("dashboard.livestock.list.livestockList.tableActions.archive")}
+                              Archive
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
