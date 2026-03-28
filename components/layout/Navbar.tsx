@@ -81,7 +81,7 @@ export const Navbar = () => {
                         </div>
 
                         <Link href="/pricing" className="hover:text-foreground transition-colors">Pricing</Link>
-                        <Link href="/headline" className="hover:text-foreground transition-colors">News</Link>
+                        <Link href="/products" className="hover:text-foreground transition-colors">Products</Link>
                     </div>
                 </div>
 
