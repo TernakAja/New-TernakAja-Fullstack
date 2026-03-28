@@ -16,6 +16,7 @@ import {
     BellRing,
     ShieldCheck
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const FEATURES_DATA = [
     {
@@ -98,12 +99,18 @@ export default function Petsa01Page() {
                 {/* --- SECTION 1: HERO --- */}
                 <section className="relative flex w-full flex-col items-center justify-center overflow-hidden px-4 pt-32 pb-16">
                     {/* Ambient Glow */}
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden">
-                        <div className="absolute inset-0 blur-[100px] bg-blue-500/5 dark:bg-white/5 rounded-full" />
-                    </div>
-
+                    <div
+                        className={cn(
+                            "absolute inset-0",
+                            "[background-size:40px_40px]",
+                            "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+                            "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+                        )}
+                    />
+                    {/* Radial gradient for the container to give a faded look */}
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
                     <div className="relative z-10 flex w-full max-w-5xl flex-col items-center text-center">
-                        <header className="mb-16 flex flex-col items-center">
+                        <header className=" flex flex-col items-center">
                             <h2 className="mb-4 text-4xl font-bold tracking-tight text-black dark:text-white md:text-5xl lg:text-[2.75rem]">
                                 PETSA 01
                             </h2>
@@ -128,8 +135,8 @@ export default function Petsa01Page() {
                                     src={src}
                                     alt={`PETSA 01 View ${index + 1}`}
                                     className={`absolute left-0 top-0 h-full w-full object-contain drop-shadow-2xl transition-all duration-700 ease-in-out ${index === currentImageIndex
-                                        ? 'opacity-100 z-10 scale-100 hover:scale-105'
-                                        : 'opacity-0 z-0 scale-95 pointer-events-none'
+                                        ? 'opacity-100 z-10 scale-50 '
+                                        : 'opacity-0 z-0 scale-50 pointer-events-none'
                                         }`}
                                     loading={index === 0 ? "eager" : "lazy"}
                                 />
@@ -171,9 +178,9 @@ export default function Petsa01Page() {
                     <div className="w-full max-w-5xl space-y-6">
 
                         {/* Banner */}
-                        <div className="relative overflow-hidden rounded-xl border border-amber-500/20 bg-amber-50 dark:bg-[#110808] p-6 shadow-sm dark:shadow-[0_0_30px_-10px_rgba(245,158,11,0.1)] sm:p-8">
-                            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between relative z-10">
-                                <div className="flex-1">
+                        <div className="relative overflow-hidden rounded-xl border mt-12 border-amber-500/20 bg-amber-50 dark:bg-[#110808] p-6 shadow-sm dark:shadow-[0_0_30px_-10px_rgba(245,158,11,0.1)] sm:p-8">
+                            <div className="flex flex-col  gap-6 md:flex-row md:items-center md:justify-between relative z-10">
+                                <div className="flex-1 ">
                                     <h3 className="mb-2 text-lg font-semibold text-amber-800 dark:text-amber-500 sm:text-xl flex items-center gap-2">
 
                                         Coming Soon

@@ -64,7 +64,7 @@ export default function ProductsPage() {
                 {products.map((product, index) => (
                     <section
                         key={product.id}
-                        className={`relative flex flex-col justify-between p-8 sm:p-12 lg:p-16 lg:pt-32 lg:h-screen overflow-hidden ${product.theme.bg} ${index === 0 ? 'lg:border-r' : ''} ${product.theme.border}`}
+                        className={`relative flex flex-col justify-between p-8 sm:p-12 lg:p-16 lg:pt-32 min-h-screen lg:min-h-[calc(100vh-3.5rem)] lg:h-auto overflow-hidden ${product.theme.bg} ${index === 0 ? 'lg:border-r' : ''} ${product.theme.border}`}
                     >
                         {/* Ambient Radial Glow */}
                         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -85,7 +85,13 @@ export default function ProductsPage() {
                                 )}
                             </div>
 
-                            <img src={product.img} alt="" className={product.img ? "active-class h-80" : "inactive-class"} />
+                            {product.img && (
+                                <img
+                                    src={product.img}
+                                    alt={product.name}
+                                    className="w-full h-auto max-h-48 sm:max-h-64 lg:max-h-80 object-contain object-left drop-shadow-2xl transition-transform "
+                                />
+                            )}
 
 
                             <h2 className="text-5xl sm:text-6xl font-semibold tracking-tight mb-4 mt-10">
