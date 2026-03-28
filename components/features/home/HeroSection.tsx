@@ -16,12 +16,10 @@ export const HeroSection = () => {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-200/50 dark:bg-zinc-900/50 border border-zinc-300 dark:border-white/5 hover:bg-zinc-300/50 dark:hover:bg-white/5 transition-colors cursor-pointer text-sm text-zinc-700 dark:text-zinc-300 backdrop-blur-md w-fit">
-                    <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
-                    <span className="font-medium text-foreground">Pemantauan manual sudah usang</span>
-                    <span className="text-muted-foreground">ternakaja.app/demo &rarr;</span>
-                </div>
+
             </div>
+
+
 
             {/* App Dashboard Mockup (Above the fold centerpiece) */}
             <div className="relative w-full max-w-6xl mx-auto rounded-xl border border-white/10 bg-[#111111] overflow-hidden shadow-[0_30px_100px_-20px_rgba(0,0,0,1)] flex flex-col z-20 h-[500px] md:h-[650px]">
