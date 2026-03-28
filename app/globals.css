@@ -65,6 +65,9 @@
     --chart-5: 33 90% 65%;
     /* #f6ad55 */
 
+    --accent-green: 144 100% 41.96%;
+    /* #00D654 */
+
     /* Sidebar */
     --sidebar: 141 46% 19%;
     /* #1a472a */
@@ -133,6 +136,9 @@
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 240 4.9% 83.9%;
+    
+    --accent-green: 144 100% 41.96%;
+    /* #00D654 */
   }
 }
 

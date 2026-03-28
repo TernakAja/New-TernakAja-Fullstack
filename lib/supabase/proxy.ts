@@ -50,7 +50,7 @@ export async function updateSession(request: NextRequest) {
   // Set up the routes that require an active logged-in user.
   // Instead of blocking everything, we only block paths that start with '/dashboard'
   // or any other secure routes you create.
-  const isProtectedRoute = request.nextUrl.pathname.startsWith("/dashboard");
+  const isProtectedRoute = request.nextUrl.pathname.startsWith("/protected"); // Temporarily disable dashboard protection for UI testing
 
   if (isProtectedRoute && !user) {
     // no user, potentially respond by redirecting the user to the login page

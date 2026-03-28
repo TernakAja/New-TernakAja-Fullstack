@@ -15,7 +15,7 @@ export const HeroSection = () => {
                 )}
             />
             {/* Radial gradient mask to fade grid at the edges */}
-            <div className="pointer-events-none absolute inset-0 z-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_80%)] dark:bg-black"></div>
+            <div className="pointer-events-none absolute inset-0 z-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
 
             {/* Header Copy */}
