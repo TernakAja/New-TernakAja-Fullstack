@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import { Suspense } from "react";
-import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer";
 import { openSans } from "./fonts";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -13,8 +10,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
     metadataBase: new URL(defaultUrl),
-    title: "Next.js and Supabase Starter Kit",
-    description: "The fastest way to build apps with Next.js and Supabase",
+    title: "TernakAja",
+    description: "Smart Livestock Monitoring",
 };
 
 const geistSans = Geist({

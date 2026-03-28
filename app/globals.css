@@ -5,82 +5,134 @@
 @layer base {
   :root {
     /* Main Colors */
-    --background: 0 0% 96%; /* #f6f6f6 */
-    --tblack: 0 0% 0%; /* #000000 */
-    --twhite: 0 0% 100%; /* #000000 */
-    --foreground: 141 46% 19%; /* #1a472a */
-    --card: 0 0% 96%; /* #f6f6f6 */
-    --card-foreground: 0 0% 13%; /* #222222 */
-    --popover: 0 0% 96%; /* #f6f6f6 */
-    --popover-foreground: 0 0% 13%; /* #222222 */
+    --background: 0 0% 96%;
+    /* #f6f6f6 */
+    --tblack: 0 0% 0%;
+    /* #000000 */
+    --twhite: 0 0% 100%;
+    /* #000000 */
+    --foreground: 141 46% 19%;
+    /* #1a472a */
+    --card: 0 0% 96%;
+    /* #f6f6f6 */
+    --card-foreground: 0 0% 13%;
+    /* #222222 */
+    --popover: 0 0% 96%;
+    /* #f6f6f6 */
+    --popover-foreground: 0 0% 13%;
+    /* #222222 */
 
     /* Branding */
-    --primary: 141 46% 19%; /* #1a472a */
-    --primary-foreground: 53 100% 74%; /* #ffee7b */
-    --secondary: 53 100% 74%; /* #ffee7b */
-    --secondary-foreground: 141 37% 33%; /* #35744c */
+    --primary: 141 46% 19%;
+    /* #1a472a */
+    --primary-foreground: 53 100% 74%;
+    /* #ffee7b */
+    --secondary: 53 100% 74%;
+    /* #ffee7b */
+    --secondary-foreground: 141 37% 33%;
+    /* #35744c */
 
     /* UI Elements */
-    --muted: 0 0% 96%; /* #f5f5f5 */
-    --muted-foreground: 0 0% 33%; /* #555555 */
-    --accent: 52 72% 64%; /* #e4d460 */
-    --accent-foreground: 141 46% 19%; /* #1a472a */
-    --destructive: 0 72% 51%; /* #dc2626 */
-    --destructive-foreground: 0 0% 100%; /* #ffffff */
-    --border: 0 0% 53%; /* #888888 */
-    --input: 214 32% 91%; /* #e5e7eb */
-    --ring: 141 46% 19%; /* #1a472a */
+    --muted: 0 0% 96%;
+    /* #f5f5f5 */
+    --muted-foreground: 0 0% 33%;
+    /* #555555 */
+    --accent: 52 72% 64%;
+    /* #e4d460 */
+    --accent-foreground: 141 46% 19%;
+    /* #1a472a */
+    --destructive: 0 72% 51%;
+    /* #dc2626 */
+    --destructive-foreground: 0 0% 100%;
+    /* #ffffff */
+    --border: 0 0% 53%;
+    /* #888888 */
+    --input: 214 32% 91%;
+    /* #e5e7eb */
+    --ring: 141 46% 19%;
+    /* #1a472a */
     --radius: 0.5rem;
 
     /* Charts */
-    --chart-1: 0 87% 68%; /* #f56565 */
-    --chart-2: 174 59% 56%; /* #4fd1c5 */
-    --chart-3: 207 70% 57%; /* #4299e1 */
-    --chart-4: 72% 75% 53%; /* #b8d933 */
-    --chart-5: 33 90% 65%; /* #f6ad55 */
+    --chart-1: 0 87% 68%;
+    /* #f56565 */
+    --chart-2: 174 59% 56%;
+    /* #4fd1c5 */
+    --chart-3: 207 70% 57%;
+    /* #4299e1 */
+    --chart-4: 72% 75% 53%;
+    /* #b8d933 */
+    --chart-5: 33 90% 65%;
+    /* #f6ad55 */
 
     /* Sidebar */
-    --sidebar: 141 46% 19%; /* #1a472a */
-    --sidebar-foreground: 53 96% 83%; /* #fef3a6 */
-    --sidebarprimary: 53 96% 83%; /* #fef3a6 */
+    --sidebar: 141 46% 19%;
+    /* #1a472a */
+    --sidebar-foreground: 53 96% 83%;
+    /* #fef3a6 */
+    --sidebarprimary: 53 96% 83%;
+    /* #fef3a6 */
     --sidebarprimary-foreground: 141 46% 19%;
-    --sidebaraccent: 141 37% 27%; /* #2a5f3e */
+    --sidebaraccent: 141 37% 27%;
+    /* #2a5f3e */
     --sidebaraccent-foreground: 53 96% 83%;
     --sidebar-border: 141 37% 27%;
     --sidebar-ring: 53 96% 83%;
   }
 
-  /* Note: Values currently match Light Mode per your input */
+  /* Actual Dark Theme Colors mapping to zinc/dark */
   .dark {
-    --background: 0 0% 96%;
-    --tblack: 0, 0%, 100%;
-    --twhite: 0, 0%, 0%;
-    --foreground: 141 46% 19%;
-    --card: 0 0% 96%;
-    --card-foreground: 0 0% 13%;
-    --popover: 0 0% 96%;
-    --popover-foreground: 0 0% 13%;
-    --primary: 141 46% 19%;
+    /* Main Colors */
+    --background: 0 0% 4%;
+    /* #0A0A0A */
+    --tblack: 0 0% 100%;
+    /* #FFFFFF */
+    --twhite: 0 0% 0%;
+    /* #000000 */
+    --foreground: 0 0% 98%;
+    /* #FAFAFA */
+
+    --card: 0 0% 7%;
+    /* slightly lighter than background */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Branding - You can adjust these if your dark mode still uses green/yellow */
+    --primary: 141 50% 30%;
+    /* Lighter green for visibility */
     --primary-foreground: 53 100% 74%;
-    --secondary: 53 100% 74%;
-    --secondary-foreground: 141 37% 33%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 33%;
-    --accent: 52 72% 64%;
-    --accent-foreground: 141 46% 19%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 53%;
-    --input: 214 32% 91%;
-    --ring: 141 46% 19%;
-    --sidebar: 141 46% 19%;
-    --sidebar-foreground: 53 96% 83%;
-    --sidebar-primary: 53 96% 83%;
-    --sidebar-primary-foreground: 141 46% 19%;
-    --sidebar-accent: 141 37% 27%;
-    --sidebar-accent-foreground: 53 96% 83%;
-    --sidebar-border: 141 37% 27%;
-    --sidebar-ring: 53 96% 83%;
+    --secondary: 53 90% 60%;
+    --secondary-foreground: 141 46% 19%;
+
+    /* UI Elements */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    /* zinc-400 equivalent */
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    /* Charts */
+    --chart-1: 0 87% 68%;
+    --chart-2: 174 59% 56%;
+    --chart-3: 207 70% 57%;
+    --chart-4: 72 75% 53%;
+    --chart-5: 33 90% 65%;
+
+    /* Sidebar */
+    --sidebar: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 141 50% 30%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 240 4.9% 83.9%;
   }
 }
 
@@ -88,6 +140,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

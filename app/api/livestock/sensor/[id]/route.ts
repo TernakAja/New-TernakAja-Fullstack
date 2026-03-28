@@ -6,12 +6,13 @@ import { livestockWithSensorDataListSchema } from "@/model/schemas/livestock";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createClient();
 
-    const livestockId = params.id;
+    const { id } = await params;
+    const livestockId = id;
 
     // --- Auth ---
     const {
