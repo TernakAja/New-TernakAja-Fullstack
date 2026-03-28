@@ -318,7 +318,7 @@ export default function Petsa01Page() {
                                 <img
                                     src="/e-isometric.png"
                                     alt="Placeholder Wireframe"
-                                    className="absolute inset-0 h-full w-full object-cover object-left opacity-30 "
+                                    className="absolute inset-0 h-full w-full invert dark:invert-0 object-cover object-left opacity-30 "
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-gray-50 dark:from-[#0f0f0f] to-transparent md:block" />
@@ -353,17 +353,119 @@ export default function Petsa01Page() {
                             </p>
                         </div>
 
-                        <div className="relative mx-auto h-[280px] w-full max-w-3xl overflow-hidden rounded-t-xl border border-b-0 border-gray-200 dark:border-white/10 bg-white dark:bg-[#121212] shadow-xl dark:shadow-2xl">
-                            <div className="flex items-center border-b border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-[#1a1a1a] px-4 py-3">
-                                <div className="mr-3 flex h-6 w-6 items-center justify-center rounded bg-gray-200 dark:bg-white/10 text-gray-500 dark:text-[#a3a3a3]">
-                                    <ArrowLeft className="w-3 h-3" />
+                        <div className="relative mx-auto h-[320px] sm:h-[400px] w-full max-w-4xl overflow-hidden rounded-t-xl border border-b-0 border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#0A0A0A] shadow-xl dark:shadow-2xl flex flex-col text-left">
+                            {/* Window Controls */}
+                            <div className="flex items-center border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] px-4 py-3 shrink-0">
+                                <div className="flex gap-1.5 mr-4">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
                                 </div>
-                                <span className="text-sm font-medium text-gray-600 dark:text-[#888888]">
-                                    Ternak Dashboard Console
-                                </span>
+                                <div className="flex items-center text-xs font-medium text-gray-500 dark:text-zinc-500">
+                                    <ArrowLeft className="w-3 h-3 mr-2" />
+                                    TernakAja / Livestock
+                                </div>
                             </div>
-                            <div className="h-full w-full bg-gradient-to-b from-gray-100 dark:from-[#121212] to-transparent" />
-                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-[#0A0A0A] to-transparent" />
+
+                            {/* Dashboard Area */}
+                            <div className="flex-1 p-4 sm:p-6 overflow-hidden flex flex-col relative w-full bg-gray-50 dark:bg-[#0A0A0A]">
+                                <div className="mb-4 sm:mb-6 shrink-0">
+                                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-black dark:text-white">Livestock Management</h3>
+                                    <p className="text-xs sm:text-sm text-gray-500 dark:text-zinc-400 mt-1">Manage all active tags and monitor individual statuses.</p>
+                                </div>
+
+                                <div className="flex-1 rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] shadow-sm dark:shadow-none flex flex-col overflow-hidden">
+                                    <div className="flex justify-between items-center p-4 sm:p-5 shrink-0 border-b border-gray-100 dark:border-transparent">
+                                        <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white">All Active Tags</h4>
+                                        <button className="bg-emerald-600 hover:bg-emerald-600/90 dark:bg-emerald-500 dark:hover:bg-emerald-500/90 text-white px-3 py-1.5 rounded-md font-medium transition-colors text-[10px] sm:text-xs shadow-sm">
+                                            Add Livestock
+                                        </button>
+                                    </div>
+
+                                    {/* Table Mockup */}
+                                    <div className="w-full overflow-x-auto">
+                                        <table className="w-full text-left text-xs sm:text-sm min-w-[500px]">
+                                            <thead className="bg-gray-50 dark:bg-zinc-950/50 border-b border-gray-200 dark:border-white/5">
+                                                <tr>
+                                                    <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Tag ID</th>
+                                                    <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Name/Alias</th>
+                                                    <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Temp (°C)</th>
+                                                    <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Health Status</th>
+                                                    <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Sensor Battery</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-100 dark:divide-white/5">
+                                                <tr className="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
+                                                    <td className="p-3"><span className="font-mono text-[10px] sm:text-[11px] text-black dark:text-white uppercase px-1.5 py-0.5 sm:px-2 sm:py-1 rounded bg-gray-100 dark:bg-white/5">COW-001</span></td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">Bessie</td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">38.6</td>
+                                                    <td className="p-3">
+                                                        <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-mono text-[8px] sm:text-[10px] uppercase tracking-wider border bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20">Good</span>
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                                <div className="h-full bg-emerald-500" style={{ width: '85%' }}></div>
+                                                            </div>
+                                                            <span className="text-[10px] sm:text-xs text-gray-500 dark:text-zinc-400">85%</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr className="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
+                                                    <td className="p-3"><span className="font-mono text-[10px] sm:text-[11px] text-black dark:text-white uppercase px-1.5 py-0.5 sm:px-2 sm:py-1 rounded bg-gray-100 dark:bg-white/5">COW-002</span></td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">Daisy</td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">39.5</td>
+                                                    <td className="p-3">
+                                                        <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-mono text-[8px] sm:text-[10px] uppercase tracking-wider border bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20">Needs Attention</span>
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                                <div className="h-full bg-emerald-500" style={{ width: '40%' }}></div>
+                                                            </div>
+                                                            <span className="text-[10px] sm:text-xs text-gray-500 dark:text-zinc-400">40%</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr className="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
+                                                    <td className="p-3"><span className="font-mono text-[10px] sm:text-[11px] text-black dark:text-white uppercase px-1.5 py-0.5 sm:px-2 sm:py-1 rounded bg-gray-100 dark:bg-white/5">COW-003</span></td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">Bella</td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">40.2</td>
+                                                    <td className="p-3">
+                                                        <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-mono text-[8px] sm:text-[10px] uppercase tracking-wider border bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20">Critical</span>
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                                <div className="h-full bg-red-500" style={{ width: '15%' }}></div>
+                                                            </div>
+                                                            <span className="text-[10px] sm:text-xs text-gray-500 dark:text-zinc-400">15%</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr className="hover:bg-gray-50 dark:hover:bg-white/[0.02]">
+                                                    <td className="p-3"><span className="font-mono text-[10px] sm:text-[11px] text-black dark:text-white uppercase px-1.5 py-0.5 sm:px-2 sm:py-1 rounded bg-gray-100 dark:bg-white/5">COW-004</span></td>
+                                                    <td className="p-3 font-medium text-black dark:text-white">Moo-Moo</td>
+                                                    <td className="p-3 text-gray-400 dark:text-zinc-500">Offline</td>
+                                                    <td className="p-3">
+                                                        <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-mono text-[8px] sm:text-[10px] uppercase tracking-wider border border-transparent bg-transparent text-gray-400 dark:text-zinc-500">-</span>
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                                <div className="h-full bg-gray-300 dark:bg-zinc-600" style={{ width: '0%' }}></div>
+                                                            </div>
+                                                            <span className="text-[10px] sm:text-xs text-gray-500 dark:text-zinc-400">0%</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                {/* Fade gradient for small heights / cutoff elements */}
+                                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 dark:from-[#0A0A0A] to-transparent pointer-events-none" />
+                            </div>
                         </div>
                     </div>
 

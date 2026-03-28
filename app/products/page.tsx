@@ -89,7 +89,7 @@ export default function ProductsPage() {
                                 <img
                                     src={product.img}
                                     alt={product.name}
-                                    className="w-full h-auto max-h-48 sm:max-h-64 lg:max-h-80 object-contain object-left drop-shadow-2xl transition-transform "
+                                    className="w-full h-auto max-h-48 invert dark:invert-0 sm:max-h-64 lg:max-h-80 object-contain object-left drop-shadow-2xl transition-transform "
                                 />
                             )}
 

@@ -51,73 +51,107 @@ export const HeroSection = () => {
                 {/* Dashboard Content */}
                 <div className="flex flex-1 overflow-hidden">
                     {/* Sidebar */}
-                    <div className="w-60 border-r border-white/5 bg-[#0F0F0F] hidden md:flex flex-col py-4">
-                        <div className="px-4 mb-6 text-xs font-semibold text-zinc-500 uppercase tracking-wider">Workspace</div>
-                        <div className="space-y-1 px-2">
-                            <div className="flex items-center gap-3 px-2 py-1.5 rounded-md bg-white/5 text-sm text-white font-medium">
-                                <Activity className="w-4 h-4 text-emerald-500" /> Vital Stats
+                    <div className="w-[200px] border-r border-white/5 bg-[#0A0A0A] hidden md:flex flex-col py-6 px-4">
+                        <div className="px-2 mb-6 text-xs font-semibold text-zinc-500 uppercase tracking-wider">Menu</div>
+                        <div className="space-y-1">
+                            <div className="flex items-center gap-3 px-3 py-2 rounded-md bg-emerald-500/10 text-sm text-emerald-500 font-medium">
+                                <Activity className="w-4 h-4" /> Overview
                             </div>
-                            <div className="flex items-center gap-3 px-2 py-1.5 rounded-md text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">
-                                <ShieldAlert className="w-4 h-4" /> PMK Alerts
+                            <div className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">
+                                <Database className="w-4 h-4" /> Livestock
                             </div>
-                            <div className="flex items-center gap-3 px-2 py-1.5 rounded-md text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">
-                                <Database className="w-4 h-4" /> ISIKHNAS Sync
+                            <div className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">
+                                <Stethoscope className="w-4 h-4" /> Health
                             </div>
                         </div>
                     </div>
 
                     {/* Main Area */}
-                    <div className="flex-1 bg-[#141414] p-6 md:p-10 relative">
+                    <div className="flex-1 bg-[#141414] p-6 md:p-8 overflow-y-auto hidden-scrollbar">
                         {/* Header */}
-                        <div className="flex items-center justify-between border-b border-white/5 pb-6 mb-6">
-                            <div>
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 uppercase tracking-wider">Warning</span>
-                                    <span className="text-sm text-zinc-500">Tag-4092 • Sapi Limousin</span>
+                        <div className="mb-6">
+                            <h2 className="text-2xl font-bold text-white">Farm Overview</h2>
+                            <p className="text-sm text-zinc-400 mt-1">Monitor real-time telemetry from your herds.</p>
+                        </div>
+
+                        {/* 4 Stat Cards Grid */}
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+                            {/* Card 1 */}
+                            <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col justify-between">
+                                <div className="text-sm text-zinc-400 mb-3">Total Livestock</div>
+                                <div>
+                                    <div className="text-3xl font-bold text-white mb-1">1,248</div>
+                                    <div className="text-xs text-emerald-500 font-medium">+12 this month</div>
                                 </div>
-                                <h2 className="text-2xl font-semibold text-white">Lonjakan Suhu Inti Terdeteksi</h2>
                             </div>
-                            <div className="hidden md:flex items-center gap-2">
-                                <button className="px-3 py-1.5 rounded-md border border-white/10 text-xs font-medium text-zinc-300 hover:bg-white/5">Abaikan</button>
-                                <button className="px-3 py-1.5 rounded-md bg-white text-black text-xs font-medium hover:bg-zinc-200">Karantina</button>
+                            {/* Card 2 */}
+                            <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col justify-between">
+                                <div className="text-sm text-zinc-400 mb-3">Avg Herd Temp</div>
+                                <div>
+                                    <div className="text-3xl font-bold text-white mb-1">38.7°C</div>
+                                    <div className="text-xs text-emerald-500 font-medium">-0.2°C from normal</div>
+                                </div>
+                            </div>
+                            {/* Card 3 */}
+                            <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col justify-between">
+                                <div className="text-sm text-zinc-400 mb-3">Critical Sensors</div>
+                                <div>
+                                    <div className="text-3xl font-bold text-white mb-1">3</div>
+                                    <div className="text-xs text-red-500 font-medium">Needs immediate attention</div>
+                                </div>
+                            </div>
+                            {/* Card 4 */}
+                            <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col justify-between">
+                                <div className="text-sm text-zinc-400 mb-3">Offline Devices</div>
+                                <div>
+                                    <div className="text-3xl font-bold text-zinc-500 mb-1">No Data</div>
+                                    <div className="text-xs text-zinc-500 font-medium">Last 24 hours</div>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Content Body */}
-                        <div className="space-y-4">
-                            <div className="p-4 rounded-lg border border-white/5 bg-[#1A1A1A]">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Cpu className="w-4 h-4 text-indigo-400" />
-                                    <span className="text-sm font-medium text-indigo-400">TernakAI Agent</span>
-                                    <span className="text-xs text-zinc-600">· 2 mnt lalu</span>
+                        {/* Chart and Alerts Area */}
+                        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                            {/* Chart */}
+                            <div className="xl:col-span-2 p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col h-56">
+                                <div className="text-sm font-medium text-white mb-4">Telemetry & Health Trends</div>
+                                <div className="flex-1 w-full relative">
+                                    {/* Mock area chart with SVG gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 to-transparent clip-path-chart"></div>
+                                    <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                        <defs>
+                                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                                <stop offset="0%" stopColor="#10b981" stopOpacity="0.2" />
+                                                <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M0,100 L0,70 C20,80 30,85 45,65 C60,45 70,30 100,50 L100,100 Z" fill="url(#chartGradient)" />
+                                        <path d="M0,70 C20,80 30,85 45,65 C60,45 70,30 100,50" fill="none" stroke="#10b981" strokeWidth="2.5" className="drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                                    </svg>
                                 </div>
-                                <p className="text-sm text-zinc-300 leading-relaxed">
-                                    Mendeteksi anomali pada Suhu Inti (39.5°C) dan penurunan SpO2 (92%). Kondisi ini memiliki korelasi 87% dengan fase awal PMK berdasarkan data historis bulan lalu.
-                                </p>
+                                {/* X-axis mock labels */}
+                                <div className="flex justify-between text-[10px] text-zinc-500 mt-2">
+                                    <span>12 AM</span>
+                                    <span>4 AM</span>
+                                    <span>8 AM</span>
+                                    <span>12 PM</span>
+                                    <span>4 PM</span>
+                                    <span>8 PM</span>
+                                </div>
                             </div>
-                            <div className="p-4 rounded-lg border border-white/5 bg-transparent flex items-center gap-4 opacity-50">
-                                <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs">Dr</div>
-                                <div className="text-sm text-zinc-400">
-                                    <span className="text-white font-medium">Dr. Hendra</span> sedang meninjau data ini...
+
+                            {/* Status */}
+                            <div className="p-5 rounded-xl border border-white/5 bg-[#1A1A1A] flex flex-col items-center justify-center text-center h-56">
+                                <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mb-4">
+                                    <ShieldAlert className="w-6 h-6 text-emerald-500" />
+                                </div>
+                                <div className="text-base font-semibold text-white mb-2">No Critical Alerts</div>
+                                <div className="text-xs text-zinc-400 px-4 leading-relaxed">
+                                    All environmental sensors and health markers are operating within expected parameters.
                                 </div>
                             </div>
                         </div>
 
-                        {/* Floating AI Panel (Copilot equivalent) */}
-                        <div className="absolute bottom-6 right-6 w-80 rounded-xl border border-white/10 bg-[#1C1C1C] shadow-2xl hidden lg:flex flex-col">
-                            <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <Stethoscope className="w-4 h-4 text-emerald-400" />
-                                    <span className="text-xs font-medium text-white">TernakAI Copilot</span>
-                                </div>
-                                <X className="w-3 h-3 text-zinc-500" />
-                            </div>
-                            <div className="p-4 space-y-3">
-                                <div className="h-2 w-full bg-white/5 rounded"></div>
-                                <div className="h-2 w-3/4 bg-white/5 rounded"></div>
-                                <div className="text-[10px] text-zinc-500 mt-4">Generate laporan ISIKHNAS otomatis...</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
