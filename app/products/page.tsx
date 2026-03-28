@@ -8,6 +8,7 @@ export const products = [
     {
         id: '02',
         name: 'PETSA 02',
+
         tagline: 'The Evolution.',
         description: 'Advanced metrics and superior materials. Built for the absolute edge. Re-engineered from the ground up to exceed modern performance standards.',
         price: '$299',
@@ -31,6 +32,7 @@ export const products = [
     {
         id: '01',
         name: 'PETSA 01',
+        img: 'products/petsa-01/AssemblyIsometric.png',
         tagline: 'The Foundation.',
         description: 'Engineered for everyday reliability. The original standard in performance, stripped down to the essentials without compromising quality.',
         price: '$199',
@@ -83,7 +85,10 @@ export default function ProductsPage() {
                                 )}
                             </div>
 
-                            <h2 className="text-5xl sm:text-6xl font-semibold tracking-tight mb-4">
+                            <img src={product.img} alt="" className={product.img ? "active-class h-80" : "inactive-class"} />
+
+
+                            <h2 className="text-5xl sm:text-6xl font-semibold tracking-tight mb-4 mt-10">
                                 {product.name}
                             </h2>
                             <p className={`text-xl font-medium mb-6 ${product.theme.text}`}>

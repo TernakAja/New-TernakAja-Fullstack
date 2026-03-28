@@ -2,10 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { LayoutDashboard, Users, Activity, Settings, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function DashboardSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const rawPathname = usePathname()
+  const pathname = rawPathname ? rawPathname.replace(/\/$/, '') : ''
 
   return (
     <aside 
@@ -26,10 +29,10 @@ export function DashboardSidebar() {
       </button>
 
       <nav className="p-4 space-y-2">
-        <NavItem href="/dashboard" icon={<LayoutDashboard size={20} />} label="Overview" active isCollapsed={isCollapsed} />
-        <NavItem href="/dashboard/livestock" icon={<Users size={20} />} label="Livestock" isCollapsed={isCollapsed} />
-        <NavItem href="/dashboard/health" icon={<Activity size={20} />} label="Health" isCollapsed={isCollapsed} />
-        <NavItem href="/dashboard/settings" icon={<Settings size={20} />} label="Settings" isCollapsed={isCollapsed} />
+        <NavItem href="/dashboard" icon={<LayoutDashboard size={20} />} label="Overview" active={pathname === "/dashboard"} isCollapsed={isCollapsed} />
+        <NavItem href="/dashboard/livestock" icon={<Users size={20} />} label="Livestock" active={pathname === "/dashboard/livestock" || pathname.startsWith("/dashboard/livestock/")} isCollapsed={isCollapsed} />
+        <NavItem href="/dashboard/health" icon={<Activity size={20} />} label="Health" active={pathname === "/dashboard/health"} isCollapsed={isCollapsed} />
+        <NavItem href="/dashboard/settings" icon={<Settings size={20} />} label="Settings" active={pathname === "/dashboard/settings"} isCollapsed={isCollapsed} />
       </nav>
     </aside>
   )

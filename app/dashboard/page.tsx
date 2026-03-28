@@ -1,8 +1,7 @@
-import { TopHeaderBar } from "@/components/dashboard/top-header-bar"
+import Link from 'next/link'
 import { StatCard } from "@/components/dashboard/stat-card"
 import { HealthMetricsChart } from "@/components/dashboard/health-metrics-chart"
 import { LivestockTable } from "@/components/dashboard/livestock-table"
-
 
 export default function DashboardPage() {
   return (
@@ -15,25 +14,25 @@ export default function DashboardPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard 
+          <StatCard
             title="Total Livestock"
             value="1,248"
             trend="+12 this month"
             positive={true}
           />
-          <StatCard 
+          <StatCard
             title="Avg Herd Temp"
             value="38.7°C"
             trend="-0.2°C from normal"
             positive={true}
           />
-          <StatCard 
+          <StatCard
             title="Critical Sensors"
             value="3"
             trend="Needs immediate attention"
             positive={false}
           />
-          <StatCard 
+          <StatCard
             title="Offline Devices"
             value="1"
             trend="Last 24 hours"
@@ -52,10 +51,9 @@ export default function DashboardPage() {
           {/* Device Actions / Empty State */}
           <div className="rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] p-6 shadow-sm dark:shadow-none flex flex-col items-center justify-center text-center">
              <div className="p-4 bg-gray-50 dark:bg-zinc-950 rounded-full mb-4">
-                {/* Example of empty state usage per Phase 5 */}
-               <svg className="w-10 h-10 text-gray-400 dark:text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-               </svg>
+                <svg className="w-10 h-10 text-gray-400 dark:text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
              </div>
              <h3 className="font-semibold text-black dark:text-white">No Critical Alerts</h3>
              <p className="text-sm text-gray-500 dark:text-zinc-400 mt-2">All environmental sensors and health markers are operating within expected parameters.</p>
@@ -64,7 +62,12 @@ export default function DashboardPage() {
 
         {/* Data Grid Section */}
         <div>
-          <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Active Livestock Tags</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-bold text-black dark:text-white">Active Livestock Tags</h2>
+            <Link href="/dashboard/livestock" className="text-sm font-medium text-accent-green hover:underline">
+              View All &rarr;
+            </Link>
+          </div>
           <LivestockTable />
         </div>
       </div>

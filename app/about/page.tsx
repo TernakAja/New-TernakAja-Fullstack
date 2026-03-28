@@ -89,7 +89,7 @@ export default function AboutPage() {
                     {/* Placeholder untuk foto tim */}
                     <div className="w-full max-w-4xl aspect-[16/10] md:aspect-[21/9] bg-gray-100 dark:bg-neutral-900 rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-200 dark:border-white/5 relative">
                         <img
-                            src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?q=80&w=2940&auto=format&fit=crop"
+                            src="/gallery/team-picture-binus.jpg"
                             alt="TernakAja Team"
                             className="w-full h-full object-cover opacity-90 dark:opacity-80 hover:opacity-100 transition-opacity duration-500"
                         />
