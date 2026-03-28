@@ -8,7 +8,7 @@ export default function LoginPage() {
                 <div className="flex flex-col items-center mb-8">
                     <Link href="/" className="flex items-center gap-2 font-semibold text-2xl tracking-tight mb-6 hover:opacity-80 transition">
                         <div className="w-8 h-8 rounded bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
-                            <Leaf className="w-5 h-5 text-black dark:text-zinc-900" />
+
                         </div>
                         TernakAja
                     </Link>

@@ -37,7 +37,7 @@ export const ExtensionsSection = () => {
                 {extensions.map((ext) => (
                     <div
                         key={ext.id}
-                        className="relative flex-none w-[340px] h-[400px] rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950 p-6 flex flex-col overflow-hidden snap-start group cursor-pointer shadow-sm dark:shadow-none"
+                        className="relative flex-none w-[340px] rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950 p-6 flex flex-col overflow-hidden snap-start group cursor-pointer shadow-sm dark:shadow-none"
                     >
                         <div className={`absolute -bottom-20 -right-20 w-64 h-64 rounded-full blur-[80px] opacity-20 dark:opacity-60 group-hover:opacity-40 dark:group-hover:opacity-100 transition-opacity duration-500 ${ext.glowColor}`}></div>
 
@@ -50,13 +50,9 @@ export const ExtensionsSection = () => {
                             </div>
                         </div>
 
-                        <p className="relative z-10 text-sm font-medium text-zinc-600 dark:text-zinc-200 leading-relaxed mb-8">
+                        <p className="relative z-10 text-sm font-medium text-zinc-600 dark:text-zinc-200 leading-relaxed">
                             {ext.description}
                         </p>
-
-                        <div className="relative z-10 mt-auto w-full h-40 rounded-xl border border-dashed border-zinc-300 dark:border-white/20 bg-zinc-50 dark:bg-black/40 flex flex-col items-center justify-center gap-2 text-zinc-400 dark:text-zinc-500 group-hover:border-zinc-400 dark:group-hover:border-white/30 transition-colors">
-                            <span className="text-xs uppercase tracking-wider font-semibold">Modul UI</span>
-                        </div>
                     </div>
                 ))}
             </div>

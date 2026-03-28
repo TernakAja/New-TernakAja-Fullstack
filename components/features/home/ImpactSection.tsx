@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ShieldAlert } from 'lucide-react';
 
 export const ImpactSection = () => {
@@ -23,18 +23,18 @@ export const ImpactSection = () => {
 
                 {/* Gambar Kanan: Penyesuaian murni sebagai gambar di balik transisi (tanpa border/card) */}
                 <div className="relative h-[450px] w-full md:w-[130%] -right-10 md:-right-20">
-                    {/* Layer Fade (Shade) untuk integrasi dengan background utama */}
-                    <div className="absolute inset-0 z-10 bg-gradient-to-r from-background via-background/20 to-transparent"></div>
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-background/80"></div>
-                    <div className="absolute inset-0 z-10 bg-gradient-to-b from-background via-transparent to-background"></div>
+                    {/* Layer Fade (Shade) Radial untuk integrasi dengan background utama */}
+                    <div className="absolute inset-0 z-10 pointer-events-none" style={{ maskImage: 'radial-gradient(circle at 40% 50%, transparent 20%, black 80%)', WebkitMaskImage: 'radial-gradient(circle at 40% 50%, transparent 20%, black 80%)' }}>
+                        <div className="absolute inset-0 bg-background"></div>
+                    </div>
 
                     {/* Image Placeholder sebenarnya (Hanya bentuk gambar murni) */}
-                    <div className="absolute inset-0 bg-zinc-200/50 dark:bg-zinc-900/40 flex flex-col items-center justify-center overflow-hidden">
-                        {/* Tekstur grid hardware murni */}
-                        <div className="absolute inset-0 opacity-20 dark:opacity-20 bg-[linear-gradient(to_right,#80808030_1px,transparent_1px),linear-gradient(to_bottom,#80808030_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                    <div className="absolute inset-0 bg-transparent flex flex-col items-center justify-center overflow-hidden">
+                        {/* Tekstur grid hardware murni (diturunkan ke belakang opacity image) */}
+                        <div className="absolute inset-0 opacity-20 dark:opacity-20 bg-[linear-gradient(to_right,#80808030_1px,transparent_1px),linear-gradient(to_bottom,#80808030_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none -z-10"></div>
 
-                        <div className="relative z-0 flex flex-col items-center gap-2 text-zinc-500 dark:text-zinc-600">
-                            <span className="uppercase tracking-widest text-xs font-semibold">[Gambar Flat Hardware/UI Ditempatkan di Sini]</span>
+                        <div className="relative z-0 flex flex-col items-center gap-2">
+                            <img className='mr-56 w-full h-[450px] object-cover [mask-image:radial-gradient(circle_at_45%_50%,black_30%,transparent_75%)]' src="/cow-assembly.png" alt="Cow with IoT sensor" />
                         </div>
                     </div>
                 </div>

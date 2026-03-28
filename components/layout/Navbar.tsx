@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Leaf, ChevronDown } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle'; // <-- Imported ThemeToggle
+import { Icons } from '../ui/Icons';
 
 export const Navbar = () => {
     const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
@@ -12,10 +13,8 @@ export const Navbar = () => {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-8">
-                    <Link href="/" className="flex items-center gap-2 text-foreground font-semibold text-lg tracking-tight">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
-                            <Leaf className="w-4 h-4 text-black dark:text-zinc-900" />
-                        </div>
+                    <Link href="/" className="flex items-center gap-1 text-foreground text-lg tracking-tight font-bold">
+                        <Icons.appIcon />
                         TernakAja
                     </Link>
                     <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">

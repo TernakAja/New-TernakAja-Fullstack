@@ -1,9 +1,22 @@
 import React from 'react';
 import { Leaf, ChevronRight, Activity, ShieldAlert, Database, Cpu, Stethoscope, X } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 export const HeroSection = () => {
     return (
-        <section className="relative max-w-[1400px] mt-12 mx-auto px-6 pt-12 pb-20">
+        <section className="relative w-full mt-12 pt-12 pb-20 overflow-hidden px-6">
+            {/* Grid Background */}
+            <div
+                className={cn(
+                    "absolute inset-0 z-0",
+                    "[background-size:40px_40px]",
+                    "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+                    "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
+                )}
+            />
+            {/* Radial gradient mask to fade grid at the edges */}
+            <div className="pointer-events-none absolute inset-0 z-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_80%)] dark:bg-black"></div>
+
 
             {/* Header Copy */}
             <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 mb-16 relative z-10 max-w-6xl mx-auto">

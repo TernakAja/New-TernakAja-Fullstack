@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Leaf } from 'lucide-react';
+import { Icons } from '../ui/Icons';
+
 
 export const Footer = () => {
     return (
@@ -8,7 +10,7 @@ export const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
                 <div className="col-span-2">
                     <Link href="/" className="flex items-center gap-2 text-foreground font-semibold mb-4">
-                        <Leaf className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                        <Icons.appIcon />
                         TernakAja
                     </Link>
                     <p className="text-sm text-muted-foreground max-w-xs">
