@@ -1,5 +1,5 @@
+
 import { Icons } from "@/components/ui/Icons";
-import { Leaf } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -12,7 +12,9 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-foreground font-sans">
+
+        <div className="relative min-h-screen bg-background flex flex-col items-center justify-center p-6 text-foreground font-sans">
+
             <div className="w-full max-w-sm">
 
                 <div className="flex flex-col items-center mb-8">
@@ -58,6 +60,7 @@ export default function LoginPage() {
                     Belum menjadi mitra? <Link href="/information" className="text-emerald-600 dark:text-emerald-400 hover:underline">Pelajari lebih lanjut</Link>
                 </p>
             </div>
+
         </div>
     );
 }

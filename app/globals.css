@@ -70,18 +70,15 @@
     /* #00D654 */
 
     /* Sidebar */
-    --sidebar: 141 46% 19%;
-    /* #1a472a */
-    --sidebar-foreground: 53 96% 83%;
-    /* #fef3a6 */
-    --sidebarprimary: 53 96% 83%;
-    /* #fef3a6 */
-    --sidebarprimary-foreground: 141 46% 19%;
-    --sidebaraccent: 141 37% 27%;
-    /* #2a5f3e */
-    --sidebaraccent-foreground: 53 96% 83%;
-    --sidebar-border: 141 37% 27%;
-    --sidebar-ring: 53 96% 83%;
+    --sidebar: 0 0% 98%;
+    /* gray-50 */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   /* Actual Dark Theme Colors mapping to zinc/dark */
@@ -156,13 +153,15 @@
   body {
     @apply bg-background text-foreground;
     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 
   /* Apply to all scrollable elements as well */
   * {
-    -ms-overflow-style: none;  
+    -ms-overflow-style: none;
     scrollbar-width: none;
   }
 }
