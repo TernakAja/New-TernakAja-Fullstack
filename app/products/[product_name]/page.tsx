@@ -4,12 +4,18 @@ import { ArrowRight, Bell } from 'lucide-react'
 import NextLink from 'next/link'
 import { products } from '../page'
 
+export async function generateStaticParams() {
+    return products.map((product) => ({
+        product_name: product.name.toLowerCase().replace(/\s+/g, '-'),
+    }));
+}
+
 export default async function ProductPage({ params }: { params: Promise<{ product_name: string }> }) {
     const resolvedParams = await params;
-    
+
     // Normalize string: PETSA-01 -> petsa-01
     const productData = products.find(p => p.name.toLowerCase().replace(/\s+/g, '-') === resolvedParams.product_name);
-    
+
     if (!productData) {
         return (
             <div className="min-h-screen w-full flex items-center justify-center dark:bg-black dark:text-white">

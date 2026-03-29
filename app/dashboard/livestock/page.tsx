@@ -1,4 +1,5 @@
-import { LivestockTable } from "@/components/dashboard/livestock-table"
+import { Suspense } from "react"
+import { LivestockTable } from "@/features/livestock/components/livestock-table"
 
 export default function LivestockPage() {
   return (
@@ -15,7 +16,9 @@ export default function LivestockPage() {
             Add Livestock
           </button>
         </div>
-        <LivestockTable />
+        <Suspense fallback={<div className="p-4 text-center text-sm text-gray-500">Loading table...</div>}>
+          <LivestockTable />
+        </Suspense>
       </div>
     </div>
   )

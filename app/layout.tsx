@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { openSans } from "./fonts";
+import { Providers } from "@/components/providers";
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -35,9 +36,11 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {children}
-                    {/* According to PHASE 5: Sonner Toast defaults for desktop (bottom-right) and overrides generally handle mobile */}
-                    <Toaster position="bottom-right" richColors theme="system" />
+                    <Providers>
+                        {children}
+                        {/* According to PHASE 5: Sonner Toast defaults for desktop (bottom-right) and overrides generally handle mobile */}
+                        <Toaster position="bottom-right" richColors theme="system" />
+                    </Providers>
                 </ThemeProvider>
             </body>
         </html>

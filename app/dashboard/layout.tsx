@@ -1,5 +1,6 @@
-import { DashboardSidebar } from '@/components/dashboard/dashboard-sidebar/dashboard-sidebar'
-import { TopHeaderBar } from '@/components/dashboard/top-header-bar'
+import { DashboardSidebar } from '@/features/dashboard/components/dashboard-sidebar'
+import { TopHeaderBar } from '@/features/dashboard/components/top-header-bar'
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 
 export default function DashboardLayout({
     children,
@@ -7,13 +8,9 @@ export default function DashboardLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className="flex h-screen overflow-hidden bg-white dark:bg-[#0A0A0A] text-black dark:text-white">
-            {/* Desktop Sidebar */}
-            <div className="hidden md:block">
-                <DashboardSidebar />
-            </div>
-
-            <div className="flex-1 flex flex-col min-w-0">
+        <SidebarProvider>
+            <DashboardSidebar />
+            <SidebarInset className="bg-white dark:bg-[#0A0A0A] text-black dark:text-white">
                 <TopHeaderBar />
                 <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
                     <div className="max-w-7xl mx-auto space-y-6">
@@ -29,7 +26,7 @@ export default function DashboardLayout({
                         <span className="text-xs text-gray-500 dark:text-zinc-400">Settings</span>
                     </div>
                 </div>
-            </div>
-        </div>
+            </SidebarInset>
+        </SidebarProvider>
     )
 }

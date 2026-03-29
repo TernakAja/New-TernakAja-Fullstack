@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { StatCard } from "@/components/dashboard/stat-card"
-import { HealthMetricsChart } from "@/components/dashboard/health-metrics-chart"
-import { LivestockTable } from "@/components/dashboard/livestock-table"
+import { Suspense } from 'react'
+import { StatCard } from "@/features/dashboard/components/stat-card"
+import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
+import { LivestockTable } from "@/features/livestock/components/livestock-table"
 
 export default function DashboardPage() {
   return (
@@ -50,13 +51,13 @@ export default function DashboardPage() {
 
           {/* Device Actions / Empty State */}
           <div className="rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] p-6 shadow-sm dark:shadow-none flex flex-col items-center justify-center text-center">
-             <div className="p-4 bg-gray-50 dark:bg-zinc-950 rounded-full mb-4">
-                <svg className="w-10 h-10 text-gray-400 dark:text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-             </div>
-             <h3 className="font-semibold text-black dark:text-white">No Critical Alerts</h3>
-             <p className="text-sm text-gray-500 dark:text-zinc-400 mt-2">All environmental sensors and health markers are operating within expected parameters.</p>
+            <div className="p-4 bg-gray-50 dark:bg-zinc-950 rounded-full mb-4">
+              <svg className="w-10 h-10 text-gray-400 dark:text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="font-semibold text-black dark:text-white">No Critical Alerts</h3>
+            <p className="text-sm text-gray-500 dark:text-zinc-400 mt-2">All environmental sensors and health markers are operating within expected parameters.</p>
           </div>
         </div>
 
@@ -68,7 +69,9 @@ export default function DashboardPage() {
               View All &rarr;
             </Link>
           </div>
-          <LivestockTable />
+          <Suspense fallback={<div className="p-4 text-center text-sm text-gray-500">Loading table...</div>}>
+            <LivestockTable />
+          </Suspense>
         </div>
       </div>
     </>

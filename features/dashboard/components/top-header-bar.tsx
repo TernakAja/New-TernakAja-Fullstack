@@ -1,12 +1,16 @@
 "use client"
 
-import { Search, Bell, Menu } from 'lucide-react'
+import { Search, Bell } from 'lucide-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { usePathname } from 'next/navigation'
+import { useDashboardStore } from "@/features/dashboard/store/dashboard-store"
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 
 export function TopHeaderBar() {
     const pathname = usePathname()
+    const searchQuery = useDashboardStore((state) => state.searchQuery)
+    const setSearchQuery = useDashboardStore((state) => state.setSearchQuery)
 
     // Generate breadcrumb text from pathname
     const getBreadcrumbs = () => {
@@ -18,12 +22,9 @@ export function TopHeaderBar() {
     }
 
     return (
-        <header className="h-16 flex items-center justify-between border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-black/80 backdrop-blur-md px-4 md:px-6 relative z-30">
+        <header className="h-16 flex items-center justify-between border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-black/80 backdrop-blur-md px-4 md:px-6 relative z-30 transition-[width,height] ease-linear">
             <div className="flex items-center gap-4">
-                {/* Mobile menu button */}
-                <button className="md:hidden text-gray-500 dark:text-zinc-400">
-                    <Menu size={24} />
-                </button>
+                <SidebarTrigger className="-ml-1" />
 
                 {/* Breadcrumb dummy */}
                 <span className="hidden md:block text-sm text-gray-500 dark:text-zinc-400 font-medium">
@@ -32,15 +33,17 @@ export function TopHeaderBar() {
             </div>
 
             <div className="flex items-center gap-4 flex-1 justify-end">
-                {/* Command Search */}
-                <div className="relative max-w-md w-full hidden sm:block">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                    <input
-                        type="text"
-                        placeholder="Search livestock..."
-                        className="w-full bg-gray-50 dark:bg-zinc-950 border border-gray-200 dark:border-white/10 rounded-md py-1.5 pl-9 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-accent-green text-black dark:text-white"
-                    />
-                </div>
+
+
+                {/* Dashboard Time Range Filter */}
+                <select
+                    className="hidden sm:block bg-white dark:bg-zinc-950 border border-gray-200 dark:border-white/10 rounded-md py-1.5 px-3 text-sm focus:outline-none text-black dark:text-white cursor-pointer"
+                    onChange={(e) => useDashboardStore.getState().setTimeRange(e.target.value as any)}
+                >
+                    <option value="24h">Last 24 Hours</option>
+                    <option value="7d">Last 7 Days</option>
+                    <option value="30d">Last 30 Days</option>
+                </select>
 
                 <ThemeToggle />
 

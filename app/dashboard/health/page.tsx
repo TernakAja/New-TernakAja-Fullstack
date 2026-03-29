@@ -1,4 +1,4 @@
-import { HealthMetricsChart } from "@/components/dashboard/health-metrics-chart"
+import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
 
 export default function HealthPage() {
     return (
