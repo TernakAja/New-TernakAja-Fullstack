@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { StatCard } from "@/features/dashboard/components/stat-card"
 import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
 import { LivestockTable } from "@/features/livestock/components/livestock-table"
+import { TableSkeleton } from "@/components/ui/skeletons"
 
 export default function DashboardPage() {
   return (
@@ -69,7 +70,7 @@ export default function DashboardPage() {
               View All &rarr;
             </Link>
           </div>
-          <Suspense fallback={<div className="p-4 text-center text-sm text-gray-500">Loading table...</div>}>
+          <Suspense fallback={<TableSkeleton />}>
             <LivestockTable />
           </Suspense>
         </div>
