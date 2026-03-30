@@ -1,5 +1,18 @@
 import { create } from 'zustand';
 
+/**
+ * DASHBOARD STORE (ZUSTAND) - STATE MANAGEMENT BUAT UI LAYOUT
+ * ------------------------------------------------------------------
+ * Arsitektur State kita dibagi menjadi 3 pilar:
+ * 1. SERVER STATE (Data DB seperti nama sapi) -> Dipegang oleh React Query (useLivestockData)
+ * 2. EPHEMERAL STATE (Suhu real time 1000hz) -> Dipegang oleh Zustand sensor-store
+ * 3. UI STATE (Sidebar kebuka/tutup, search box) -> Dipegang oleh store ini.
+ * 
+ * Kenapa UI State dipisah dan ditaruh di Zustand, bukan useState lokal?
+ * Agar kita bisa membuka Modal dari ujung komponen Tree (contoh: Header bar) tanpa harus 
+ * menurunkan props ('prop-drilling') puluhan tingkat.
+ */
+
 export type TimeRange = '24h' | '7d' | '30d';
 export type ViewMode = 'table' | 'grid';
 export type ModalType = 'none' | 'edit-cow' | 'add-cow';

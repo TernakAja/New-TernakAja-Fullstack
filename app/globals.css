@@ -175,3 +175,30 @@
       2px 0 0 black;
   }
 }
+
+/* 🌙 THEME TOGGLE VIEW TRANSITION (CIRCULAR MASK) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Transisi ke LIGHT Mode (class .dark dihapus) */
+/* Kita ingin tema Gelap (old/akan hilang) berada di ATAS layar dan mengecil sampai hilang,
+   Sedangkan tema Terang (new/muncul) diam di BAHWA/z-index 1. */
+::view-transition-old(root) {
+  z-index: 2;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Transisi ke DARK Mode (class .dark ditambahkan) */
+/* Kita ingin tema Gelap (new/baru lahir) berada di ATAS dan membesar menutupi,
+   Sedangkan tema Terang (old/akan hilang) diam di BAWAH/z-index 1. */
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 2;
+}
