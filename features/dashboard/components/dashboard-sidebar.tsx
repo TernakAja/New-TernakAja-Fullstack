@@ -45,7 +45,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
       dir={dir}
       side={props.side || defaultSide}
       collapsible="icon"
-      className="border-r border-sidebar-border bg-sidebar rtl:border-r-0 rtl:border-l"
+      className="border border-border bg-sidebar rtl:border-r-0 rtl:border-l"
       {...props}
     >
       <SidebarHeader className="border-b border-sidebar-border p-4 h-16 flex items-center justify-center">
@@ -57,7 +57,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
 
       <SidebarContent className="py-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Platform</SidebarGroupLabel>
+          <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Platform</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => {
@@ -97,7 +97,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
           <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-accent-green/20 text-[#00A040] dark:bg-accent-green/10 dark:text-accent-green flex items-center justify-center font-bold text-xs flex-shrink-0">
             US
           </div>
-          <span className="truncate font-medium text-black dark:text-white group-data-[collapsible=icon]:hidden">Farm Administrator</span>
+          <span className="truncate font-medium text-foreground group-data-[collapsible=icon]:hidden">Farm Administrator</span>
         </div>
       </SidebarFooter>
 

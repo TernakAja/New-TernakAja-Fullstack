@@ -10,7 +10,7 @@ export default function DashboardLayout({
     return (
         <SidebarProvider>
             <DashboardSidebar />
-            <SidebarInset className="bg-white dark:bg-[#0A0A0A] text-black dark:text-white">
+            <SidebarInset className="bg-background text-foreground">
                 <TopHeaderBar />
                 <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
                     <div className="max-w-7xl mx-auto space-y-6">
@@ -19,7 +19,7 @@ export default function DashboardLayout({
                 </main>
 
                 {/* Mobile Bottom Navigation - simple fallback for mobile */}
-                <div className="md:hidden border-t border-gray-200 dark:border-white/5 bg-white dark:bg-zinc-950 p-4">
+                <div className="md:hidden border-t border-border bg-white dark:bg-zinc-950 p-4">
                     <div className="flex justify-around items-center">
                         <span className="text-xs font-semibold text-accent-green">Home</span>
                         <span className="text-xs text-gray-500 dark:text-zinc-400">Herd</span>
