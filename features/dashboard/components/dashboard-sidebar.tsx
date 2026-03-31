@@ -9,6 +9,8 @@ import {
   Settings,
 } from "lucide-react"
 
+import { useAuthStore } from "@/features/auth/store/auth-store"
+
 import {
   Sidebar,
   SidebarContent,
@@ -36,6 +38,10 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
   const pathname = usePathname()
   const { isMobile, setOpenMobile } = useSidebar()
   const normalizedPathname = pathname ? pathname.replace(/\/$/, "") : ""
+  
+  const user = useAuthStore(state => state.user)
+  const letter = user?.email?.charAt(0).toUpperCase() || "US"
+  const displayName = user?.email || "Farm Administrator"
 
   // Automatically set side to right if dir is RTL, unless explicitly overridden in props
   const defaultSide = dir === "rtl" ? "right" : "left"
@@ -95,9 +101,9 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
       <SidebarFooter className="border-t border-sidebar-border p-4">
         <div className="flex items-center gap-2 overflow-hidden text-sm text-muted-foreground">
           <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-emerald-500/20 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400 flex items-center justify-center font-bold text-xs flex-shrink-0">
-            US
+            {letter}
           </div>
-          <span className="truncate font-medium text-foreground group-data-[collapsible=icon]:hidden">Farm Administrator</span>
+          <span className="truncate font-medium text-foreground group-data-[collapsible=icon]:hidden">{displayName}</span>
         </div>
       </SidebarFooter>
 

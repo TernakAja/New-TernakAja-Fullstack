@@ -1,14 +1,20 @@
 import { DashboardSidebar } from '@/features/dashboard/components/dashboard-sidebar'
 import { TopHeaderBar } from '@/features/dashboard/components/top-header-bar'
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
+import { createClient } from '@/lib/supabase/server'
+import { AuthHydrate } from '@/features/auth/components/auth-hydrate'
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+
     return (
         <SidebarProvider>
+            <AuthHydrate user={data?.user} />
             <DashboardSidebar />
             <SidebarInset className="bg-background text-foreground">
                 <TopHeaderBar />
