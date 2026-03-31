@@ -71,7 +71,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
 
                       isActive={isActive}
                       tooltip={item.title}
-                      className={isActive ? "bg-accent-green/15 dark:bg-accent-green/10 text-[#00A040] dark:text-accent-green font-medium" : "text-sidebar-foreground"}
+                      className={isActive ? "bg-emerald-500/15 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium" : "text-sidebar-foreground"}
                     >
                       <Link
                         href={item.url}
@@ -93,8 +93,8 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="flex items-center gap-2 overflow-hidden text-sm text-gray-500">
-          <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-accent-green/20 text-[#00A040] dark:bg-accent-green/10 dark:text-accent-green flex items-center justify-center font-bold text-xs flex-shrink-0">
+        <div className="flex items-center gap-2 overflow-hidden text-sm text-muted-foreground">
+          <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-emerald-500/20 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400 flex items-center justify-center font-bold text-xs flex-shrink-0">
             US
           </div>
           <span className="truncate font-medium text-foreground group-data-[collapsible=icon]:hidden">Farm Administrator</span>

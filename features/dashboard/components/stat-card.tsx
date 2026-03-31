@@ -25,12 +25,12 @@ export function StatCard({ title, value, trend, positive, offline }: StatCardPro
             </div>
 
             <div className="relative z-10 mt-4">
-                <div className={`text-4xl font-bold tracking-tight ${isNoData ? 'text-gray-400 dark:text-[#888888]' : 'text-foreground'}`}>
+                <div className={`text-4xl font-bold tracking-tight ${isNoData ? 'text-muted-foreground' : 'text-foreground'}`}>
                     {displayValue}
                 </div>
 
                 {!isNoData && trend && (
-                    <p className={`text-xs mt-2 font-medium ${positive ? 'text-[#00A040] dark:text-accent-green' : 'text-red-500 dark:text-red-400'}`}>
+                    <p className={`text-xs mt-2 font-medium ${positive ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500 dark:text-red-400'}`}>
                         {trend}
                     </p>
                 )}

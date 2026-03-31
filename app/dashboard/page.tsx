@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
+import { Check } from 'lucide-react'
 import { StatCard } from "@/features/dashboard/components/stat-card"
 import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
 import { LivestockTable } from "@/features/livestock/components/livestock-table"
@@ -53,9 +54,7 @@ export default function DashboardPage() {
           {/* Device Actions / Empty State */}
           <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none flex flex-col items-center justify-center text-center">
             <div className="p-4 bg-muted rounded-full mb-4">
-              <svg className="w-10 h-10 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+              <Check size={40} className="text-muted-foreground" />
             </div>
             <h3 className="font-semibold text-foreground">No Critical Alerts</h3>
             <p className="text-sm text-muted-foreground mt-2">All environmental sensors and health markers are operating within expected parameters.</p>

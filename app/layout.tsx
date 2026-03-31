@@ -7,7 +7,6 @@ import { Providers } from "@/components/providers";
 
 // Font Options
 import { Lexend_Deca } from 'next/font/google';
-import { openSans } from "./fonts";
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -37,7 +36,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={openSans.variable} suppressHydrationWarning>
+        <html lang="en" className={lexendDeca.variable} suppressHydrationWarning>
             <body className={`${lexendDeca.className} antialiased`}>
                 <ThemeProvider
                     attribute="class"

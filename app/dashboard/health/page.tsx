@@ -1,4 +1,5 @@
 import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
+import { CheckCircle } from "lucide-react"
 
 export default function HealthPage() {
     return (
@@ -16,9 +17,7 @@ export default function HealthPage() {
 
                 <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none flex flex-col justify-center items-center text-center">
                     <div className="p-4 bg-muted rounded-full mb-4">
-                        <svg className="w-10 h-10 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <CheckCircle size={40} className="text-muted-foreground" />
                     </div>
                     <h3 className="font-semibold text-foreground">All systems stable</h3>
                     <p className="text-sm text-muted-foreground mt-2 max-w-sm">

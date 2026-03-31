@@ -6,6 +6,7 @@ import { useLivestockData } from '@/features/livestock/hooks/useLivestockData'
 import { useRealtimeSensors } from '@/features/sensors/hooks/useRealtimeSensors'
 import { LivestockData } from '@/features/livestock/hooks/useLivestockData'
 import { useSensorStore } from '@/features/sensors/store/sensor-store'
+import { HealthBadge } from '@/components/ui/health-badge'
 import {
   createColumnHelper,
   flexRender,
@@ -72,19 +73,7 @@ const columns = [
   }),
   columnHelper.accessor('health', {
     header: 'Health Status',
-    cell: info => {
-      const status = info.getValue()
-      let styles = ""
-      if (status === 'Good') styles = "bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20"
-      else if (status === 'Needs Attention') styles = "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20"
-      else if (status === 'Critical') styles = "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
-
-      return (
-        <span className={`px-2 py-1 rounded font-mono text-[10px] uppercase tracking-wider border ${styles}`}>
-          {status}
-        </span>
-      )
-    }
+    cell: info => <HealthBadge status={info.getValue()} />
   }),
   columnHelper.display({
     id: 'batteryUrl',
@@ -240,12 +229,7 @@ export function LivestockTable() {
                       <span className="text-gray-500">Temp:</span> <TempCell cowId={cow.id} />
                     </div>
 
-                    <span className={`px-2 py-1 rounded font-mono text-[10px] uppercase tracking-wider border ${cow.health === 'Good' ? "bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20" :
-                      cow.health === 'Needs Attention' ? "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20" :
-                        "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
-                      }`}>
-                      {cow.health}
-                    </span>
+                    <HealthBadge status={cow.health} />
                   </div>
                 </div>
               </div>
