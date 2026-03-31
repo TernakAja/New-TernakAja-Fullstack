@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useDeferredValue } from 'react'
 import { useDashboardStore } from '@/features/dashboard/store/dashboard-store'
 import { useLivestockData } from '@/features/livestock/hooks/useLivestockData'
 import { useRealtimeSensors } from '@/features/sensors/hooks/useRealtimeSensors'
@@ -34,16 +34,14 @@ const columnHelper = createColumnHelper<LivestockData>()
  * Tabel utama, header, dan row sapi-sapi lain TIDAK AKAN ikut ke-render ulang, menghemat memory churn Javascript secara masif.
  */
 function TempCell({ cowId }: { cowId: string }) {
-  const sensor = useSensorStore(state => state.data[cowId])
-  const val = sensor?.temperature
+  const val = useSensorStore(state => state.data[cowId]?.temperature)
   return val === undefined || val === null
         ? <span className="text-muted-foreground text-sm">Offline</span>
         : <span className="text-sm font-medium text-foreground">{val}</span>
 }
 
 function BatteryCell({ cowId }: { cowId: string }) {
-  const sensor = useSensorStore(state => state.data[cowId])
-  const val = sensor?.batteryUrl ?? 0
+  const val = useSensorStore(state => state.data[cowId]?.batteryUrl) ?? 0
   return (
     <div className="flex items-center gap-2">
       <div className="w-16 h-1.5 bg-muted/50 rounded-full overflow-hidden">
@@ -88,14 +86,15 @@ export function LivestockTable() {
 
   // Get the search word from Zustand (UI State)
   const searchQuery = useDashboardStore((state) => state.searchQuery)
+  const deferredSearchQuery = useDeferredValue(searchQuery)
   const openModal = useDashboardStore((state) => state.openModal)
 
   // Convert dict to array and filter out before rendering
   const data = useMemo(() => {
     let rawArray = dictData ? Object.values(dictData) : []
 
-    if (searchQuery) {
-      const q = searchQuery.toLowerCase()
+    if (deferredSearchQuery) {
+      const q = deferredSearchQuery.toLowerCase()
       rawArray = rawArray.filter(cow =>
         cow.name.toLowerCase().includes(q) ||
         cow.id.toLowerCase().includes(q)
@@ -103,7 +102,7 @@ export function LivestockTable() {
     }
 
     return rawArray;
-  }, [dictData, searchQuery])
+  }, [dictData, deferredSearchQuery])
   
   const table = useReactTable({
     data,
