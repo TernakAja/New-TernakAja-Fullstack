@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-open-sans)", "system-ui"],
+        sans: ["var(--font-lexend-deca)", "system-ui"],
       },
       colors: {
         background: "hsl(var(--background))",

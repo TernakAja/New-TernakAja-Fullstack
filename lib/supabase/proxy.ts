@@ -6,7 +6,7 @@ export async function updateSession(request: NextRequest) {
     request,
   });
 
-  const hasEnvVars = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const hasEnvVars = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
   // If the env vars are not set, skip proxy check. You can remove this
   // once you setup the project.
@@ -49,9 +49,8 @@ export async function updateSession(request: NextRequest) {
   const user = data?.claims;
 
   // Set up the routes that require an active logged-in user.
-  // Instead of blocking everything, we only block paths that start with '/dashboard'
-  // or any other secure routes you create.
-  const isProtectedRoute = request.nextUrl.pathname.startsWith("/protected"); // Temporarily disable dashboard protection for UI testing
+  // We block paths that start with '/dashboard'
+  const isProtectedRoute = request.nextUrl.pathname.startsWith("/dashboard"); 
 
   if (isProtectedRoute && !user) {
     // no user, potentially respond by redirecting the user to the login page

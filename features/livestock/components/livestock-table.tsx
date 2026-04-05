@@ -1,10 +1,12 @@
 "use client"
 
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useDeferredValue } from 'react'
 import { useDashboardStore } from '@/features/dashboard/store/dashboard-store'
 import { useLivestockData } from '@/features/livestock/hooks/useLivestockData'
 import { useRealtimeSensors } from '@/features/sensors/hooks/useRealtimeSensors'
 import { LivestockData } from '@/features/livestock/hooks/useLivestockData'
+import { useSensorStore } from '@/features/sensors/store/sensor-store'
+import { HealthBadge } from '@/components/ui/health-badge'
 import {
   createColumnHelper,
   flexRender,
@@ -13,58 +15,68 @@ import {
 } from '@tanstack/react-table'
 import { useVirtualizer } from '@tanstack/react-virtual'
 
+/**
+ * 🏗️ COMPONENT ARCHITECTURE: DATA FLOW PENJELASAN
+ * ------------------------------------------------------------------
+ * Tabel ini menggunakan 3 lapis arsitektur untuk menjaga performa 60FPS:
+ * 1. TanStack Table: Untuk memformat kolom dan logic dasar sorting.
+ * 2. Virtualizer: Untuk menghindari DOM lagging jika ada >500 sapi. Hanya row yang "terlihat" di layar yang dirender HTML-nya.
+ * 3. Isolated Cells (TempCell & BatteryCell): Pattern ini adalah KUNCI SCALABILITY KITA.
+ */
+
 const columnHelper = createColumnHelper<LivestockData>()
+
+/**
+ * ⚡ PATTERN: ISOLATED STATE RE-RENDERING (TempCell)
+ * Kenapa komponen ini dipisah dari tabel utama?
+ * Jawab: Komponen ini "connect" (berlangganan) LANGSUNG ke Zustand (sensor-store) lewat ID Sapi spesifik.
+ * Jika ada socket WebSocket masu bahwa Sapi A suhunya berubah menjadi 39.5, MAKA HANYA teks "39.5" ini saja yang akan dirender ulang oleh React.
+ * Tabel utama, header, dan row sapi-sapi lain TIDAK AKAN ikut ke-render ulang, menghemat memory churn Javascript secara masif.
+ */
+function TempCell({ cowId }: { cowId: string }) {
+  const val = useSensorStore(state => state.data[cowId]?.temperature)
+  return val === undefined || val === null
+        ? <span className="text-muted-foreground text-sm">Offline</span>
+        : <span className="text-sm font-medium text-foreground">{val}</span>
+}
+
+function BatteryCell({ cowId }: { cowId: string }) {
+  const val = useSensorStore(state => state.data[cowId]?.batteryUrl) ?? 0
+  return (
+    <div className="flex items-center gap-2">
+      <div className="w-16 h-1.5 bg-muted/50 rounded-full overflow-hidden">
+        <div
+          className={`h-full ${val < 20 ? 'bg-red-500' : 'bg-emerald-500'}`}
+          style={{ width: `${val}%` }}
+        />
+      </div>
+      <span className="text-xs text-muted-foreground">{val}%</span>
+    </div>
+  )
+}
 
 const columns = [
   columnHelper.accessor('id', {
     header: 'Tag ID',
-    cell: info => <span className="font-mono text-xs text-black dark:text-white uppercase px-2 py-1 rounded bg-gray-100 dark:bg-white/5">{info.getValue()}</span>,
+    cell: info => <span className="font-mono text-xs text-foreground uppercase px-2 py-1 rounded bg-muted">{info.getValue()}</span>,
   }),
   columnHelper.accessor('name', {
     header: 'Name/Alias',
-    cell: info => <span className="font-medium text-black dark:text-white">{info.getValue()}</span>,
+    cell: info => <span className="font-medium text-foreground">{info.getValue()}</span>,
   }),
-  columnHelper.accessor('temperature', {
+  columnHelper.display({
+    id: 'temperature',
     header: 'Temp (°C)',
-    cell: info => {
-      const val = info.getValue()
-      return val === null
-        ? <span className="text-gray-400 dark:text-zinc-500 text-sm">Offline</span>
-        : <span className="text-sm font-medium text-black dark:text-white">{val}</span>
-    },
+    cell: info => <TempCell cowId={info.row.original.id} />,
   }),
   columnHelper.accessor('health', {
     header: 'Health Status',
-    cell: info => {
-      const status = info.getValue()
-      let styles = ""
-      if (status === 'Good') styles = "bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20"
-      else if (status === 'Needs Attention') styles = "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20"
-      else if (status === 'Critical') styles = "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
-
-      return (
-        <span className={`px-2 py-1 rounded font-mono text-[10px] uppercase tracking-wider border ${styles}`}>
-          {status}
-        </span>
-      )
-    }
+    cell: info => <HealthBadge status={info.getValue()} />
   }),
-  columnHelper.accessor('batteryUrl', {
+  columnHelper.display({
+    id: 'batteryUrl',
     header: 'Sensor Battery',
-    cell: info => {
-      const val = info.getValue()
-      return (
-        <div className="flex items-center gap-2">
-          <div className="w-16 h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
-            <div
-              className={`h-full ${val < 20 ? 'bg-red-500' : 'bg-accent-green'}`}
-              style={{ width: `${val}%` }}
-            />
-          </div>
-          <span className="text-xs text-gray-500 dark:text-zinc-400">{val}%</span>
-        </div>
-      )
-    }
+    cell: info => <BatteryCell cowId={info.row.original.id} />,
   }),
 ]
 
@@ -74,14 +86,15 @@ export function LivestockTable() {
 
   // Get the search word from Zustand (UI State)
   const searchQuery = useDashboardStore((state) => state.searchQuery)
+  const deferredSearchQuery = useDeferredValue(searchQuery)
   const openModal = useDashboardStore((state) => state.openModal)
 
   // Convert dict to array and filter out before rendering
   const data = useMemo(() => {
     let rawArray = dictData ? Object.values(dictData) : []
 
-    if (searchQuery) {
-      const q = searchQuery.toLowerCase()
+    if (deferredSearchQuery) {
+      const q = deferredSearchQuery.toLowerCase()
       rawArray = rawArray.filter(cow =>
         cow.name.toLowerCase().includes(q) ||
         cow.id.toLowerCase().includes(q)
@@ -89,7 +102,8 @@ export function LivestockTable() {
     }
 
     return rawArray;
-  }, [dictData, searchQuery])
+  }, [dictData, deferredSearchQuery])
+  
   const table = useReactTable({
     data,
     columns,
@@ -121,7 +135,7 @@ export function LivestockTable() {
   return (
     <div className="w-full">
       {/* Desktop Table (Virtualized) */}
-      <div className="hidden md:block overflow-hidden rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#0A0A0A]">
+      <div className="hidden md:block overflow-hidden rounded-xl border border-border bg-card text-card-foreground">
         {/* We use a max-height container to allow scrolling for the virtualizer */}
         <div
           ref={desktopRowContainerRef}
@@ -129,11 +143,11 @@ export function LivestockTable() {
           style={{ contain: 'strict' }}
         >
           <table className="w-full text-left text-sm relative">
-            <thead className="bg-gray-50 dark:bg-zinc-950 border-b border-gray-200 dark:border-white/5 sticky top-0 z-10">
+            <thead className="bg-muted border-b border-border sticky top-0 z-10">
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map(header => (
-                    <th key={header.id} className="p-4 font-medium text-gray-500 dark:text-zinc-400">
+                    <th key={header.id} className="p-4 font-medium text-muted-foreground">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -146,7 +160,7 @@ export function LivestockTable() {
               ))}
             </thead>
             <tbody
-              className="divide-y divide-gray-100 dark:divide-white/5 "
+              className="divide-y divide-border "
               style={{
                 height: `${desktopRowVirtualizer.getTotalSize()}px`,
                 position: 'relative',
@@ -158,7 +172,7 @@ export function LivestockTable() {
                   <tr
                     key={row.id}
                     onClick={() => openModal('edit-cow', row.original.id)}
-                    className="hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors absolute w-full cursor-pointer"
+                    className="hover:bg-muted/50 transition-colors absolute w-full cursor-pointer"
                     style={{
                       top: 0,
                       left: 0,
@@ -203,23 +217,18 @@ export function LivestockTable() {
                   height: `${virtualRow.size}px`,
                 }}
               >
-                <div className="rounded-lg border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] p-4 flex flex-col gap-3 shadow-sm mb-2 h-[calc(100%-8px)]">
+                <div className="rounded-lg border border-border bg-card text-card-foreground p-4 flex flex-col gap-3 shadow-sm mb-2 h-[calc(100%-8px)]">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-black dark:text-white uppercase px-2 py-1 rounded bg-gray-100 dark:bg-white/5">{cow.id}</span>
+                    <span className="font-mono text-xs text-foreground uppercase px-2 py-1 rounded bg-muted">{cow.id}</span>
                     <span className="font-medium">{cow.name}</span>
                   </div>
 
                   <div className="flex justify-between items-center mt-2">
                     <div className="text-sm">
-                      <span className="text-gray-500">Temp:</span> {cow.temperature === null ? 'Offline' : `${cow.temperature}°C`}
+                      <span className="text-gray-500">Temp:</span> <TempCell cowId={cow.id} />
                     </div>
 
-                    <span className={`px-2 py-1 rounded font-mono text-[10px] uppercase tracking-wider border ${cow.health === 'Good' ? "bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20" :
-                      cow.health === 'Needs Attention' ? "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20" :
-                        "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20"
-                      }`}>
-                      {cow.health}
-                    </span>
+                    <HealthBadge status={cow.health} />
                   </div>
                 </div>
               </div>

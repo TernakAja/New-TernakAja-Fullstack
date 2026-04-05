@@ -1,15 +1,19 @@
+"use client"
 
 import { Icons } from "@/components/ui/Icons";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useActionState, useEffect } from "react";
+import { loginAction } from "./actions";
+import { toast } from "sonner";
 
 export default function LoginPage() {
-    // Basic mock authentication function to route to dashboard
-    async function handleLogin(formData: FormData) {
-        "use server";
-        // TODO: Later on, this is where you will hook up Supabase auth
-        redirect("/dashboard");
-    }
+    const [state, formAction, isPending] = useActionState(loginAction, null);
+
+    useEffect(() => {
+        if (state?.error) {
+            toast.error(state.error);
+        }
+    }, [state]);
 
     return (
 
@@ -27,15 +31,16 @@ export default function LoginPage() {
                 </div>
 
                 <div className="bg-zinc-50 dark:bg-zinc-950/50 p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
-                    <form action={handleLogin} className="space-y-5">
+                    <form action={formAction} className="space-y-5">
                         <div className="space-y-1.5">
                             <label className="block text-sm font-medium" htmlFor="email">Email</label>
                             <input
                                 id="email"
                                 type="email"
                                 name="email"
+                                disabled={isPending}
                                 placeholder="nama@peternakan.com"
-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm"
+                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm disabled:opacity-50"
                             />
                         </div>
                         <div className="space-y-1.5">
@@ -44,13 +49,21 @@ export default function LoginPage() {
                                 id="password"
                                 type="password"
                                 name="password"
+                                disabled={isPending}
                                 placeholder="••••••••"
-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm"
+                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm disabled:opacity-50"
                             />
                         </div>
                         <div className="pt-4">
-                            <button type="submit" className="w-full bg-foreground text-background py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
-                                Masuk
+                            <button 
+                                type="submit" 
+                                disabled={isPending}
+                                className="w-full bg-foreground text-background py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 flex justify-center items-center"
+                            >
+                                {isPending ? (
+                                    <span className="animate-spin mr-2 h-4 w-4 border-2 border-background border-t-transparent rounded-full"></span>
+                                ) : null}
+                                {isPending ? "Memverifikasi..." : "Masuk"}
                             </button>
                         </div>
                     </form>

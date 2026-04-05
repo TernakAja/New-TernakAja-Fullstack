@@ -3,8 +3,10 @@ import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
-import { openSans } from "./fonts";
 import { Providers } from "@/components/providers";
+
+// Font Options
+import { Lexend_Deca } from 'next/font/google';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -15,6 +17,12 @@ export const metadata: Metadata = {
     title: "TernakAja",
     description: "Smart Livestock Monitoring",
 };
+
+const lexendDeca = Lexend_Deca({
+    variable: "--font-lexend-deca",
+    display: "swap",
+    subsets: ["latin"],
+});
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -28,8 +36,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={openSans.variable} suppressHydrationWarning>
-            <body className={`${geistSans.className} antialiased`}>
+        <html lang="en" className={lexendDeca.variable} suppressHydrationWarning>
+            <body className={`${lexendDeca.className} antialiased`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="light"

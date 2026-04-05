@@ -9,6 +9,8 @@ import {
   Settings,
 } from "lucide-react"
 
+import { useAuthStore } from "@/features/auth/store/auth-store"
+
 import {
   Sidebar,
   SidebarContent,
@@ -36,6 +38,10 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
   const pathname = usePathname()
   const { isMobile, setOpenMobile } = useSidebar()
   const normalizedPathname = pathname ? pathname.replace(/\/$/, "") : ""
+  
+  const user = useAuthStore(state => state.user)
+  const letter = user?.email?.charAt(0).toUpperCase() || "US"
+  const displayName = user?.email || "Farm Administrator"
 
   // Automatically set side to right if dir is RTL, unless explicitly overridden in props
   const defaultSide = dir === "rtl" ? "right" : "left"
@@ -45,7 +51,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
       dir={dir}
       side={props.side || defaultSide}
       collapsible="icon"
-      className="border-r border-sidebar-border bg-sidebar rtl:border-r-0 rtl:border-l"
+      className="border border-border bg-sidebar rtl:border-r-0 rtl:border-l"
       {...props}
     >
       <SidebarHeader className="border-b border-sidebar-border p-4 h-16 flex items-center justify-center">
@@ -57,7 +63,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
 
       <SidebarContent className="py-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Platform</SidebarGroupLabel>
+          <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Platform</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => {
@@ -71,7 +77,7 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
 
                       isActive={isActive}
                       tooltip={item.title}
-                      className={isActive ? "bg-accent-green/15 dark:bg-accent-green/10 text-[#00A040] dark:text-accent-green font-medium" : "text-sidebar-foreground"}
+                      className={isActive ? "bg-emerald-500/15 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium" : "text-sidebar-foreground"}
                     >
                       <Link
                         href={item.url}
@@ -93,11 +99,11 @@ export function DashboardSidebar({ dir = "ltr", ...props }: React.ComponentProps
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="flex items-center gap-2 overflow-hidden text-sm text-gray-500">
-          <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-accent-green/20 text-[#00A040] dark:bg-accent-green/10 dark:text-accent-green flex items-center justify-center font-bold text-xs flex-shrink-0">
-            US
+        <div className="flex items-center gap-2 overflow-hidden text-sm text-muted-foreground">
+          <div className="min-w-6 min-h-6 h-6 w-6 rounded-md bg-emerald-500/20 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400 flex items-center justify-center font-bold text-xs flex-shrink-0">
+            {letter}
           </div>
-          <span className="truncate font-medium text-black dark:text-white group-data-[collapsible=icon]:hidden">Farm Administrator</span>
+          <span className="truncate font-medium text-foreground group-data-[collapsible=icon]:hidden">{displayName}</span>
         </div>
       </SidebarFooter>
 
