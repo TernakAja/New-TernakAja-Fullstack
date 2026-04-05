@@ -6,6 +6,30 @@ import { Footer } from '@/components/layout/Footer';
 
 export const products = [
     {
+        id: '01',
+        name: 'PETSA 01',
+        img: 'products/petsa-01/AssemblyIsometric.png',
+        tagline: 'The Foundation.',
+        description: 'Engineered for everyday reliability. The original standard in performance, stripped down to the essentials without compromising quality.',
+        price: '$199',
+        comingSoon: true,
+        specs: [
+            { icon: Cpu, text: 'Core Processing' },
+            { icon: Battery, text: 'Standard Battery' },
+            { icon: Terminal, text: 'Essential Connectivity' }
+        ],
+        theme: {
+            bg: 'bg-gray-50 dark:bg-[#0A0A0A]',
+            glow: 'bg-indigo-500/10 dark:bg-indigo-500/20',
+            border: 'border-gray-200 dark:border-white/5',
+            text: 'text-black dark:text-white',
+            muted: 'text-gray-500 dark:text-[#888888]',
+            card: 'bg-white dark:bg-white/[0.02] border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/[0.05]',
+            buttonPrimary: 'bg-black text-white hover:bg-neutral-800 dark:bg-white/10 dark:text-white dark:hover:bg-white/20',
+            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-gray-200 dark:hover:border-white/10'
+        }
+    },
+    {
         id: '02',
         name: 'PETSA 02',
 
@@ -29,30 +53,7 @@ export const products = [
             buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-gray-200 dark:hover:border-white/10'
         }
     },
-    {
-        id: '01',
-        name: 'PETSA 01',
-        img: 'products/petsa-01/AssemblyIsometric.png',
-        tagline: 'The Foundation.',
-        description: 'Engineered for everyday reliability. The original standard in performance, stripped down to the essentials without compromising quality.',
-        price: '$199',
-        comingSoon: true,
-        specs: [
-            { icon: Cpu, text: 'Core Processing' },
-            { icon: Battery, text: 'Standard Battery' },
-            { icon: Terminal, text: 'Essential Connectivity' }
-        ],
-        theme: {
-            bg: 'bg-gray-50 dark:bg-[#0A0A0A]',
-            glow: 'bg-indigo-500/10 dark:bg-indigo-500/20',
-            border: 'border-gray-200 dark:border-white/5',
-            text: 'text-black dark:text-white',
-            muted: 'text-gray-500 dark:text-[#888888]',
-            card: 'bg-white dark:bg-white/[0.02] border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/[0.05]',
-            buttonPrimary: 'bg-black text-white hover:bg-neutral-800 dark:bg-white/10 dark:text-white dark:hover:bg-white/20',
-            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-gray-200 dark:hover:border-white/10'
-        }
-    }
+
 ];
 
 export default function ProductsPage() {
@@ -74,9 +75,7 @@ export default function ProductsPage() {
                         {/* Top Content */}
                         <div className="relative z-10 max-w-xl">
                             <div className="flex items-center gap-3 mb-6">
-                                <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-black/5 dark:bg-white/10 text-black/70 dark:text-white/80 border border-black/10 dark:border-white/10">
-                                    REV_{product.id}
-                                </span>
+
                                 {product.comingSoon && (
                                     <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
                                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />

@@ -142,7 +142,8 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    /* Replaced @apply border-border */
   }
 
   /* Hide scrollbar globally for Chrome, Safari and Opera */
@@ -151,18 +152,15 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    /* Replaced @apply bg-background */
+    color: hsl(var(--foreground));
+    /* Replaced @apply text-foreground */
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
-  }
-
-  /* Apply to all scrollable elements as well */
-  * {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }
 
@@ -189,6 +187,7 @@
 ::view-transition-old(root) {
   z-index: 2;
 }
+
 ::view-transition-new(root) {
   z-index: 1;
 }
@@ -199,6 +198,7 @@
 .dark::view-transition-old(root) {
   z-index: 1;
 }
+
 .dark::view-transition-new(root) {
   z-index: 2;
 }
