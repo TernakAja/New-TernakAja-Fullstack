@@ -4,7 +4,7 @@
 
 An enterprise-ready, vertically modular dashboard designed to track thousands of livestock entities simultaneously. Built to ingest and visualize real-time IoT sensor data (temperature, heart rate, physical movements) without crashing the browser DOM or overwhelming the main JavaScript thread.
 
-## 🌟 Core Features
+##  Core Features
 
 - **Domain-Driven Modularization:** Strict separation of concerns leveraging feature-sliced architecture (`/features/livestock`, `/features/sensors`, `/features/dashboard`) for enterprise-level scaling and team colocation.
 - **Aggressive Real-Time Buffering:** Utilizes Web Workers (`telemetry.worker.ts`) and buffered React Hooks (`useRealtimeSensors`) to batch incoming Supabase WebSocket emissions so the React DOM only repaints periodically rather than on every individual ping.
@@ -17,7 +17,7 @@ An enterprise-ready, vertically modular dashboard designed to track thousands of
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 Instead of organizing files by their technical type (e.g. all `hooks/`, all `components/`), this repository uses a **Vertical Feature Slicing** strategy. Every feature acts as a complete domain module:
 
@@ -38,7 +38,7 @@ Instead of organizing files by their technical type (e.g. all `hooks/`, all `com
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework:** Next.js 15+ (App Router, Route Groups, Server Actions)
 - **Database & Auth:** Supabase (PostgreSQL + RLS + GoTrue + Realtime)
@@ -51,7 +51,7 @@ Instead of organizing files by their technical type (e.g. all `hooks/`, all `com
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Requirements
 
@@ -92,7 +92,7 @@ Visit `http://localhost:3000` to view the landing page, and navigate to `/dashbo
 
 ---
 
-## 📈 Scalability Roadmap
+##  Scalability Roadmap
 
 TernakAja is built specifically to address the pain points of massive IoT ingestion on the UI layer. Future planned milestones:
 - [ ] Migrate raw socket ingestion from native Supabase channels to an MQTT Protocol -> TimescaleDB event streaming bridge for >100,000 requests/sec.
