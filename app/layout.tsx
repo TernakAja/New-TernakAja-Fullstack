@@ -4,9 +4,8 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { inter } from "./fonts";
 
-// Font Options
-import { Lexend_Deca } from 'next/font/google';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -18,17 +17,8 @@ export const metadata: Metadata = {
     description: "Smart Livestock Monitoring",
 };
 
-const lexendDeca = Lexend_Deca({
-    variable: "--font-lexend-deca",
-    display: "swap",
-    subsets: ["latin"],
-});
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    display: "swap",
-    subsets: ["latin"],
-});
+// FONTS
+const appFont = inter;
 
 export default function RootLayout({
     children,
@@ -36,8 +26,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={lexendDeca.variable} suppressHydrationWarning>
-            <body className={`${lexendDeca.className} antialiased`}>
+        <html lang="en" className={appFont.variable} suppressHydrationWarning>
+            <body className={`${appFont.className} antialiased`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="light"
