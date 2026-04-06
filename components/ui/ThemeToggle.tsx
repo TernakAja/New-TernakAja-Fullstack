@@ -8,7 +8,7 @@ import { flushSync } from "react-dom";
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
 
-    const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const toggleTheme = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
         const isDark = theme === "dark";
         const newTheme = isDark ? "light" : "dark";
 
@@ -25,32 +25,22 @@ export function ThemeToggle() {
         );
 
         const transition = document.startViewTransition(() => {
-            flushSync(() => {
-                setTheme(newTheme);
-            });
+            flushSync(() => setTheme(newTheme));
         });
 
         transition.ready.then(() => {
-            const clipPath = [
-                `circle(0px at ${x}px ${y}px)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`,
-            ];
-
+            const base = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
             document.documentElement.animate(
-                {
-                    clipPath: isDark ? clipPath.reverse() : clipPath,
-                },
+                { clipPath: isDark ? [...base].reverse() : base },
                 {
                     duration: 500,
                     easing: "ease-in-out",
                     fill: "forwards",
-                    pseudoElement: isDark
-                        ? "::view-transition-old(root)"
-                        : "::view-transition-new(root)",
+                    pseudoElement: isDark ? "::view-transition-old(root)" : "::view-transition-new(root)",
                 }
             );
         });
-    };
+    }, [theme, setTheme]);
 
     return (
         <button

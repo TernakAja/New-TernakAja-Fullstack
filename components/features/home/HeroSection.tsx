@@ -1,5 +1,4 @@
-import React from 'react';
-import { Leaf, ChevronRight, Activity, ShieldAlert, Database, Cpu, Stethoscope, X } from 'lucide-react';
+import {  ChevronRight, Activity, ShieldAlert, Database, Stethoscope } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 export const HeroSection = () => {
