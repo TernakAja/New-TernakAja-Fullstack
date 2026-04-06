@@ -11,7 +11,7 @@ export const products = [
         img: 'products/petsa-01/AssemblyIsometric.png',
         tagline: 'The Foundation.',
         description: 'Engineered for everyday reliability. The original standard in performance, stripped down to the essentials without compromising quality.',
-        price: '$199',
+        price: 'Rp.215,000',
         comingSoon: true,
         specs: [
             { icon: Cpu, text: 'Core Processing' },
@@ -35,7 +35,7 @@ export const products = [
 
         tagline: 'The Evolution.',
         description: 'Advanced metrics and superior materials. Built for the absolute edge. Re-engineered from the ground up to exceed modern performance standards.',
-        price: '$299',
+        price: 'To Be Announced',
         comingSoon: true,
         specs: [
             { icon: Sun, text: 'Continuous Solar Charging' },
@@ -76,21 +76,16 @@ export default function ProductsPage() {
                         <div className="relative z-10 max-w-xl">
                             <div className="flex items-center gap-3 mb-6">
 
-                                {product.comingSoon && (
-                                    <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
-                                        COMING SOON
-                                    </span>
-                                )}
+
                             </div>
 
-                            {product.img && (
+                            {/* {product.img && (
                                 <img
                                     src={product.img}
                                     alt={product.name}
                                     className="w-full h-auto max-h-48 invert dark:invert-0 sm:max-h-64 lg:max-h-80 object-contain object-left drop-shadow-2xl transition-transform "
                                 />
-                            )}
+                            )} */}
 
 
                             <h2 className="text-5xl sm:text-6xl font-semibold tracking-tight mb-4 mt-10">

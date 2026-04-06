@@ -363,7 +363,7 @@ export default function Petsa01Page() {
                                 </div>
                                 <div className="flex items-center text-xs font-medium text-gray-500 dark:text-zinc-500">
                                     <ArrowLeft className="w-3 h-3 mr-2" />
-                                    TernakAja / Livestock
+                                    TernakBoard / Livestock
                                 </div>
                             </div>
 

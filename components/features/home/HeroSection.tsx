@@ -20,9 +20,9 @@ export const HeroSection = () => {
 
             {/* Header Copy */}
             <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 mb-16 relative z-10 max-w-6xl mx-auto">
-                <div className="max-w-3xl">
+                <div className="max-w-5xl">
                     <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-bold tracking-tight text-foreground leading-[1.05] mb-6">
-                        Sistem manajemen peternakan untuk tim dan AI.
+                        Merevolusi peternakan dengan teknologi AI dan IoT.
                     </h1>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-2xl font-medium">
                         Dirancang khusus untuk merencanakan bobot dan memantau kesehatan. Dibangun untuk mengamankan pasokan pangan di era IoT.
@@ -42,8 +42,8 @@ export const HeroSection = () => {
                     <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
                     <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
                     <div className="ml-4 flex items-center gap-2 text-xs font-medium text-zinc-500">
-                        <Leaf className="w-3 h-3" />
-                        <span>TernakAja</span>
+
+                        <span>TernakBoard</span>
                         <ChevronRight className="w-3 h-3 text-zinc-700" />
                     </div>
                 </div>
