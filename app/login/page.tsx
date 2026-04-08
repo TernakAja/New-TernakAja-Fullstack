@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { loginAction } from "./actions";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function LoginPage() {
     const [state, formAction, isPending] = useActionState(loginAction, null);
@@ -33,38 +36,36 @@ export default function LoginPage() {
                 <div className="bg-card p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
                     <form action={formAction} className="space-y-5">
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium" htmlFor="email">Email</label>
-                            <input
+                            <Label htmlFor="email">Email</Label>
+                            <Input
                                 id="email"
                                 type="email"
                                 name="email"
                                 disabled={isPending}
                                 placeholder="nama@peternakan.com"
-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-ring transition-shadow text-sm disabled:opacity-50"
                             />
                         </div>
                         <div className="space-y-1.5">
-                            <label className="block text-sm font-medium" htmlFor="password">Kata Sandi</label>
-                            <input
+                            <Label htmlFor="password">Kata Sandi</Label>
+                            <Input
                                 id="password"
                                 type="password"
                                 name="password"
                                 disabled={isPending}
                                 placeholder="••••••••"
-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-ring transition-shadow text-sm disabled:opacity-50"
                             />
                         </div>
                         <div className="pt-4">
-                            <button 
-                                type="submit" 
+                            <Button
+                                type="submit"
                                 disabled={isPending}
-                                className="w-full bg-foreground text-background py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 flex justify-center items-center"
+                                className="w-full gap-2"
                             >
-                                {isPending ? (
-                                    <span className="animate-spin mr-2 h-4 w-4 border-2 border-background border-t-transparent rounded-full"></span>
-                                ) : null}
+                                {isPending && (
+                                    <span className="animate-spin h-4 w-4 border-2 border-background border-t-transparent rounded-full" />
+                                )}
                                 {isPending ? "Memverifikasi..." : "Masuk"}
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>

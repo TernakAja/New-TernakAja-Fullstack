@@ -27,7 +27,7 @@ const extensions = [
 
 export const ExtensionsSection = () => {
     return (
-        <section className="max-w-7xl mx-auto px-6 py-24 border-t border-zinc-200 dark:border-white/5">
+        <section className="max-w-7xl mx-auto px-6 py-24 border-t border-border">
             <div className="mb-12">
                 <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground mb-2">Infrastruktur untuk skala nasional.</h2>
                 <p className="text-muted-foreground text-lg">Modul terintegrasi yang dirancang khusus untuk peternakan Indonesia.</p>

@@ -1,7 +1,8 @@
-import { Sprout, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { GridBackground } from "@/components/ui/grid-background";
+import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
     return (
@@ -65,9 +66,9 @@ export default function AboutPage() {
                         Sebuah tim dedikatif dengan misi membangun platform agrikultur cerdas terbaik di Indonesia.
                     </p>
 
-                    <button className="flex items-center gap-2 bg-transparent border border-border text-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:bg-muted transition-colors mb-16">
-                        Meet the team <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                    </button>
+                    <Button variant="outline" className="rounded-full gap-2 mb-16">
+                        Meet the team <ChevronRight className="w-4 h-4" />
+                    </Button>
 
                     {/* Placeholder untuk foto tim */}
                     <div className="w-full max-w-4xl aspect-[16/10] md:aspect-[21/9] bg-card rounded-2xl md:rounded-[2rem] overflow-hidden border border-border  relative">

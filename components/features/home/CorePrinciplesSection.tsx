@@ -3,7 +3,7 @@ import { Activity, Cpu, Database } from 'lucide-react';
 
 export const CorePrinciplesSection = () => {
     return (
-        <section className="max-w-7xl mx-auto px-6 py-24 border-t border-zinc-200 dark:border-white/5">
+        <section className="max-w-7xl mx-auto px-6 py-24 border-t border-border">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-20 max-w-5xl leading-tight">
                 <span className="text-foreground">Standar baru ekosistem peternakan.</span>{' '}
                 <span className="text-muted-foreground">

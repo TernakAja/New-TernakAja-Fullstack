@@ -44,7 +44,7 @@ const FooterColumns = () => {
 
 export function Footer ()  {
     return (
-        <footer className="border-t border-border bg-zinc-50 dark:bg-zinc-950 pt-16 pb-8">
+        <footer className="border-t border-border bg-muted pt-16 pb-8">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
                 <div className="col-span-2">
                     <Link href="/" className="flex items-center gap-2 text-foreground font-semibold mb-4">

@@ -1,9 +1,10 @@
 
 import { ShieldAlert } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export const ImpactSection = () => {
     return (
-        <section className="relative max-w-7xl mx-auto px-6 py-32 overflow-hidden border-t border-zinc-200 dark:border-white/5">
+        <section className="relative max-w-7xl mx-auto px-6 py-32 overflow-hidden border-t border-border">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
 
                 {/* Konten Kiri: Fokus pada Konversi Pendekatan Startup */}
@@ -15,10 +16,10 @@ export const ImpactSection = () => {
                     <p className="text-base text-muted-foreground mb-8 leading-relaxed">
                         Ini tentang mencegah kerugian ekonomi skala nasional sebelum gejala klinis muncul pada sapi Anda. Peralihan menuju peternakan modern berbasis data dimulai dari sini.
                     </p>
-                    <button className="px-6 py-3 rounded-lg bg-foreground text-background text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity">
+                    <Button className="gap-2">
                         <ShieldAlert className="w-4 h-4" />
                         Mulai Pilot Project
-                    </button>
+                    </Button>
                 </div>
 
                 {/* Gambar Kanan: Penyesuaian murni sebagai gambar di balik transisi (tanpa border/card) */}

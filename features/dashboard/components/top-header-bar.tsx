@@ -1,8 +1,9 @@
 "use client"
 
-import { Search, Bell } from 'lucide-react'
+import { Bell } from 'lucide-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { Button } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import { useDashboardStore } from "@/features/dashboard/store/dashboard-store"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
@@ -31,7 +32,7 @@ export function TopHeaderBar() {
     const breadcrumb = deriveBreadcrumb(pathname)
 
     return (
-        <header className="h-16 flex items-center justify-between border-b border-border bg-backgroundblack/80 backdrop-blur-md px-4 md:px-6 relative z-30 transition-[width,height] ease-linear">
+        <header className="h-16 flex items-center justify-between border-b border-border bg-background/80 backdrop-blur-md px-4 md:px-6 relative z-30 transition-[width,height] ease-linear">
             <div className="flex items-center gap-4">
                 <SidebarTrigger className="-ml-1" />
 
@@ -57,10 +58,10 @@ export function TopHeaderBar() {
                 <ThemeToggle />
 
                 {/* Notifications */}
-                <button className="relative p-2 text-muted-foreground hover:bg-gray-100 dark:hover:bg-white/[0.02] rounded-full">
+                <Button variant="ghost" size="icon" className="relative rounded-full" aria-label="Notifications">
                     <Bell size={20} />
                     <span className="absolute top-1 right-2 w-2 h-2 bg-accent-green rounded-full shadow-[0_0_8px_#00D654]" />
-                </button>
+                </Button>
 
                 {/* User Dropdown Profile via Radix */}
                 <DropdownMenu.Root>
@@ -72,20 +73,20 @@ export function TopHeaderBar() {
 
                     <DropdownMenu.Portal>
                         <DropdownMenu.Content
-                            className="z-50 min-w-[200px] bg-card border-border10 rounded-md shadow-lg p-1 text-sm animate-in fade-in-80 slide-in-from-top-2"
+                            className="z-50 min-w-[200px] bg-card border border-border rounded-md shadow-lg p-1 text-sm animate-in fade-in-80 slide-in-from-top-2"
                             sideOffset={8}
                             align="end"
                         >
                             <DropdownMenu.Label className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
                                 My Account
                             </DropdownMenu.Label>
-                            <DropdownMenu.Item className="px-2 py-2 outline-none cursor-pointer rounded text-foreground hover:bg-gray-100 dark:hover:bg-white/5 data-[highlighted]:bg-gray-100 dark:data-[highlighted]:bg-white/5 transition-colors">
+                            <DropdownMenu.Item className="px-2 py-2 outline-none cursor-pointer rounded text-foreground hover:bg-muted data-[highlighted]:bg-muted transition-colors">
                                 Profile
                             </DropdownMenu.Item>
-                            <DropdownMenu.Item className="px-2 py-2 outline-none cursor-pointer rounded text-foreground hover:bg-gray-100 dark:hover:bg-white/5 data-[highlighted]:bg-gray-100 dark:data-[highlighted]:bg-white/5 transition-colors">
+                            <DropdownMenu.Item className="px-2 py-2 outline-none cursor-pointer rounded text-foreground hover:bg-muted data-[highlighted]:bg-muted transition-colors">
                                 Subscription
                             </DropdownMenu.Item>
-                            <DropdownMenu.Separator className="h-px bg-muted10 my-1 -mx-1" />
+                            <DropdownMenu.Separator className="h-px bg-muted my-1 -mx-1" />
                             <DropdownMenu.Item className="px-2 py-2 outline-none cursor-pointer rounded text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 data-[highlighted]:bg-red-50 dark:data-[highlighted]:bg-red-900/10 transition-colors">
                                 Log out
                             </DropdownMenu.Item>

@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Leaf, ChevronDown } from 'lucide-react';
-import { ThemeToggle } from '../ui/ThemeToggle'; // <-- Imported ThemeToggle
+import { ThemeToggle } from '../ui/ThemeToggle';
 import { Icons } from '../ui/Icons';
+import { Button } from '../ui/button';
 
 export const Navbar = () => {
     const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
@@ -86,10 +87,10 @@ export const Navbar = () => {
 
                 <div className="hidden md:flex items-center gap-4">
                     <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Login</Link>
-                    <button  className="bg-foreground text-background px-4 py-1.5 rounded-md text-sm font-medium hover:opacity-90 transition-opacity">
+                    <Button className="rounded-md" size="sm">
                         Join Us
-                    </button>
-                    {/* Fitts's Law: CTA target now has a theme toggler neighbor */}
+                    </Button>
+
                     <ThemeToggle />
                 </div>
             </div>
