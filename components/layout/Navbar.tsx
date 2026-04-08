@@ -87,7 +87,7 @@ export const Navbar = () => {
 
                 <div className="hidden md:flex items-center gap-4">
                     <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Login</Link>
-                    <Button className="rounded-md" size="sm">
+                    <Button className="rounded-md" size="sm" onClick={()=> {window.location.href = "/join-us"}}>
                         Join Us
                     </Button>
 
