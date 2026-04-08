@@ -10,7 +10,7 @@ export default function LivestockPage() {
         <p className="text-muted-foreground mt-1">Manage all active tags and monitor individual statuses.</p>
       </div>
 
-      <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none">
+      <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-semibold text-foreground">All Active Tags</h2>
           <button className="bg-accent-green hover:bg-accent-green/90 text-white px-4 py-2 rounded-md font-medium transition-colors text-sm">

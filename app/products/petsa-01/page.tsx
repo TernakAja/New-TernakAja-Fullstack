@@ -89,7 +89,7 @@ const TABLE_ROWS = [
     { id: "COW-001", name: "Bessie",  temp: "38.6", status: "Good",            statusClass: "bg-[#00D654]/15 dark:bg-[#00D654]/10 text-[#00A040] dark:text-[#00D654] border-[#00D654]/20", barClass: "bg-emerald-500", battery: "85%" },
     { id: "COW-002", name: "Daisy",   temp: "39.5", status: "Needs Attention", statusClass: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",                    barClass: "bg-emerald-500", battery: "40%" },
     { id: "COW-003", name: "Bella",   temp: "40.2", status: "Critical",        statusClass: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",                                 barClass: "bg-red-500",     battery: "15%" },
-    { id: "COW-004", name: "Moo-Moo", temp: null,   status: null,              statusClass: "",                                                                                                barClass: "bg-gray-300 dark:bg-zinc-600", battery: "0%" },
+    { id: "COW-004", name: "Moo-Moo", temp: null,   status: null,              statusClass: "",                                                                                                barClass: "bg-card", battery: "0%" },
 ] as const;
 
 export default function Petsa01Page() {
@@ -173,7 +173,7 @@ export default function Petsa01Page() {
 
                             <button
                                 onClick={prevImage}
-                                className="absolute -left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-left-12"
+                                className="absolute -left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border  bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-left-12"
                                 aria-label="Previous image"
                             >
                                 <ChevronLeft className="w-5 h-5" />
@@ -181,7 +181,7 @@ export default function Petsa01Page() {
 
                             <button
                                 onClick={nextImage}
-                                className="absolute -right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-right-12"
+                                className="absolute -right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border  bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-right-12"
                                 aria-label="Next image"
                             >
                                 <ChevronRight className="w-5 h-5" />
@@ -224,7 +224,7 @@ export default function Petsa01Page() {
                                     <input
                                         type="email"
                                         placeholder="farm-manager@domain.com"
-                                        className="w-full rounded-lg border border-amber-500/20 dark:border-white/5 bg-white dark:bg-[#171717] px-4 py-2.5 text-sm text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-amber-500/50 focus:outline-none sm:w-64"
+                                        className="w-full rounded-lg border border-amber-500/20  bg-white dark:bg-[#171717] px-4 py-2.5 text-sm text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-amber-500/50 focus:outline-none sm:w-64"
                                         required
                                     />
                                     <button
@@ -239,9 +239,9 @@ export default function Petsa01Page() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                            <div className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#111111] p-8 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
+                            <div className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-border  bg-gray-50 dark:bg-[#111111] p-8 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
                                 <div className="relative z-10 lg:w-[65%]">
-                                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none">
+                                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-white/5 border border-border  shadow-sm">
                                         <BellRing className="w-6 h-6 text-gray-700 dark:text-[#d4d4d4]" />
                                     </div>
                                     <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">Real-time health alerts</h3>
@@ -250,14 +250,14 @@ export default function Petsa01Page() {
                                     </p>
                                 </div>
 
-                                <div className="absolute bottom-0 right-0 top-0 hidden w-[35%] flex-col justify-center border-l border-dashed border-gray-200 dark:border-white/10 pl-6 lg:flex">
+                                <div className="absolute bottom-0 right-0 top-0 hidden w-[35%] flex-col justify-center border-l border-dashed border-border  pl-6 lg:flex">
                                     <div className="absolute left-[-1px] top-1/2 h-48 w-[1px] -translate-y-1/2 bg-gradient-to-b from-transparent via-gray-300 dark:via-[#4b4b4b] to-transparent" />
                                     <div className="flex flex-col gap-6">
                                         <div className="relative flex items-center">
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-red-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-red-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-gray-200 dark:border-white/5 bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
                                                 Cow #142: High Temp
                                             </span>
                                         </div>
@@ -265,7 +265,7 @@ export default function Petsa01Page() {
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-amber-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-amber-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-gray-200 dark:border-white/5 bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
                                                 Cow #089: SpO2 drop
                                             </span>
                                         </div>
@@ -273,7 +273,7 @@ export default function Petsa01Page() {
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-emerald-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-emerald-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-gray-200 dark:border-white/5 bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
                                                 Herd: Activity normal
                                             </span>
                                         </div>
@@ -281,8 +281,8 @@ export default function Petsa01Page() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col rounded-xl border border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#111111] p-8 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
-                                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none">
+                            <div className="flex flex-col rounded-xl border border-border  bg-gray-50 dark:bg-[#111111] p-8 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors">
+                                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-white/5 border border-border  shadow-sm">
                                     <ShieldCheck className="w-6 h-6 text-gray-700 dark:text-[#d4d4d4]" />
                                 </div>
                                 <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">Ruggedized for the farm</h3>
@@ -312,9 +312,9 @@ export default function Petsa01Page() {
                                 return (
                                     <div
                                         key={index}
-                                        className="flex flex-col rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-white/[0.02] p-6 transition-colors hover:bg-gray-50 dark:hover:bg-white/[0.05]"
+                                        className="flex flex-col rounded-xl border border-border  bg-white dark:bg-white/[0.02] p-6 transition-colors hover:bg-gray-50 dark:hover:bg-white/[0.05]"
                                     >
-                                        <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-inner">
+                                        <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-50 dark:bg-white/5 border border-border  shadow-sm">
                                             <Icon className="w-5 h-5 text-gray-600 dark:text-[#a3a3a3]" strokeWidth={1.5} />
                                         </div>
                                         <h3 className="mb-3 text-sm font-semibold text-black dark:text-white">
@@ -333,7 +333,7 @@ export default function Petsa01Page() {
                 {/* --- SECTION 4: FEATURE SHOWCASE --- */}
                 <section className="relative z-10 flex w-full flex-col items-center px-4 pb-24">
                     <div className="w-full max-w-6xl">
-                        <div className="relative flex flex-col overflow-hidden rounded-[2rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-[#0f0f0f] md:flex-row md:items-stretch shadow-sm dark:shadow-none">
+                        <div className="relative flex flex-col overflow-hidden rounded-[2rem] border border-border  bg-gray-50 dark:bg-[#0f0f0f] md:flex-row md:items-stretch shadow-sm">
                             <div className="relative min-h-[300px] w-full md:w-1/2">
                                 <div className="absolute inset-0 bg-white dark:bg-[#141414]" />
                                 <img
@@ -374,12 +374,12 @@ export default function Petsa01Page() {
                             </p>
                         </div>
 
-                        <div className="relative mx-auto h-[320px] sm:h-[400px] w-full max-w-4xl overflow-hidden rounded-t-xl border border-b-0 border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#0A0A0A] shadow-xl dark:shadow-2xl flex flex-col text-left">
-                            <div className="flex items-center border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] px-4 py-3 shrink-0">
+                        <div className="relative mx-auto h-[320px] sm:h-[400px] w-full max-w-4xl overflow-hidden rounded-t-xl border border-b-0 border-border  bg-gray-100 dark:bg-[#0A0A0A] shadow-xl dark:shadow-2xl flex flex-col text-left">
+                            <div className="flex items-center border-b border-border  bg-white dark:bg-[#111111] px-4 py-3 shrink-0">
                                 <div className="flex gap-1.5 mr-4">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
-                                    <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-zinc-700"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-card"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-card"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-card"></div>
                                 </div>
                                 <div className="flex items-center text-xs font-medium text-gray-500 dark:text-zinc-500">
                                     <ArrowLeft className="w-3 h-3 mr-2" />
@@ -393,8 +393,8 @@ export default function Petsa01Page() {
                                     <p className="text-xs sm:text-sm text-gray-500 dark:text-zinc-400 mt-1">Manage all active tags and monitor individual statuses.</p>
                                 </div>
 
-                                <div className="flex-1 rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] shadow-sm dark:shadow-none flex flex-col overflow-hidden">
-                                    <div className="flex justify-between items-center p-4 sm:p-5 shrink-0 border-b border-gray-100 dark:border-transparent">
+                                <div className="flex-1 rounded-xl border border-border  bg-white dark:bg-[#111111] shadow-sm flex flex-col overflow-hidden">
+                                    <div className="flex justify-between items-center p-4 sm:p-5 shrink-0 border-b border-border border-transparent">
                                         <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white">All Active Tags</h4>
                                         <button className="bg-emerald-600 hover:bg-emerald-600/90 dark:bg-emerald-500 dark:hover:bg-emerald-500/90 text-white px-3 py-1.5 rounded-md font-medium transition-colors text-[10px] sm:text-xs shadow-sm">
                                             Add Livestock
@@ -404,7 +404,7 @@ export default function Petsa01Page() {
                                     {/* Table with static row data — no inline style objects */}
                                     <div className="w-full overflow-x-auto">
                                         <table className="w-full text-left text-xs sm:text-sm min-w-[500px]">
-                                            <thead className="bg-gray-50 dark:bg-zinc-950/50 border-b border-gray-200 dark:border-white/5">
+                                            <thead className="bg-card border-b border-border ">
                                                 <tr>
                                                     <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Tag ID</th>
                                                     <th className="p-3 font-medium text-gray-500 dark:text-zinc-400">Name/Alias</th>
@@ -481,8 +481,8 @@ export default function Petsa01Page() {
                 {/* --- SECTION 6: COMPARISON TABLE --- */}
                 <section className="relative z-10 flex w-full flex-col items-center px-4 pb-32 pt-12">
                     <div className="w-full max-w-5xl overflow-x-auto pb-4">
-                        <div className="min-w-[768px] rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 md:p-12 shadow-sm dark:shadow-2xl">
-                            <div className="mb-2 grid grid-cols-[2fr_1fr_1fr] gap-6 border-b border-gray-200 dark:border-white/10 pb-6 text-lg font-medium text-black dark:text-white">
+                        <div className="min-w-[768px] rounded-2xl bg-white dark:bg-white/[0.02] border border-border  p-8 md:p-12 shadow-sm dark:shadow-2xl">
+                            <div className="mb-2 grid grid-cols-[2fr_1fr_1fr] gap-6 border-b border-border  pb-6 text-lg font-medium text-black dark:text-white">
                                 <div></div>
                                 <div className="text-center font-bold text-emerald-600 dark:text-emerald-500">PETSA 01</div>
                                 <div className="text-center text-gray-500">Traditional Methods</div>
@@ -493,7 +493,7 @@ export default function Petsa01Page() {
                                     <div
                                         key={index}
                                         className={`grid grid-cols-[2fr_1fr_1fr] items-center gap-6 py-6 ${
-                                            index !== COMPARISON_DATA.length - 1 ? 'border-b border-gray-100 dark:border-white/5' : ''
+                                            index !== COMPARISON_DATA.length - 1 ? 'border-b border-border ' : ''
                                         }`}
                                     >
                                         <div className="text-sm leading-relaxed text-gray-700 dark:text-[#d4d4d4] md:text-base">

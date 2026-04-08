@@ -12,13 +12,13 @@ export default function InformationPage() {
                 </p>
 
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="py-8 px-10 rounded-3xl border border-border bg-zinc-50 dark:bg-zinc-950">
+                    <div className="py-8 px-10 rounded-3xl border border-border bg-card">
                         <div className="text-emerald-600 dark:text-emerald-400 font-bold tracking-widest text-xs mb-4">SISTEM TERINTEGRASI</div>
                         <h2 className="text-2xl font-semibold mb-4">Masa Depan Pemantauan</h2>
                         <p className="text-muted-foreground leading-relaxed">Platform kami menggabungkan telemetri lapangan dengan analitik AI yang dikonfigurasi khusus untuk mendeteksi penyakit dan manajemen peternakan skala besar. Sinkronisasi dengan database eksternal seperti ISIKHNAS menjadikan kepatuhan regulasi menjadi sebuah proses otomatis tanpa intervensi manual.</p>
                     </div>
 
-                    <div className="py-8 px-10 rounded-3xl border border-border bg-zinc-50 dark:bg-zinc-950 flex flex-col items-center justify-center opacity-80 border-dashed min-h-[300px]">
+                    <div className="py-8 px-10 rounded-3xl border border-border bg-card flex flex-col items-center justify-center opacity-80 border-dashed min-h-[300px]">
                         <span className="text-sm font-medium text-muted-foreground text-center uppercase tracking-widest">[Diagram Arsitektur IoT]</span>
                     </div>
                 </div>

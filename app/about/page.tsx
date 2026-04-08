@@ -82,12 +82,12 @@ export default function AboutPage() {
                         Sebuah tim dedikatif dengan misi membangun platform agrikultur cerdas terbaik di Indonesia.
                     </p>
 
-                    <button className="flex items-center gap-2 bg-transparent border border-gray-200 dark:border-white/10 text-black dark:text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors mb-16">
+                    <button className="flex items-center gap-2 bg-transparent border border-border  text-black dark:text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors mb-16">
                         Meet the team <ChevronRight className="w-4 h-4 text-gray-500 dark:text-[#888888]" />
                     </button>
 
                     {/* Placeholder untuk foto tim */}
-                    <div className="w-full max-w-4xl aspect-[16/10] md:aspect-[21/9] bg-gray-100 dark:bg-neutral-900 rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-200 dark:border-white/5 relative">
+                    <div className="w-full max-w-4xl aspect-[16/10] md:aspect-[21/9] bg-card rounded-2xl md:rounded-[2rem] overflow-hidden border border-border  relative">
                         <img
                             src="/gallery/team-picture-binus.jpg"
                             alt="TernakAja Team"

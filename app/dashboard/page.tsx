@@ -46,13 +46,13 @@ export default function DashboardPage() {
         {/* Main Content Area */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Chart */}
-          <div className="lg:col-span-2 rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none">
+          <div className="lg:col-span-2 rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm">
             <h2 className="text-lg font-semibold mb-4 text-foreground">Telemetry & Health Trends</h2>
             <HealthMetricsChart />
           </div>
 
           {/* Device Actions / Empty State */}
-          <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none flex flex-col items-center justify-center text-center">
+          <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm flex flex-col items-center justify-center text-center">
             <div className="p-4 bg-muted rounded-full mb-4">
               <Check size={40} className="text-muted-foreground" />
             </div>

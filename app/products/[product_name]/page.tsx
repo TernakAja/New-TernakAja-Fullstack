@@ -40,7 +40,7 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
                         </NextLink>
 
                         <div className="flex items-center gap-3">
-                            <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-black/5 dark:bg-white/10 text-black/70 dark:text-white/80 border border-black/10 dark:border-white/10">
+                            <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-black/5 dark:bg-white/10 text-black/70 dark:text-white/80 border border-black/10 ">
                                 REV_{productData.id}
                             </span>
                             {productData.comingSoon && (
@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
                             {productData.comingSoon ? 'Join the waitlist to get early access.' : 'Order yours today and start monitoring your livestock.'}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 relative z-10 items-center justify-center">
-                            <div className="flex flex-col items-center sm:items-end sm:border-r border-black/10 dark:border-white/10 sm:pr-6">
+                            <div className="flex flex-col items-center sm:items-end sm:border-r border-black/10  sm:pr-6">
                                 <span className={`text-[11px] font-mono uppercase tracking-wider mb-1 ${productData.theme.muted}`}>
                                     {productData.comingSoon ? 'Target MSRP' : 'Starting at'}
                                 </span>

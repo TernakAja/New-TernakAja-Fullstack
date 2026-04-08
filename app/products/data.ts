@@ -17,12 +17,12 @@ export const products = [
         theme: {
             bg: 'bg-gray-50 dark:bg-[#0A0A0A]',
             glow: 'bg-indigo-500/10 dark:bg-indigo-500/20',
-            border: 'border-gray-200 dark:border-white/5',
+            border: 'border-border ',
             text: 'text-black dark:text-white',
             muted: 'text-gray-500 dark:text-[#888888]',
-            card: 'bg-white dark:bg-white/[0.02] border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/[0.05]',
+            card: 'bg-white dark:bg-white/[0.02] border-border  hover:bg-gray-50 dark:hover:bg-white/[0.05]',
             buttonPrimary: 'bg-black text-white hover:bg-neutral-800 dark:bg-white/10 dark:text-white dark:hover:bg-white/20',
-            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-gray-200 dark:hover:border-white/10'
+            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-border dark:hover:border-white/10'
         }
     },
     {
@@ -41,12 +41,12 @@ export const products = [
         theme: {
             bg: 'bg-white dark:bg-black',
             glow: 'bg-red-500/10 dark:bg-red-500/20',
-            border: 'border-gray-200 dark:border-white/10',
+            border: 'border-border ',
             text: 'text-black dark:text-white',
             muted: 'text-gray-500 dark:text-[#888888]',
-            card: 'bg-gray-50 dark:bg-white/[0.03] border-gray-200 dark:border-white/5 hover:bg-gray-100 dark:hover:bg-white/[0.06]',
+            card: 'bg-gray-50 dark:bg-white/[0.03] border-border  hover:bg-gray-100 dark:hover:bg-white/[0.06]',
             buttonPrimary: 'bg-black text-white hover:bg-neutral-800 dark:bg-white/10 dark:text-white dark:hover:bg-white/20',
-            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-gray-200 dark:hover:border-white/10'
+            buttonSecondary: 'bg-transparent text-gray-500 dark:text-[#888888] hover:text-black dark:hover:text-white border border-transparent hover:border-border dark:hover:border-white/10'
         }
     }
 ];

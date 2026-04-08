@@ -6,8 +6,8 @@ export default function SettingsPage() {
         <p className="text-gray-500 dark:text-zinc-400 mt-1">Manage farm preferences and user accounts.</p>
       </div>
 
-      <div className="rounded-xl border border-gray-200 dark:border-white/5 bg-white dark:bg-[#111111] overflow-hidden shadow-sm dark:shadow-none w-full">
-        <div className="p-6 border-b border-gray-200 dark:border-white/5">
+      <div className="rounded-xl border border-border  bg-white dark:bg-[#111111] overflow-hidden shadow-sm w-full">
+        <div className="p-6 border-b border-border ">
           <h2 className="text-lg font-semibold text-black dark:text-white">Profile Information</h2>
           <p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">Configure your personal and farm details.</p>
         </div>
@@ -19,7 +19,7 @@ export default function SettingsPage() {
               <input 
                 type="text" 
                 defaultValue="TernakAja Demonstration Farm" 
-                className="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-zinc-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30"
+                className="w-full rounded-md border border-border  bg-card-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30"
               />
             </div>
           </div>
@@ -30,7 +30,7 @@ export default function SettingsPage() {
               <input 
                 type="email" 
                 defaultValue="admin@ternakaja.example.com" 
-                className="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-zinc-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30"
+                className="w-full rounded-md border border-border  bg-card-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30"
               />
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function SettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Alert Thresholds</label>
             <div className="md:col-span-3">
-              <select className="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-zinc-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30">
+              <select className="w-full rounded-md border border-border  bg-card-950 px-3 py-2 text-sm text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-green/50 dark:focus:ring-accent-green/30">
                 <option>Standard (Recommended)</option>
                 <option>High Sensitivity</option>
                 <option>Low Sensitivity</option>
@@ -48,7 +48,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="p-6 bg-gray-50 dark:bg-zinc-900/50 border-t border-gray-200 dark:border-white/5 flex justify-end">
+        <div className="p-6 bg-card border-t border-border  flex justify-end">
           <button className="bg-accent-green hover:bg-accent-green/90 text-white px-4 py-2 rounded-md font-medium transition-colors text-sm">
             Save Changes
           </button>

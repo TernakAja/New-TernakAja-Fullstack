@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import { inter } from "./fonts";
+// import { inter } from "./fonts";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});

@@ -10,12 +10,12 @@ export default function HealthPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none">
+                <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm">
                     <h2 className="text-lg font-semibold mb-4 text-foreground">Herd Temperature Trends</h2>
                     <HealthMetricsChart />
                 </div>
 
-                <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none flex flex-col justify-center items-center text-center">
+                <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm flex flex-col justify-center items-center text-center">
                     <div className="p-4 bg-muted rounded-full mb-4">
                         <CheckCircle size={40} className="text-muted-foreground" />
                     </div>
@@ -26,7 +26,7 @@ export default function HealthPage() {
                 </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm dark:shadow-none">
+            <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm">
                 <h2 className="text-lg font-semibold mb-4 text-foreground">Recent Health Alerts</h2>
                 <div className="flex flex-col items-center justify-center p-8 text-center border border-dashed border-border rounded-lg bg-muted/50">
                     <p className="text-muted-foreground text-sm">No health alerts have been triggered recently.</p>

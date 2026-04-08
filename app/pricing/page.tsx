@@ -212,7 +212,7 @@ export default function PricingPage() {
                 </div>
 
                 {/* Toggle */}
-                <div className="flex bg-gray-100 dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-full p-1 mb-16 relative z-10">
+                <div className="flex bg-gray-100 dark:bg-[#111] border border-border dark:border-[#222] rounded-full p-1 mb-16 relative z-10">
                     <button
                         onClick={handleSetMonthly}
                         className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${billingCycle === 'monthly' ? 'bg-white dark:bg-[#222] text-black dark:text-white shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white'}`}
@@ -230,7 +230,7 @@ export default function PricingPage() {
                 {/* Slider */}
                 <div className="w-full max-w-4xl mb-16 relative px-4 hidden md:block z-10">
                     <div className="relative w-full flex flex-col items-center">
-                        <div className="mb-6 bg-white dark:bg-[#222] px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-700 text-black dark:text-white shadow-lg">
+                        <div className="mb-6 bg-white dark:bg-[#222] px-4 py-1.5 rounded-full text-sm font-medium border border-border dark:border-border text-black dark:text-white shadow-lg">
                             {selectedCows === 1000 ? "1000+ Sapi" : `${selectedCows} Sapi`}
                         </div>
 
@@ -268,7 +268,7 @@ export default function PricingPage() {
                             <div
                                 key={index}
                                 className={`bg-white dark:bg-black border transition-all duration-300 rounded-[24px] p-8 flex flex-col relative
-                  ${isActive ? 'border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.1)] scale-[1.02]' : 'border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700'}
+                  ${isActive ? 'border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.1)] scale-[1.02]' : 'border-border dark:border-border hover:border-border dark:hover:border-border'}
                   ${isDimmed ? 'opacity-50 grayscale-[50%]' : 'opacity-100'}
                 `}
                             >
@@ -296,7 +296,7 @@ export default function PricingPage() {
                                     <p className="text-[11px] text-gray-500">{tier.subLimit}</p>
                                 </div>
 
-                                <hr className="border-gray-100 dark:border-gray-800 mb-8" />
+                                <hr className="border-border dark:border-border mb-8" />
 
                                 <ul className="flex flex-col gap-4 flex-grow">
                                     {tier.features.map((feature, fIndex) => (
@@ -311,8 +311,8 @@ export default function PricingPage() {
 
                                 <button className={`w-full mt-8 py-2.5 rounded-lg text-sm font-medium transition-colors border
                   ${isActive
-                                        ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white hover:bg-gray-800 dark:hover:bg-gray-200'
-                                        : 'bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'}
+                                        ? 'bg-black text-white dark:bg-white dark:text-black border-black  hover:bg-gray-800 dark:hover:bg-gray-200'
+                                        : 'bg-transparent text-black dark:text-white border-border dark:border-border hover:border-border dark:hover:border-border'}
                 `}>
                                     {index === 3 ? 'Hubungi Penjualan' : 'Pilih Paket'}
                                 </button>
@@ -327,7 +327,7 @@ export default function PricingPage() {
 
                     <div className="w-full overflow-x-auto pb-4">
                         <div className="min-w-[768px]">
-                            <div className="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-lg py-3 px-6 mb-2">
+                            <div className="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-[#111] border border-border dark:border-border rounded-lg py-3 px-6 mb-2">
                                 <div className="col-span-1"></div>
                                 <div className="text-center text-[13px] font-medium text-gray-500 dark:text-gray-400">Skala Kecil</div>
                                 <div className="text-center text-[13px] font-medium text-gray-500 dark:text-gray-400">Skala Menengah</div>
@@ -337,9 +337,9 @@ export default function PricingPage() {
 
                             <div className="flex flex-col">
                                 {COMPARISON_ROWS.map((row, rowIndex) => (
-                                    <div key={rowIndex} className="grid grid-cols-5 gap-4 py-4 px-6 border-b border-gray-200 dark:border-gray-800/60 hover:bg-gray-50 dark:hover:bg-[#0a0a0a] transition-colors">
+                                    <div key={rowIndex} className="grid grid-cols-5 gap-4 py-4 px-6 border-b border-border dark:border-border hover:bg-gray-50 dark:hover:bg-[#0a0a0a] transition-colors">
                                         <div className="col-span-1 flex items-center">
-                                            <span className="text-[13px] text-gray-700 dark:text-gray-300 border-b border-dotted border-gray-300 dark:border-gray-600 pb-0.5 cursor-help">
+                                            <span className="text-[13px] text-gray-700 dark:text-gray-300 border-b border-dotted border-border dark:border-border pb-0.5 cursor-help">
                                                 {row.name}
                                             </span>
                                         </div>
@@ -369,7 +369,7 @@ export default function PricingPage() {
                             return (
                                 <div
                                     key={index}
-                                    className="bg-white dark:bg-[#151515] border border-gray-200 dark:border-gray-800/60 rounded-xl overflow-hidden shadow-sm dark:shadow-none"
+                                    className="bg-white dark:bg-[#151515] border border-border dark:border-border rounded-xl overflow-hidden shadow-sm"
                                 >
                                     <button
                                         onClick={() => handleFaqToggle(index, isOpen)}

@@ -25,7 +25,7 @@ export default async function DashboardLayout({
                 </main>
 
                 {/* Mobile Bottom Navigation - simple fallback for mobile */}
-                <div className="md:hidden border-t border-border bg-white dark:bg-zinc-950 p-4">
+                <div className="md:hidden border-t border-border bg-card-950 p-4">
                     <div className="flex justify-around items-center">
                         <span className="text-xs font-semibold text-accent-green">Home</span>
                         <span className="text-xs text-gray-500 dark:text-zinc-400">Herd</span>

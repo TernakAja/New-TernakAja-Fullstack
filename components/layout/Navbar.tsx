@@ -10,7 +10,7 @@ export const Navbar = () => {
     const [isInformationOpen, setIsInformationOpen] = useState<boolean>(false);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-border border-b ">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-8">
                     <Link href="/" className="flex items-center gap-1 text-foreground text-lg tracking-tight font-bold">
@@ -40,7 +40,7 @@ export const Navbar = () => {
                                 <div className="absolute top-full left-0 pt-4">
                                     {/* Bridge to keep hover active */}
                                     <div className="absolute top-0 left-0 w-full h-4 bg-transparent cursor-default"></div>
-                                    <div className="w-[600px] bg-background border border-border rounded-xl shadow-xl p-6 grid grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="w-[600px] bg-background/80 backdrop-blur-md border border-border rounded-xl shadow-xl p-6 grid grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-top-2 duration-200">
 
 
 
