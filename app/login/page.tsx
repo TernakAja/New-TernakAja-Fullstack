@@ -71,7 +71,7 @@ export default function LoginPage() {
                 </div>
 
                 <p className="text-center text-sm text-muted-foreground mt-8">
-                    Belum menjadi mitra? <Link href="/information" className="text-primary hover:underline">Pelajari lebih lanjut</Link>
+                    Belum menjadi mitra? <Link href="/join-us" className="text-primary hover:underline">Pelajari lebih lanjut</Link>
                 </p>
             </div>
 

@@ -6,8 +6,10 @@ import { Controller, useForm, FormProvider } from "react-hook-form"
 import * as z from "zod"
 import { AnimatePresence, motion } from "framer-motion"
 import { AlertCircle, Building2, Check, ChevronsUpDown, Eye, EyeOff, UserCircle2 } from "lucide-react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
+import { Icons } from "@/components/ui/Icons"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -227,14 +229,18 @@ export default function MultiStepRegistrationForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full sm:max-w-xl mx-auto shadow-lg border-border/50 overflow-hidden bg-card">
-        <CardHeader className="space-y-6 pb-8">
-        <div className="space-y-2">
-          <CardTitle className="text-2xl tracking-tight">Pendaftaran Mitra</CardTitle>
-          <CardDescription>Lengkapi data verifikasi untuk integrasi sistem.</CardDescription>
-        </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+      <div className="flex flex-col items-center mb-8">
+        <Link href="/" className="flex items-center gap-2 font-semibold text-2xl tracking-tight mb-6 hover:opacity-80 transition">
+          <Icons.appIcon />
+          TernakAja
+        </Link>
+        <h1 className="text-2xl font-bold tracking-tight text-center">Pendaftaran Mitra</h1>
+        <p className="text-muted-foreground text-sm mt-2 text-center">Lengkapi data verifikasi untuk integrasi sistem.</p>
+      </div>
 
+      <Card className="w-full sm:max-w-xl mx-auto shadow-lg border-border/50 overflow-hidden bg-card">      
+        <CardHeader className="space-y-6 pb-8">
         {/* Semantic Flex-based Stepper */}
         <div className="flex items-center justify-between w-full relative">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-muted rounded-full pointer-events-none" />
@@ -497,7 +503,14 @@ export default function MultiStepRegistrationForm() {
           </Button>
         </div>
       </CardFooter>
-    </Card>
+      </Card>
+      
+      <p className="px-8 text-center text-sm text-muted-foreground mt-8">
+        Sudah menjadi mitra?{" "}
+        <Link href="/login" className="text-primary hover:underline hover:text-primary/90">
+          Masuk
+        </Link>
+      </p>
     </div>
   )
 }
