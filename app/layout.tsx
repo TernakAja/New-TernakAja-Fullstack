@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { inter } from "./fonts";
+import { cn } from "@/lib/utils";
 
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -26,7 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={appFont.variable} suppressHydrationWarning>
+        <html lang="en" className={cn("font-sans", inter.variable)} suppressHydrationWarning>
             <body className={`${appFont.className} antialiased`}>
                 <ThemeProvider
                     attribute="class"
