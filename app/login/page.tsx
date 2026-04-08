@@ -30,7 +30,7 @@ export default function LoginPage() {
                     <p className="text-muted-foreground text-sm mt-2">Gunakan kredensial mitra untuk melanjutkan</p>
                 </div>
 
-                <div className="bg-zinc-50 dark:bg-zinc-950/50 p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
+                <div className="bg-zinc-50 dark:bg-zinc-950/50 p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm">
                     <form action={formAction} className="space-y-5">
                         <div className="space-y-1.5">
                             <label className="block text-sm font-medium" htmlFor="email">Email</label>

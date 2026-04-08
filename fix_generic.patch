@@ -1,0 +1,11 @@
+--- app/join-us/page.tsx
++++ app/join-us/page.tsx
+@@ -62,7 +62,7 @@
+   baseSchema.merge(peternakSchema),
+ ])
+ 
+-type FormValues = z.infer<typeof formSchema>
++type FormValues = z.input<typeof formSchema>
+ 
+ export default function RegistrationForm() {
+   const form = useForm<FormValues>({

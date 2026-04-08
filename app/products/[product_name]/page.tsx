@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { ArrowRight, Bell } from 'lucide-react'
 import NextLink from 'next/link'
-import { products } from '../page'
+import { products } from '../data'
 
 export async function generateStaticParams() {
     return products.map((product) => ({

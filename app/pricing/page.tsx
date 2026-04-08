@@ -190,7 +190,7 @@ export default function PricingPage() {
     return (
         <>
             <Navbar />
-
+            
             <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col items-center py-20 px-4 md:px-8 pt-32">
 
                 <div
