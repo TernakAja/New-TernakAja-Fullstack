@@ -1,13 +1,8 @@
-"use client";
-
-import React, { useState, useCallback, useMemo } from 'react';
+import React from 'react';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
-    ArrowRight,
     ArrowLeft,
-    ChevronLeft,
-    ChevronRight,
     Check,
     HeartPulse,
     Thermometer,
@@ -16,7 +11,9 @@ import {
     BellRing,
     ShieldCheck
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ImageCarousel } from './_components/ImageCarousel.client';
+import { BetaSignupForm } from './_components/BetaSignupForm.client';
+import { GridBackground } from '@/components/ui/grid-background';
 
 // --- All static data outside component ---
 
@@ -93,115 +90,28 @@ const TABLE_ROWS = [
 ] as const;
 
 export default function Petsa01Page() {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    // Stable navigation handlers — no new function on each render
-    const nextImage = useCallback(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGE_COUNT);
-    }, []);
-
-    const prevImage = useCallback(() => {
-        setCurrentImageIndex((prev) => (prev - 1 + HERO_IMAGE_COUNT) % HERO_IMAGE_COUNT);
-    }, []);
-
-    // Precompute per-dot handlers — stable array, no inline lambdas in JSX
-    const dotHandlers = useMemo(
-        () => HERO_IMAGES.map((_, i) => () => setCurrentImageIndex(i)),
-        []
-    );
-
     return (
-        <div className="min-h-screen w-full bg-white dark:bg-[#0A0A0A] font-sans antialiased selection:bg-neutral-200 dark:selection:bg-white/30 text-black dark:text-white">
+        <div className="min-h-screen w-full bg-background text-foreground antialiased selection:bg-neutral-200 dark:selection:bg-white/30">
             <Navbar />
             <main className="flex-1">
 
                 {/* --- SECTION 1: HERO --- */}
                 <section className="relative flex w-full flex-col items-center justify-center overflow-hidden px-4 pt-32 pb-16">
-                    <div
-                        className={cn(
-                            "absolute inset-0",
-                            "[background-size:40px_40px]",
-                            "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-                            "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
-                        )}
-                    />
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+                    <GridBackground variant="line" size={40} />
                     <div className="relative z-10 flex w-full max-w-5xl flex-col items-center text-center">
                         <header className="flex flex-col items-center">
                             <h2 className="mb-4 text-4xl font-bold tracking-tight text-black dark:text-white md:text-5xl lg:text-[2.75rem]">
                                 PETSA 01
                             </h2>
-                            <p className="max-w-[45rem] text-sm leading-relaxed text-gray-600 dark:text-[#888888] sm:text-base">
+                            <p className="max-w-[45rem] text-sm leading-relaxed text-muted-foreground sm:text-base">
                                 Precision livestock monitoring. Real-time SpO2, heart rate, and temperature tracking
                                 <br className="hidden sm:block" />
                                 engineered into a rugged, non-invasive eartag.
                             </p>
                         </header>
 
-                        {/*
-                          * will-change: transform on the image container promotes it to its own
-                          * compositor layer, eliminating paint on every slide transition and
-                          * keeping the animation on the GPU thread.
-                          */}
-                        <div className="group relative flex w-full max-w-xs items-center justify-center sm:max-w-sm md:max-w-md lg:max-w-lg [contain:layout]">
-                            {/* Invisible spacer — keeps container height stable */}
-                            <img
-                                src={HERO_IMAGES[0]}
-                                className="invisible h-auto w-full object-contain pointer-events-none"
-                                aria-hidden="true"
-                                alt=""
-                            />
-
-                            {HERO_IMAGES.map((src, index) => (
-                                <img
-                                    key={index}
-                                    src={src}
-                                    alt={`PETSA 01 View ${index + 1}`}
-                                    /*
-                                     * Use [will-change:transform,opacity] so the browser pre-promotes
-                                     * each slide to a GPU layer before the transition fires.
-                                     * This removes main-thread paint from every slide change.
-                                     */
-                                    className={`absolute left-0 top-0 h-full w-full object-contain drop-shadow-2xl transition-all duration-700 ease-in-out [will-change:transform,opacity] ${
-                                        index === currentImageIndex
-                                            ? 'opacity-100 z-10 scale-50'
-                                            : 'opacity-0 z-0 scale-50 pointer-events-none'
-                                    }`}
-                                    loading={index === 0 ? "eager" : "lazy"}
-                                />
-                            ))}
-
-                            <button
-                                onClick={prevImage}
-                                className="absolute -left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border  bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-left-12"
-                                aria-label="Previous image"
-                            >
-                                <ChevronLeft className="w-5 h-5" />
-                            </button>
-
-                            <button
-                                onClick={nextImage}
-                                className="absolute -right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border  bg-white/60 dark:bg-[#171717]/60 text-gray-600 dark:text-white/70 backdrop-blur-md transition-colors hover:bg-gray-100 dark:hover:bg-white/20 hover:text-black dark:hover:text-white sm:-right-12"
-                                aria-label="Next image"
-                            >
-                                <ChevronRight className="w-5 h-5" />
-                            </button>
-
-                            <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 gap-2">
-                                {HERO_IMAGES.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={dotHandlers[index]}   // stable ref, no inline lambda
-                                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                                            index === currentImageIndex
-                                                ? 'w-6 bg-black dark:bg-white'
-                                                : 'w-1.5 bg-black/20 dark:bg-white/30 hover:bg-black/40 dark:hover:bg-white/50'
-                                        }`}
-                                        aria-label={`Go to slide ${index + 1}`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                        {/* Image Carousel — Client Component island */}
+                        <ImageCarousel />
                     </div>
                 </section>
 
@@ -220,21 +130,8 @@ export default function Petsa01Page() {
                                     </p>
                                 </div>
 
-                                <form className="flex w-full flex-col gap-3 sm:flex-row md:w-auto md:items-center">
-                                    <input
-                                        type="email"
-                                        placeholder="farm-manager@domain.com"
-                                        className="w-full rounded-lg border border-amber-500/20  bg-white dark:bg-[#171717] px-4 py-2.5 text-sm text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-amber-500/50 focus:outline-none sm:w-64"
-                                        required
-                                    />
-                                    <button
-                                        type="button"
-                                        className="group flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-amber-500/10 dark:bg-[#2a170f] px-5 py-2.5 text-sm font-medium text-amber-700 dark:text-amber-500 transition-colors hover:bg-amber-500/20 dark:hover:bg-[#3d2415] sm:w-auto border border-amber-500/20"
-                                    >
-                                        Notify Me
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </button>
-                                </form>
+                                {/* Beta Signup Form — Client Component island */}
+                                <BetaSignupForm />
                             </div>
                         </div>
 
@@ -245,7 +142,7 @@ export default function Petsa01Page() {
                                         <BellRing className="w-6 h-6 text-gray-700 dark:text-[#d4d4d4]" />
                                     </div>
                                     <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">Real-time health alerts</h3>
-                                    <p className="text-sm leading-relaxed text-gray-600 dark:text-[#888888]">
+                                    <p className="text-sm leading-relaxed text-muted-foreground">
                                         Receive instant notifications for abnormal SpO2, elevated core temperatures, or irregular heartbeats before clinical symptoms appear in your livestock.
                                     </p>
                                 </div>
@@ -257,7 +154,7 @@ export default function Petsa01Page() {
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-red-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-red-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border bg-card px-2 py-1 font-mono text-[10px] text-muted-foreground">
                                                 Cow #142: High Temp
                                             </span>
                                         </div>
@@ -265,7 +162,7 @@ export default function Petsa01Page() {
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-amber-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-amber-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border bg-card px-2 py-1 font-mono text-[10px] text-muted-foreground">
                                                 Cow #089: SpO2 drop
                                             </span>
                                         </div>
@@ -273,7 +170,7 @@ export default function Petsa01Page() {
                                             <div className="absolute -left-[30px] flex h-[10px] w-[10px] items-center justify-center rounded-full border border-emerald-500 bg-white dark:bg-[#171717]">
                                                 <div className="h-[4px] w-[4px] rounded-full bg-emerald-500" />
                                             </div>
-                                            <span className="whitespace-nowrap rounded-md border border-border  bg-white dark:bg-white/5 px-2 py-1 font-mono text-[10px] text-gray-500 dark:text-[#888888]">
+                                            <span className="whitespace-nowrap rounded-md border border-border bg-card px-2 py-1 font-mono text-[10px] text-muted-foreground">
                                                 Herd: Activity normal
                                             </span>
                                         </div>
@@ -286,7 +183,7 @@ export default function Petsa01Page() {
                                     <ShieldCheck className="w-6 h-6 text-gray-700 dark:text-[#d4d4d4]" />
                                 </div>
                                 <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">Ruggedized for the farm</h3>
-                                <p className="text-sm leading-relaxed text-gray-600 dark:text-[#888888]">
+                                <p className="text-sm leading-relaxed text-muted-foreground">
                                     Built to withstand extreme agricultural environments. The IP68 rated, UV-resistant, and chew-proof design ensures continuous data transmission regardless of weather or herd behavior.
                                 </p>
                             </div>
@@ -301,7 +198,7 @@ export default function Petsa01Page() {
                             <h2 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
                                 Comprehensive Vital Sensing
                             </h2>
-                            <p className="max-w-2xl text-base leading-relaxed text-gray-600 dark:text-[#888888] sm:text-lg">
+                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                                 Continuous monitoring of critical health metrics. Engineered for precision and animal welfare.
                             </p>
                         </header>
@@ -349,7 +246,7 @@ export default function Petsa01Page() {
                                 <h3 className="mb-4 text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl md:text-4xl">
                                     Complete historical health data at your fingertips
                                 </h3>
-                                <p className="text-base leading-relaxed text-gray-600 dark:text-[#888888]">
+                                <p className="text-base leading-relaxed text-muted-foreground">
                                     Track individual cow vitals over their entire lifecycle. Identify long-term trends, optimize breeding cycles, and prove animal welfare compliance with immutable historical records.
                                 </p>
                             </div>
@@ -369,7 +266,7 @@ export default function Petsa01Page() {
                             <h2 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
                                 Connect with TernakBoard
                             </h2>
-                            <p className="text-base text-gray-600 dark:text-[#888888] sm:text-lg">
+                            <p className="text-base text-muted-foreground sm:text-lg">
                                 Native synchronization with the TernakDashboard Application
                             </p>
                         </div>
@@ -506,7 +403,7 @@ export default function Petsa01Page() {
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="text-center text-sm text-gray-500 dark:text-[#888888] md:text-base">
+                                        <div className="text-center text-sm text-muted-foreground md:text-base">
                                             {row.traditional}
                                         </div>
                                     </div>

@@ -21,7 +21,7 @@ export function StatCard({ title, value, trend, positive, offline }: StatCardPro
 
             <div className="relative z-10 flex items-start justify-between">
                 <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
-                <Info size={14} className="text-gray-400 dark:text-zinc-600" />
+                <Info size={14} className="text-muted-foreground/50" />
             </div>
 
             <div className="relative z-10 mt-4">
@@ -29,14 +29,14 @@ export function StatCard({ title, value, trend, positive, offline }: StatCardPro
                     {displayValue}
                 </div>
 
-                {!isNoData && trend && (
-                    <p className={`text-xs mt-2 font-medium ${positive ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500 dark:text-red-400'}`}>
-                        {trend}
-                    </p>
-                )}
-
-                {isNoData && trend && (
-                    <p className="text-xs mt-2 font-medium text-muted-foreground">
+                {trend && (
+                    <p className={`text-xs mt-2 font-medium ${
+                        isNoData
+                            ? 'text-muted-foreground'
+                            : positive
+                                ? 'text-emerald-600 dark:text-emerald-400'
+                                : 'text-red-500 dark:text-red-400'
+                    }`}>
                         {trend}
                     </p>
                 )}

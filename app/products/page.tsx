@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { products } from "./data"
 export default function ProductsPage() {
     return (
-        <div className="min-h-screen w-full bg-white dark:bg-black font-sans antialiased selection:bg-neutral-200 dark:selection:bg-white/30 selection:text-black dark:selection:text-white text-black dark:text-white">
+        <div className="min-h-screen w-full bg-background text-foreground antialiased selection:bg-neutral-200 dark:selection:bg-white/30">
             <Navbar />
             {/* Main Split Layout */}
             <main className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-14">
@@ -70,7 +70,7 @@ export default function ProductsPage() {
                         {/* Bottom Content / CTA */}
                         <div className={`relative z-10 mt-auto pt-8 border-t ${product.theme.border} flex flex-col sm:flex-row sm:items-center justify-between gap-6`}>
                             <div className="flex flex-col">
-                                <span className="text-[11px] font-mono uppercase tracking-wider text-gray-500 dark:text-[#888888] mb-1">
+                                <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-1">
                                     {product.comingSoon ? 'Target MSRP' : 'Starting at'}
                                 </span>
                                 <span className="text-2xl font-semibold font-mono tracking-tight">

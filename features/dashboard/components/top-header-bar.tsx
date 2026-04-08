@@ -7,28 +7,37 @@ import { usePathname } from 'next/navigation'
 import { useDashboardStore } from "@/features/dashboard/store/dashboard-store"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 
+/**
+ * Module-level constant — never recreated on re-render.
+ * Extending breadcrumb labels only requires editing this map.
+ */
+const BREADCRUMB_MAP: Record<string, string> = {
+    livestock: "Livestock",
+    health: "Health",
+    settings: "Settings",
+}
+
+/** Derive breadcrumb label from pathname segments. Pure function — no closure over component state. */
+function deriveBreadcrumb(pathname: string | null): string {
+    if (!pathname) return "Overview"
+    const segment = Object.keys(BREADCRUMB_MAP).find((key) => pathname.includes(key))
+    return segment ? BREADCRUMB_MAP[segment] : "Overview"
+}
+
 export function TopHeaderBar() {
     const pathname = usePathname()
-    const searchQuery = useDashboardStore((state) => state.searchQuery)
-    const setSearchQuery = useDashboardStore((state) => state.setSearchQuery)
-
-    // Generate breadcrumb text from pathname
-    const getBreadcrumbs = () => {
-        if (!pathname) return "Overview"
-        if (pathname.includes("livestock")) return "Livestock"
-        if (pathname.includes("health")) return "Health"
-        if (pathname.includes("settings")) return "Settings"
-        return "Overview"
-    }
+    // ✅ Subscribed selector — component re-renders when setTimeRange changes (not on every store update)
+    const setTimeRange = useDashboardStore((state) => state.setTimeRange)
+    const breadcrumb = deriveBreadcrumb(pathname)
 
     return (
         <header className="h-16 flex items-center justify-between border-b border-border bg-backgroundblack/80 backdrop-blur-md px-4 md:px-6 relative z-30 transition-[width,height] ease-linear">
             <div className="flex items-center gap-4">
                 <SidebarTrigger className="-ml-1" />
 
-                {/* Breadcrumb dummy */}
+                {/* Breadcrumb */}
                 <span className="hidden md:block text-sm text-muted-foreground font-medium">
-                    Dashboard <span className="mx-2">/</span> <span className="text-foreground">{getBreadcrumbs()}</span>
+                    Dashboard <span className="mx-2">/</span> <span className="text-foreground">{breadcrumb}</span>
                 </span>
             </div>
 
@@ -37,8 +46,8 @@ export function TopHeaderBar() {
 
                 {/* Dashboard Time Range Filter */}
                 <select
-                    className="hidden sm:block bg-white dark:bg-zinc-950 border border-gray-200 dark:border-white/10 rounded-md py-1.5 px-3 text-sm focus:outline-none text-foreground cursor-pointer"
-                    onChange={(e) => useDashboardStore.getState().setTimeRange(e.target.value as any)}
+                    className="hidden sm:block bg-card border border-border rounded-md py-1.5 px-3 text-sm focus:outline-none text-foreground cursor-pointer"
+                    onChange={(e) => setTimeRange(e.target.value as Parameters<typeof setTimeRange>[0])}
                 >
                     <option value="24h">Last 24 Hours</option>
                     <option value="7d">Last 7 Days</option>

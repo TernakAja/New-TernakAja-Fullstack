@@ -5,6 +5,7 @@ import { StatCard } from "@/features/dashboard/components/stat-card"
 import { HealthMetricsChart } from "@/features/sensors/components/health-metrics-chart"
 import { LivestockTable } from "@/features/livestock/components/livestock-table"
 import { TableSkeleton } from "@/components/ui/skeletons"
+import { DataErrorBoundary } from "@/components/ui/data-error-boundary"
 
 export default function DashboardPage() {
   return (
@@ -69,9 +70,11 @@ export default function DashboardPage() {
               View All &rarr;
             </Link>
           </div>
-          <Suspense fallback={<TableSkeleton />}>
-            <LivestockTable />
-          </Suspense>
+          <DataErrorBoundary>
+            <Suspense fallback={<TableSkeleton />}>
+              <LivestockTable />
+            </Suspense>
+          </DataErrorBoundary>
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import { TopHeaderBar } from '@/features/dashboard/components/top-header-bar'
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 import { createClient } from '@/lib/supabase/server'
 import { AuthHydrate } from '@/features/auth/components/auth-hydrate'
+import Link from 'next/link'
 
 export default async function DashboardLayout({
     children,
@@ -24,14 +25,14 @@ export default async function DashboardLayout({
                     </div>
                 </main>
 
-                {/* Mobile Bottom Navigation - simple fallback for mobile */}
-                <div className="md:hidden border-t border-border bg-card-950 p-4">
+                {/* Mobile Bottom Navigation */}
+                <nav className="md:hidden border-t border-border bg-card p-4">
                     <div className="flex justify-around items-center">
-                        <span className="text-xs font-semibold text-accent-green">Home</span>
-                        <span className="text-xs text-gray-500 dark:text-zinc-400">Herd</span>
-                        <span className="text-xs text-gray-500 dark:text-zinc-400">Settings</span>
+                        <Link href="/dashboard" className="text-xs font-semibold text-accent-green">Home</Link>
+                        <Link href="/dashboard/livestock" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Herd</Link>
+                        <Link href="/dashboard/settings" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Settings</Link>
                     </div>
-                </div>
+                </nav>
             </SidebarInset>
         </SidebarProvider>
     )
