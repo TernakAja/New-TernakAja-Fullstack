@@ -4,92 +4,176 @@
 
 @layer base {
   :root {
+
     /* Main Colors */
-    --background: 0 0% 96%; /* #f6f6f6 */
-    --tblack: 0 0% 0%; /* #000000 */
-    --twhite: 0 0% 100%; /* #000000 */
-    --foreground: 141 46% 19%; /* #1a472a */
-    --card: 0 0% 96%; /* #f6f6f6 */
-    --card-foreground: 0 0% 13%; /* #222222 */
-    --popover: 0 0% 96%; /* #f6f6f6 */
-    --popover-foreground: 0 0% 13%; /* #222222 */
+    --background: 0 0% 98%;
+    /* #f6f6f6 */
+    --tblack: 0 0% 0%;
+    /* #000000 */
+    --twhite: 0 0% 100%;
+    /* #000000 */
+    --foreground: 0 0% 9%;
+    /* #1a472a */
+    --card: 0 0% 100%;
+    /* #f6f6f6 */
+    --card-foreground: 0 0% 9%;
+    /* #222222 */
+    --popover: 0 0% 100%;
+    /* #f6f6f6 */
+    --popover-foreground: 0 0% 9%;
+    /* #222222 */
 
     /* Branding */
-    --primary: 141 46% 19%; /* #1a472a */
-    --primary-foreground: 53 100% 74%; /* #ffee7b */
-    --secondary: 53 100% 74%; /* #ffee7b */
-    --secondary-foreground: 141 37% 33%; /* #35744c */
+    --primary: 145 47% 24%;
+    /* #1a472a */
+    --primary-foreground: 50 100% 74%;
+    /* #ffee7b */
+    --secondary: 50 100% 74%;
+    /* #ffee7b */
+    --secondary-foreground: 145 37% 33%;
+    /* #35744c */
 
     /* UI Elements */
-    --muted: 0 0% 96%; /* #f5f5f5 */
-    --muted-foreground: 0 0% 33%; /* #555555 */
-    --accent: 52 72% 64%; /* #e4d460 */
-    --accent-foreground: 141 46% 19%; /* #1a472a */
-    --destructive: 0 72% 51%; /* #dc2626 */
-    --destructive-foreground: 0 0% 100%; /* #ffffff */
-    --border: 0 0% 53%; /* #888888 */
-    --input: 214 32% 91%; /* #e5e7eb */
-    --ring: 141 46% 19%; /* #1a472a */
-    --radius: 0.5rem;
+    --muted: 0 0% 96.1%;
+    /* #f5f5f5 */
+    --muted-foreground: 0 0% 45.1%;
+    /* #555555 */
+    --accent: 0 0% 96.1%;
+    /* #e4d460 */
+    --accent-foreground: 0 0% 9%;
+    /* #1a472a */
+    --destructive: 0 84.2% 60.2%;
+    /* #dc2626 */
+    --destructive-foreground: 0 0% 100%;
+    /* #ffffff */
+    --border: 0 0% 89.8%;
+    /* #888888 */
+    --input: 0 0% 89.8%;
+    /* #e5e7eb */
+    --ring: 145 47% 24%;
+    /* #1a472a */
+    --radius: 0.625rem;
 
     /* Charts */
-    --chart-1: 0 87% 68%; /* #f56565 */
-    --chart-2: 174 59% 56%; /* #4fd1c5 */
-    --chart-3: 207 70% 57%; /* #4299e1 */
-    --chart-4: 72% 75% 53%; /* #b8d933 */
-    --chart-5: 33 90% 65%; /* #f6ad55 */
+    --chart-1: 12 76% 61%;
+    /* #f56565 */
+    --chart-2: 173 58% 39%;
+    /* #4fd1c5 */
+    --chart-3: 197 37% 24%;
+    /* #4299e1 */
+    --chart-4: 43 74% 66%;
+    /* #b8d933 */
+    --chart-5: 27 87% 67%;
+    /* #f6ad55 */
+
+    --accent-green: 144 100% 41.96%;
+    /* #00D654 */
 
     /* Sidebar */
-    --sidebar: 141 46% 19%; /* #1a472a */
-    --sidebar-foreground: 53 96% 83%; /* #fef3a6 */
-    --sidebarprimary: 53 96% 83%; /* #fef3a6 */
-    --sidebarprimary-foreground: 141 46% 19%;
-    --sidebaraccent: 141 37% 27%; /* #2a5f3e */
-    --sidebaraccent-foreground: 53 96% 83%;
-    --sidebar-border: 141 37% 27%;
-    --sidebar-ring: 53 96% 83%;
+    --sidebar: 0 0% 98%;
+    /* gray-50 */
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 0 0% 9%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96.1%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 145 47% 24%;
   }
 
-  /* Note: Values currently match Light Mode per your input */
+  /* Actual Dark Theme Colors mapping to zinc/dark */
   .dark {
-    --background: 0 0% 96%;
-    --tblack: 0, 0%, 100%;
-    --twhite: 0, 0%, 0%;
-    --foreground: 141 46% 19%;
-    --card: 0 0% 96%;
-    --card-foreground: 0 0% 13%;
-    --popover: 0 0% 96%;
-    --popover-foreground: 0 0% 13%;
-    --primary: 141 46% 19%;
-    --primary-foreground: 53 100% 74%;
-    --secondary: 53 100% 74%;
-    --secondary-foreground: 141 37% 33%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 33%;
-    --accent: 52 72% 64%;
-    --accent-foreground: 141 46% 19%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 53%;
-    --input: 214 32% 91%;
-    --ring: 141 46% 19%;
-    --sidebar: 141 46% 19%;
-    --sidebar-foreground: 53 96% 83%;
-    --sidebar-primary: 53 96% 83%;
-    --sidebar-primary-foreground: 141 46% 19%;
-    --sidebar-accent: 141 37% 27%;
-    --sidebar-accent-foreground: 53 96% 83%;
-    --sidebar-border: 141 37% 27%;
-    --sidebar-ring: 53 96% 83%;
+    /* Main Colors */
+    --background: 0 0% 3.9%;
+    /* #0A0A0A */
+    --tblack: 0 0% 100%;
+    /* #FFFFFF */
+    --twhite: 0 0% 0%;
+    /* #000000 */
+    --foreground: 0 0% 98%;
+    /* #FAFAFA */
+
+    --card: 0 0% 9%;
+    /* slightly lighter than background */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Branding - You can adjust these if your dark mode still uses green/yellow */
+    --primary: 142 60% 46%;
+    /* Lighter green for visibility */
+    --primary-foreground: 50 100% 74%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* UI Elements */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    /* zinc-400 equivalent */
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 142 60% 46%;
+
+    /* Charts */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar */
+    --sidebar: 0 0% 9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 142 60% 46%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 14.9%;
+    --sidebar-ring: 142 60% 46%;
+
+    --accent-green: 144 100% 41.96%;
+    /* #00D654 */
+  }
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    /* Replaced @apply border-border */
   }
+
+  /* Hide scrollbar globally for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    /* Replaced @apply bg-background */
+    color: hsl(var(--foreground));
+    /* Replaced @apply text-foreground */
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
 
@@ -101,4 +185,33 @@
       1px 0 0 black,
       2px 0 0 black;
   }
+}
+
+/* 🌙 THEME TOGGLE VIEW TRANSITION (CIRCULAR MASK) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Transisi ke LIGHT Mode (class .dark dihapus) */
+/* Kita ingin tema Gelap (old/akan hilang) berada di ATAS layar dan mengecil sampai hilang,
+   Sedangkan tema Terang (new/muncul) diam di BAHWA/z-index 1. */
+::view-transition-old(root) {
+  z-index: 2;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Transisi ke DARK Mode (class .dark ditambahkan) */
+/* Kita ingin tema Gelap (new/baru lahir) berada di ATAS dan membesar menutupi,
+   Sedangkan tema Terang (old/akan hilang) diam di BAWAH/z-index 1. */
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 2;
 }

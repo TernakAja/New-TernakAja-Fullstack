@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "sonner";
 import "./globals.css";
-import { Suspense } from "react";
-import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer";
-import { openSans } from "./fonts";
+import { Providers } from "@/components/providers";
+// import { inter } from "./fonts";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -13,15 +15,12 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
     metadataBase: new URL(defaultUrl),
-    title: "Next.js and Supabase Starter Kit",
-    description: "The fastest way to build apps with Next.js and Supabase",
+    title: "TernakAja",
+    description: "Smart Livestock Monitoring",
 };
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    display: "swap",
-    subsets: ["latin"],
-});
+// FONTS
+const appFont = inter;
 
 export default function RootLayout({
     children,
@@ -29,15 +28,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={openSans.variable} suppressHydrationWarning>
-            <body className={`${geistSans.className} antialiased`}>
+        <html lang="en" className={cn("font-sans", inter.variable)} suppressHydrationWarning>
+            <body className={`${appFont.className} antialiased`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="light"
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {children}
+                    <Providers>
+                        {children}
+                        {/* According to PHASE 5: Sonner Toast defaults for desktop (bottom-right) and overrides generally handle mobile */}
+                        <Toaster position="bottom-right" richColors theme="system" />
+                    </Providers>
                 </ThemeProvider>
             </body>
         </html>

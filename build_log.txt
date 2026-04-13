@@ -1,0 +1,50 @@
+
+> build
+> next build
+
+Γû▓ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 2.7min
+  Running TypeScript ...
+  Finished TypeScript in 39.6s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/19) ...
+  Generating static pages using 3 workers (4/19) 
+  Generating static pages using 3 workers (9/19) 
+  Generating static pages using 3 workers (14/19) 
+Γ£ô Generating static pages using 3 workers (19/19) in 4.0s
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ ╞Æ /api/livestock
+Γö£ ╞Æ /api/livestock/sensor
+Γö£ ╞Æ /api/livestock/sensor/[id]
+Γö£ Γùï /dashboard
+Γö£ Γùï /dashboard/health
+Γö£ Γùï /dashboard/livestock
+Γö£ Γùï /dashboard/settings
+Γö£ Γùï /information
+Γö£ Γùï /information/faq
+Γö£ Γùï /information/kamus-penyakit
+Γö£ Γùï /information/panduan-budidaya
+Γö£ Γùï /information/regulasi
+Γö£ Γùï /login
+Γö£ Γùï /pricing
+Γö£ Γùï /products
+Γö£ ΓùÅ /products/[product_name]
+Γöé Γö£ /products/petsa-02
+Γöé Γöö /products/petsa-01
+Γöö Γùï /products/petsa-01
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+ΓùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+╞Æ  (Dynamic)  server-rendered on demand
+

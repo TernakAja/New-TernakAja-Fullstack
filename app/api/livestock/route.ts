@@ -1,7 +1,8 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createLivestockInputSchema } from "@/model/schemas/livestock";
-import { createLivestock, getAllLivestock } from "@/lib/services/livestock";
+import { createLivestock, getAllLivestock } from "@/features/livestock/services/livestock";
 import {
   unauthorizedResponse,
   validationErrorResponse,

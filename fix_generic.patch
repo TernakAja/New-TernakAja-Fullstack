@@ -1,0 +1,51 @@
+--- app/login/page.tsx
++++ app/login/page.tsx
+@@ -23,12 +23,12 @@
+             <div className="w-full max-w-sm">
+ 
+                 <div className="flex flex-col items-center mb-8">
+-                    <Link href="/" className="flex items-center gap-2 font-semibold text-2xl tracking-tight mb-6 hover:opacity-80 transition">
++                    <Link href="/" className="flex items-center gap-2 font-semibold text-2xl tracking-tight mb-6 hover:opacity-80 transition text-foreground">
+                         <Icons.appIcon />
+                         TernakAja
+                     </Link>
+-                    <h1 className="text-2xl font-bold">Masuk ke Dashboard</h1>
+-                    <p className="text-muted-foreground text-sm mt-2">Gunakan kredensial mitra untuk melanjutkan</p>
++                    <h1 className="text-2xl font-bold text-foreground">Masuk ke Dashboard</h1>
++                    <p className="text-muted-foreground text-sm mt-2 text-center">Gunakan kredensial mitra untuk melanjutkan</p>
+                 </div>
+ 
+                 <div className="bg-card p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
+@@ -39,7 +39,7 @@
+                                 type="email"
+                                 name="email"
+                                 disabled={isPending}
+                                 placeholder="nama@peternakan.com"
+-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm disabled:opacity-50"
++                                className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground outline-none focus:ring-2 focus:ring-ring transition-shadow text-sm disabled:opacity-50 placeholder:text-muted-foreground"
+                             />
+                         </div>
+@@ -49,15 +49,15 @@
+                                 type="password"
+                                 name="password"
+                                 disabled={isPending}
+                                 placeholder="••••••••"
+-                                className="w-full px-3 py-2 rounded-lg border border-border bg-background outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow text-sm disabled:opacity-50"
++                                className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground outline-none focus:ring-2 focus:ring-ring transition-shadow text-sm disabled:opacity-50 placeholder:text-muted-foreground"
+                             />
+                         </div>
+                         <div className="pt-4">
+                             <button
+                                 type="submit"
+                                 disabled={isPending}
+-                                className="w-full bg-foreground text-background py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 flex justify-center items-center"
++                                className="w-full bg-primary text-primary-foreground py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 flex justify-center items-center"
+                             >
+                                 {isPending ? (
+@@ -71,7 +71,7 @@
+ 
+                 <p className="text-center text-sm text-muted-foreground mt-8">
+-                    Belum menjadi mitra? <Link href="/information" className="text-emerald-600 dark:text-emerald-400 hover:underline">Pelajari lebih lanjut</Link>
++                    Belum menjadi mitra? <Link href="/information" className="text-primary hover:underline">Pelajari lebih lanjut</Link>
+                 </p>
+             </div>

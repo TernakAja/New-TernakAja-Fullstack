@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -11,7 +12,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-open-sans)", "system-ui"],
+        sans: ["var(--font-lexend-deca)", "system-ui"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -42,6 +43,7 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        "accent-green": "hsl(var(--accent-green))",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -49,16 +51,12 @@ export default {
         sidebar: {
           DEFAULT: "hsl(var(--sidebar))",
           foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
-        },
-        sidebarprimary: {
-          DEFAULT: "hsl(var(--sidebarprimary))",
-          foreground: "hsl(var(--sidebarprimary-foreground))",
-        },
-        sidebaraccent: {
-          DEFAULT: "hsl(var(--sidebaraccent))",
-          foreground: "hsl(var(--sidebaraccent-foreground))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -78,5 +76,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

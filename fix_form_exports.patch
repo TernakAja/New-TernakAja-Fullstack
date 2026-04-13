@@ -1,0 +1,11 @@
+--- app/join-us/page.tsx
++++ app/join-us/page.tsx
+@@ -21,6 +21,7 @@
+   Form,
+   FormControl,
++  FormDescription,
+   FormField,
+   FormItem,
+   FormLabel,
+   FormMessage,
+ } from "@/components/ui/form"
