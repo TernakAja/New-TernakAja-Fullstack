@@ -23,6 +23,8 @@ export async function loginAction(prevState: any, formData: FormData) {
     if (error.message.includes("Invalid login")) {
         return { error: "Email atau kata sandi yang Anda masukkan salah." };
     }
+    if(error.message.includes("fetch failed")) return {error: "Periksa koneksi anda"}
+
     return { error: error.message };
   }
   
