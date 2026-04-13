@@ -39,7 +39,7 @@ Instead of organizing files by their technical type (e.g. all `hooks/`, all `com
 ---
 
 ##  Tech Stack
-
+ 
 - **Framework:** Next.js 15+ (App Router, Route Groups, Server Actions)
 - **Database & Auth:** Supabase (PostgreSQL + RLS + GoTrue + Realtime)
 - **Language:** TypeScript
